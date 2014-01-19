@@ -1,0 +1,19 @@
+{
+	"licensed": false,
+	"packages":
+	[
+		"HTML5",
+		"Package Control",
+		"PerlTidy",
+		"knockdown"
+	],
+	"startup_sec": 0.666665,
+	"syntax":
+	{
+		"C": 22,
+		"Plain text": 4,
+		"Shell-Unix-Generic": 2,
+		"XML": 2
+	},
+	"time": 1390096666
+}

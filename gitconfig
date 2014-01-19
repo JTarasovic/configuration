@@ -1,0 +1,21 @@
+[user]
+	name = Jason Tarasovic
+	email = jason@tarasovic.com
+[credential]
+	helper = cache --timeout=3600
+[color]
+	ui = true
+[push]
+	default = simple
+[web]
+	browser = chrome-beta
+[help]
+	autocorrect = 1
+	format = web
+[ui]
+	color = true
+[browser "chrome-beta"]
+	cmd = google-chrome-beta
+[core]
+	pager = more
+	editor = subl -n -w
