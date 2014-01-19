@@ -7,12 +7,12 @@
 		"PerlTidy",
 		"knockdown"
 	],
-	"startup_sec": 0.666991,
+	"startup_sec": 0.667927,
 	"syntax":
 	{
 		"C": 22,
 		"Markdown (Github Flavored)": 2,
-		"Plain text": 4,
+		"Plain text": 5,
 		"Shell-Unix-Generic": 3,
 		"XML": 2
 	},

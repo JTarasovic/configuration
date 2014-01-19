@@ -98,7 +98,8 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # additional aliases go here
 alias update='sudo apt-get update && sudo apt-get upgrade'
 alias install='sudo apt-get install'
-
+alias ..='cd ..'
+alias ...='cd ../..'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
