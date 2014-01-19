@@ -326,12 +326,14 @@
 			},
 			"file_history":
 			[
+				"/home/jason/.dotfiles/README.md",
+				"/home/jason/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+				"/home/jason/.config/sublime-text-3/Packages/User/Plain text.sublime-settings",
+				"/home/jason/.bashrc",
 				"/home/jason/Development/clearn/getchar.c",
 				"/home/jason/Development/clearn/.gitignore",
-				"/home/jason/.bashrc",
 				"/home/jason/.config/sublime-text-3/Packages/User/while_c.sublime-snippet",
 				"/home/jason/.config/sublime-text-3/Packages/User/C.sublime-settings",
-				"/home/jason/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
 				"/home/jason/Downloads/PHS Privacy Notice.htm",
 				"/home/jason/Downloads/PHS_General Consent for Admission_Community_es_US.htm",
 				"/home/jason/Development/clearn/F2CwithFor.c",
@@ -411,13 +413,6 @@
 				"whole_word": false,
 				"wrap": true
 			},
-			"folders":
-			[
-				{
-					"follow_symlinks": true,
-					"path": "/home/jason/Downloads"
-				}
-			],
 			"groups":
 			[
 				{
