@@ -121,7 +121,15 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export PATH=$PATH:~/Development/android-studio/bin
-export PATH=$PATH:~/Development/android-studio/sdk/tools
-export PATH=$PATH:~/Development/android-studio/sdk/platform-tools
-export PATH=$PATH:~/Development/clearn/compiled
+if [ -f ~/Development/android-studio/bin ]; then
+    export PATH=$PATH:~/Development/android-studio/bin
+fi
+if [ -f ~/Development/android-studio/sdk/tools ]; then
+    export PATH=$PATH:~/Development/android-studio/sdk/tools
+fi
+if [ -f ~/Development/android-studio/sdk/platform-tools ]; then
+    export PATH=$PATH:~/Development/android-studio/sdk/platform-tools
+fi
+if [ -f ~/Development/clearn/compiled ]; then
+    export PATH=$PATH:~/Development/clearn/compiled
+fi
