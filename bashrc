@@ -100,6 +100,7 @@ alias update='sudo apt-get update && sudo apt-get upgrade'
 alias install='sudo apt-get install'
 alias ..='cd ..'
 alias ...='cd ../..'
+alias add='sudo add-apt-repository'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
