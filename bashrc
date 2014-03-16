@@ -101,6 +101,9 @@ alias install='sudo apt-get install'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias add='sudo add-apt-repository'
+alias speed='speedtest-cli.py'
+
+
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -122,15 +125,15 @@ if ! shopt -oq posix; then
   fi
 fi
 
-if [ -f ~/Development/android-studio/bin ]; then
+if [ -d ~/Development/android-studio/bin ]; then
     export PATH=$PATH:~/Development/android-studio/bin
 fi
-if [ -f ~/Development/android-studio/sdk/tools ]; then
+if [ -d ~/Development/android-studio/sdk/tools ]; then
     export PATH=$PATH:~/Development/android-studio/sdk/tools
 fi
-if [ -f ~/Development/android-studio/sdk/platform-tools ]; then
+if [ -d ~/Development/android-studio/sdk/platform-tools ]; then
     export PATH=$PATH:~/Development/android-studio/sdk/platform-tools
 fi
-if [ -f ~/Development/clearn/compiled ]; then
+if [ -d ~/Development/clearn/compiled ]; then
     export PATH=$PATH:~/Development/clearn/compiled
 fi
