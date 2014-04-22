@@ -19,3 +19,5 @@
 [core]
 	pager = more
 	editor = subl -n -w
+[alias]
+	co = checkout

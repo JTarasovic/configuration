@@ -102,7 +102,8 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias add='sudo add-apt-repository'
 alias speed='speedtest-cli.py'
-
+alias deploy='git push heroku master && sleep 5 && heroku logs && heroku ps'
+alias hibernate='sudo pm-hibernate'
 
 
 # Alias definitions.
@@ -136,4 +137,12 @@ if [ -d ~/Development/android-studio/sdk/platform-tools ]; then
 fi
 if [ -d ~/Development/clearn/compiled ]; then
     export PATH=$PATH:~/Development/clearn/compiled
+fi
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+### Prompt highlighting for git repos
+if [ -d ~/.bash-git-prompt ]; then
+    source ~/.bash-git-prompt/gitprompt.sh
 fi

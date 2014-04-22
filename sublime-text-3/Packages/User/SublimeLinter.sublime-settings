@@ -8,10 +8,20 @@
 		"gutter_theme_excludes":
 		[
 		],
-		"lint_mode": "load/save",
+		"lint_mode": "background",
 		"linters":
 		{
 			"htmltidy":
+			{
+				"@disable": false,
+				"args":
+				[
+				],
+				"excludes":
+				[
+				]
+			},
+			"jshint":
 			{
 				"@disable": false,
 				"args":

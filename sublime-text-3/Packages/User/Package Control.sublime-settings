@@ -1,12 +1,14 @@
 {
 	"installed_packages":
 	[
+		"Gist",
 		"HTML-CSS-JS Prettify",
 		"HTML5",
 		"knockdown",
 		"PerlTidy",
 		"SFTP",
 		"SublimeLinter",
-		"SublimeLinter-html-tidy"
+		"SublimeLinter-html-tidy",
+		"SublimeLinter-jshint"
 	]
 }
