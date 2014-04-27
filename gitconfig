@@ -21,4 +21,4 @@
 	editor = subl -n -w
 [alias]
 	co = checkout
-	diff-stash = stash show -p stash@{0}
+	diff-stash = "!f() { git stash show -p stash@{$1}; }; f"
