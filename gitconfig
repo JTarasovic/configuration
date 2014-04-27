@@ -21,3 +21,4 @@
 	editor = subl -n -w
 [alias]
 	co = checkout
+	diff-stash = stash show -p stash@{0}
