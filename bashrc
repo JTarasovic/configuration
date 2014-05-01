@@ -104,6 +104,7 @@ alias add='sudo add-apt-repository'
 alias speed='speedtest-cli.py'
 alias deploy='git push heroku master && sleep 5 && heroku logs && heroku ps'
 alias hibernate='sudo pm-hibernate'
+alias search='apt-cache search'
 
 
 # Alias definitions.
