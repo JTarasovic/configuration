@@ -141,7 +141,9 @@ if [ -d ~/Development/clearn/compiled ]; then
 fi
 
 ### Added by the Heroku Toolbelt
-export PATH="$PATH:/usr/local/heroku/bin"
+if [ -d /usr/local/heroku/bin ]; then
+    export PATH="$PATH:/usr/local/heroku/bin"
+fi
 
 ### Prompt highlighting for git repos
 if [ -d ~/.bash-git-prompt ]; then
