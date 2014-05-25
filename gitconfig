@@ -20,5 +20,4 @@
 	pager = more
 	editor = subl -n -w
 [alias]
-	co = checkout
 	diff-stash = "!f() { git stash show -p stash@{${1:-0}}; }; f"
