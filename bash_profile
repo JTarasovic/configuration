@@ -44,3 +44,18 @@ source $BASH_IT/bash_it.sh
 
 # added by travis gem
 [ -f /home/jason/.travis/travis.sh ] && source /home/jason/.travis/travis.sh
+
+### Added by the Heroku Toolbelt
+if [ -d /usr/local/heroku/bin ]; then
+export PATH="$PATH:/usr/local/heroku/bin"
+fi
+
+if [ -d ~/Development/android-studio/bin ]; then
+export PATH=$PATH:~/Development/android-studio/bin
+fi
+if [ -d ~/Development/android-studio/sdk/tools ]; then
+export PATH=$PATH:~/Development/android-studio/sdk/tools
+fi
+if [ -d ~/Development/android-studio/sdk/platform-tools ]; then
+export PATH=$PATH:~/Development/android-studio/sdk/platform-tools
+fi
