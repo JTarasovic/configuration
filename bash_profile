@@ -36,9 +36,6 @@ export IRC_CLIENT='irssi'
 # https://github.com/xvzf/vcprompt
 #export VCPROMPT_EXECUTABLE=~/.vcprompt/bin/vcprompt
 
-# Load Bash It
-source $BASH_IT/bash_it.sh
-
 # added by travis gem
 [ -f /home/jason/.travis/travis.sh ] && source /home/jason/.travis/travis.sh
 
@@ -50,3 +47,6 @@ source $BASH_IT/bash_it.sh
 $PATH:~/Development/android-studio/bin\
 :~/Development/android-studio/sdk/tools\
 :~/Development/android-studio/sdk/platform-tools
+
+# Load Bash It
+source $BASH_IT/bash_it.sh
