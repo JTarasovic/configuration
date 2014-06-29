@@ -11,7 +11,7 @@ export BASH_IT=$HOME/.bash_it
 
 # Lock and Load a custom theme file
 # location /.bash_it/themes/
-export BASH_IT_THEME='powerline'
+export BASH_IT_THEME='powerline-plain'
 
 # Your place for hosting Git repos. I use this for private repos.
 export GIT_HOSTING='jason@www.tarasovic.com'
@@ -49,4 +49,8 @@ $PATH:~/Development/android-studio/bin\
 :~/Development/android-studio/sdk/platform-tools
 
 # Load Bash It
+TIME="$(date +%s%N)"
 source $BASH_IT/bash_it.sh
+TIME="$(($(date +%s%N)-TIME))"
+TIME="$((TIME/1000000))"
+echo ${TIME}
