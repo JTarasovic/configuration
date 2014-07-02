@@ -21,3 +21,5 @@
 	editor = subl -n -w
 [alias]
 	diff-stash = "!f() { git stash show -p stash@{${1:-0}}; }; f"
+[bash-it]
+	hide-status = 1
