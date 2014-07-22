@@ -4,7 +4,10 @@
 [credential]
 	helper = cache --timeout=3600
 [color]
-	ui = true
+        branch = auto
+        diff = auto
+        interactive = auto
+        status = auto
 [push]
 	default = simple
 [web]
@@ -21,5 +24,4 @@
 	editor = subl -n -w
 [alias]
 	diff-stash = "!f() { git stash show -p stash@{${1:-0}}; }; f"
-[bash-it]
-	hide-status = 1
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
