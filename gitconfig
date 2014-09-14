@@ -10,8 +10,6 @@
         status = auto
 [push]
 	default = simple
-[web]
-	browser = chrome-beta
 [help]
 	autocorrect = 1
 	format = web
