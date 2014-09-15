@@ -24,32 +24,27 @@ bindkey -v
 
 
 # powerline
-export POWERLINE_ROOT="$HOME/.local/lib/python2.7/site-packages/powerline"
+POWERLINE_ROOT="$HOME/.local/lib/python2.7/site-packages/powerline"
 if [[ -d $POWERLINE_ROOT ]]; then
+  export POWERLINE_ROOT
   powerline-daemon -q
   . $POWERLINE_ROOT/bindings/zsh/powerline.zsh
 fi
 
+if [[ -z "$TMUX" ]]; then
+  exec tmux
+fi
+
 if [[ -f $ZSH/antigen/antigen.zsh ]]; then
   source $ZSH/antigen/antigen.zsh
+
   # antigen
   ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
 
   # general plugins
   antigen bundle zsh-users/zsh-completions src
   antigen bundle zsh-users/zsh-syntax-highlighting
-  antigen bundle command-not-found
-
-  # dev plugins
-  antigen bundle git
-  antigen bundle heroku
-  antigen bundle pip
-  antigen bundle cabal
-  antigen bundle docker
-  antigen bundle node
-  antigen bundle npm
-  # antigen bundle adb
-
+  # antigen bundle command-not-found
 
 
   antigen apply
@@ -57,7 +52,3 @@ fi
 
 autoload -Uz compinit
 compinit
-
-if [[ -z "$TMUX" ]]; then
-  exec tmux
-fi
