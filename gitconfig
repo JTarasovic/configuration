@@ -15,11 +15,8 @@
 	format = web
 [ui]
 	color = true
-[browser "chrome-beta"]
-	cmd = google-chrome-beta
 [core]
 	pager = more
-	editor = subl -n -w
 [alias]
 	diff-stash = "!f() { git stash show -p stash@{${1:-0}}; }; f"
 	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
