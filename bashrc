@@ -30,6 +30,7 @@ shopt -s checkwinsize
 # Don't check mail when opening terminal.
 unset MAILCHECK
 
+export FROM_ZSH=0
 [[ -f $DOTFILE/env.sh ]] && source $DOTFILE/env.sh
 
 if [[ $DOTFILE ]]; then
