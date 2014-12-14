@@ -16,5 +16,16 @@ fi
 [[ -d $HOME/.dotfiles ]] && export DOTFILE=$HOME/.dotfiles/
 
 # check where powerline-shell is installed
-[ -d $DOTFILE/powerline-shell ] && export PLINE=$DOTFILE/powerline-shell/
-[ -e $HOME/powerline-shell.py ] && export PLINE=$HOME
+[[ -d $DOTFILE/powerline-shell ]] && export PLINE=$DOTFILE/powerline-shell/
+[[ -e $HOME/powerline-shell.py ]] && export PLINE=$HOME
+
+
+# Set my editor and git editor
+if [[ -e /usr/bin/atom ]]; then
+  export EDITOR="/usr/bin/atom -w"
+  export GIT_EDITOR='/usr/bin/atom -w'
+fi
+
+# Path to the bash it configuration
+[[ -d $HOME/.bash_it ]] && export BASH_IT=$HOME/.bash_it
+[[ $BASH_IT ]] && export BASH_IT_THEME='powerline-plain'

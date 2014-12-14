@@ -30,42 +30,19 @@ shopt -s checkwinsize
 # Don't check mail when opening terminal.
 unset MAILCHECK
 
-# Change this to your console based IRC client of choice.
-export IRC_CLIENT='irssi'
+# it's weird to source the zsh environment file but
+# there's nothing really specific to zsh in mine.
+# may split this out a bit just in case
+[[ -f $HOME/.zshenv ]] && source $HOME/.zshenv
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -e $HOME/.bash_aliases ]; then
-  source $HOME/.bash_aliases
+if [[ $DOTFILE ]]; then
+  source $DOTFILE/aliases.sh
+  source $DOTFILE/path.sh
 fi
 
-# Path to the bash it configuration
-export BASH_IT=$HOME/.bash_it
-
-# Lock and Load a custom theme file
-# location /.bash_it/themes/
-export BASH_IT_THEME='powerline-plain'
-
-# Your place for hosting Git repos. I use this for private repos.
-export GIT_HOSTING='jason@www.tarasovic.com'
-
-# Set my editor and git editor
-export EDITOR="/usr/bin/atom -w"
-export GIT_EDITOR='/usr/bin/atom -w'
 
 # added by travis gem
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 
-### Added by the Heroku Toolbelt
-[ -d /usr/local/heroku/bin ] && export PATH=$PATH:/usr/local/heroku/bin
-
-# add android stuff to path
-[ -d $HOME/android-studio/bin ] && PATH=$PATH:$HOME/android-studio/bin
-[ -d $HOME/Android/Sdk/ ] && PATH=$PATH:$HOME/Android/Sdk/tools:$HOME/Android/Sdk/platform-tools
-
-
 # Load Bash It
-[ -d $BASH_IT ] && source $BASH_IT/bash_it.sh
+[[ $BASH_IT ]] && source $BASH_IT/bash_it.sh
