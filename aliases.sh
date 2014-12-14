@@ -2,7 +2,6 @@
 #about-alias 'my aliases'
 
 # YUM
-
 if [[ $HAS_YUM && -z $HAS_DNF ]]; then
   alias update='sudo yum update'
   alias install='sudo yum install'
