@@ -30,16 +30,20 @@ shopt -s checkwinsize
 # Don't check mail when opening terminal.
 unset MAILCHECK
 
-# it's weird to source the zsh environment file but
-# there's nothing really specific to zsh in mine.
-# may split this out a bit just in case
-[[ -f $HOME/.zshenv ]] && source $HOME/.zshenv
+[[ -f $DOTFILE/env.sh ]] && source $DOTFILE/env.sh
 
 if [[ $DOTFILE ]]; then
   source $DOTFILE/aliases.sh
   source $DOTFILE/path.sh
 fi
 
+if [[ $PLINE ]]; then
+  function _update_ps1() {
+    export PS1="$($PLINE/powerline-shell.py $? 2> /dev/null)"
+  }
+
+  export PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
 
 # added by travis gem
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
