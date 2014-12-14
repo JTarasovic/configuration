@@ -63,15 +63,12 @@ export GIT_EDITOR='/usr/bin/atom -w'
 [ -d /usr/local/heroku/bin ] && export PATH=$PATH:/usr/local/heroku/bin
 
 # add android stuff to path
-[ -d ~/Development/android-studio/bin ] && export PATH=\
-$PATH:~/Development/android-studio/bin\
-:~/Development/android-studio/sdk/tools\
-:~/Development/android-studio/sdk/platform-tools
+[ -d ~/android-studio/bin ] && export PATH=\
+$PATH:~/android-studio/bin
+[ -d ~/Android/Sdk/ ] && export PATH=\
+$PATH:~/Android/Sdk/tools\
+:~/Android/Sdk/platform-tools
 
 
 # Load Bash It
-TIME="$(date +%s%N)"
-source $BASH_IT/bash_it.sh
-TIME="$(($(date +%s%N)-TIME))"
-TIME="$((TIME/1000000))"
-echo ${TIME}
+[ -d $BASH_IT ] && source $BASH_IT/bash_it.sh
