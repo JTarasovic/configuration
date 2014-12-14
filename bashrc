@@ -38,8 +38,8 @@ export IRC_CLIENT='irssi'
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -e $HOME/.bash_aliases ]; then
+  source $HOME/.bash_aliases
 fi
 
 # Path to the bash it configuration
@@ -57,17 +57,14 @@ export EDITOR="/usr/bin/atom -w"
 export GIT_EDITOR='/usr/bin/atom -w'
 
 # added by travis gem
-[ -f /home/jason/.travis/travis.sh ] && source /home/jason/.travis/travis.sh
+[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 
 ### Added by the Heroku Toolbelt
 [ -d /usr/local/heroku/bin ] && export PATH=$PATH:/usr/local/heroku/bin
 
 # add android stuff to path
-[ -d ~/android-studio/bin ] && export PATH=\
-$PATH:~/android-studio/bin
-[ -d ~/Android/Sdk/ ] && export PATH=\
-$PATH:~/Android/Sdk/tools\
-:~/Android/Sdk/platform-tools
+[ -d $HOME/android-studio/bin ] && PATH=$PATH:$HOME/android-studio/bin
+[ -d $HOME/Android/Sdk/ ] && PATH=$PATH:$HOME/Android/Sdk/tools:$HOME/Android/Sdk/platform-tools
 
 
 # Load Bash It
