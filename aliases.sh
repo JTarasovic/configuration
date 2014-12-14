@@ -32,17 +32,19 @@ if [[ $HAS_PACMAN ]]; then
 fi
 
 
+command -v speedtest-cli >/dev/null 2>&1 && alias speed='speedtest-cli'
+command -v pm-hibernate >/dev/null 2>&1 && alias hibernate='sudo pm-hibernate'
 
 # heroku
 alias hdeploy='git push heroku master && sleep 5 && heroku logs && heroku ps'
 
 # misc.
-alias speed='speedtest-cli.py'
-alias hibernate='sudo pm-hibernate'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert.*$//'\'')"'
-alias avd='emulator-x86 -avd avd1 -qemu -m 2047 -enable-kvm'
 alias server='python -m SimpleHTTPServer &'
 alias l='l.'
 alias la='ls -la --color=auto'
 alias c='clear'
 alias gs='git status'
+
+
+alias avd='emulator-x86 -avd avd1 -qemu -m 2047 -enable-kvm'
