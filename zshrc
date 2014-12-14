@@ -1,7 +1,19 @@
 # ZSH
+# checks
+[[ $(uname) = 'Linux' ]] && export IS_LINUX=1
+
+if [[ $IS_LINUX -eq 1 ]]; then
+  command -v yum >/dev/null 2>&1 && export HAS_YUM=1
+  command -v dnf >/dev/null 2>&1 && export HAS_DNF=1
+  command -v apt-get >/dev/null 2>&1 && export HAS_APT=1
+  command -v pacman >/dev/null 2>&1 && export HAS_PACMAN=1
+fi
+
+# load custom aliases
 if [[ -d $HOME/.dotfiles ]]; then
   ZSH=$HOME/.dotfiles/
   source $ZSH/custom.aliases
+  setopt completealiases
 fi
 
 # add .local/bin to path
@@ -46,5 +58,6 @@ function install_powerline_precmd() {
 install_powerline_precmd
 
 
-autoload -Uz compinit
+autoload -Uz compinit promptinit
 compinit
+promptinit
