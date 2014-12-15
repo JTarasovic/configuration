@@ -26,3 +26,4 @@ git submodule update --init
 
 `ln -s $HOME/.dotfiles/config.py $HOME/.dotfiles/powerline-shell/config.py`
 echo -e "\nDon't forget to run ./install.py in the powerline-shell dir."
+echo -e "Also, don't forget to run ./install.sh in the fonts dir"
