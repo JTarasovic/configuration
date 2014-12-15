@@ -25,4 +25,4 @@ fi
 `git submodule init && git submodule update`
 
 `ln -s $HOME/.dotfiles/config.py $HOME/.dotfiles/powerline-shell/config.py`
-`./$HOME/.dotfiles/powerline-shell/install.py`
+`.$HOME/.dotfiles/powerline-shell/install.py`
