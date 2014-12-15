@@ -21,3 +21,8 @@ if [[ !(-e $HOME/.local/bin/speedtest-cli) ]]; then
   `wget -O $HOME/.local/bin/speedtest-cli https://raw.github.com/sivel/speedtest-cli/master/speedtest_cli.py`
   `chmod +x $HOME/.local/bin/speedtest-cli`
 fi
+
+`git submodule init && git submodule update`
+
+`ln -s $HOME/.dotfiles/config.py $HOME/.dotfiles/powerline-shell/config.py`
+`./$HOME/.dotfiles/install.sh`
