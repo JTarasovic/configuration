@@ -25,4 +25,4 @@ fi
 git submodule update --init
 
 `ln -s $HOME/.dotfiles/config.py $HOME/.dotfiles/powerline-shell/config.py`
-echo "Don't forget to run ./install.py in the powerline-shell dir."
+echo -e "\nDon't forget to run ./install.py in the powerline-shell dir."
