@@ -22,7 +22,7 @@ if [[ !(-e $HOME/.local/bin/speedtest-cli) ]]; then
   `chmod +x $HOME/.local/bin/speedtest-cli`
 fi
 
-`git submodule update --init`
+`git submodule update`
 
 `ln -s $HOME/.dotfiles/config.py $HOME/.dotfiles/powerline-shell/config.py`
 `.$HOME/.dotfiles/powerline-shell/install.py`
