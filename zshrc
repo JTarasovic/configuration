@@ -7,7 +7,7 @@
 [[ -f $DOTFILE/path.sh ]] && source $DOTFILE/path.sh
 
 # powerline-shell
-if [[ $PLINE ]]; then
+if [[ -e $PLINE ]]; then
   function powerline_precmd() {
     export PS1="$($PLINE/powerline-shell.py $? --shell zsh 2> /dev/null)"
   }

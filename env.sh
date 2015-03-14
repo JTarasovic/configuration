@@ -27,7 +27,3 @@ if [[ -e /usr/bin/atom ]]; then
   export EDITOR="/usr/bin/atom -w"
   export GIT_EDITOR='/usr/bin/atom -w'
 fi
-
-# Path to the bash it configuration
-[[ -d $HOME/.bash_it ]] && export BASH_IT=$HOME/.bash_it
-[[ $BASH_IT ]] && export BASH_IT_THEME='powerline-plain'

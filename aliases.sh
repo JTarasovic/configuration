@@ -2,22 +2,24 @@
 #about-alias 'my aliases'
 
 # YUM
-if [[ $HAS_YUM && -z $HAS_DNF ]]; then
-  alias update='sudo yum update'
-  alias install='sudo yum install'
-  alias search='yum search'
+if [[ $HAS_YUM -eq 1 ]]; then
+  # DNF
+  if [[ $HAS_DNF -eq 1 ]]; then
+    alias update='sudo dnf update'
+    alias install='sudo dnf install'
+    alias search='dnf search'
+    alias yum='dnf'
+  else
+    alias update='sudo yum update'
+    alias install='sudo yum install'
+    alias search='yum search'
+  fi
 fi
 
-# DNF
-if [[ $HAS_DNF ]]; then
-  alias update='sudo dnf update'
-  alias install='sudo dnf install'
-  alias search='dnf search'
-  alias yum='dnf'
-fi
+
 
 # APT
-if [[ $HAS_APT ]]; then
+if [[ $HAS_APT -eq 1 ]]; then
   alias update='sudo apt-get update && sudo apt-get upgrade'
   alias install='sudo apt-get install'
   alias search='apt-cache search'
@@ -25,7 +27,7 @@ if [[ $HAS_APT ]]; then
 fi
 
 # PACMAN
-if [[ $HAS_PACMAN ]]; then
+if [[ $HAS_PACMAN -eq 1 ]]; then
   alias update='sudo pacman -Syu'
   alias install='sudo pacman -S'
   alias search='pacman -Ss'

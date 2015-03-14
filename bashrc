@@ -33,7 +33,7 @@ unset MAILCHECK
 export FROM_ZSH=0
 [[ -f $HOME/.dotfiles/env.sh ]] && source $HOME/.dotfiles/env.sh
 
-if [[ $DOTFILE ]]; then
+if [[ -e $DOTFILE ]]; then
   source $DOTFILE/aliases.sh
   source $DOTFILE/path.sh
 fi
@@ -48,6 +48,3 @@ fi
 
 # added by travis gem
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
-
-# Load Bash It
-[[ $BASH_IT ]] && source $BASH_IT/bash_it.sh
