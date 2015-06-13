@@ -22,9 +22,11 @@
 	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	co = checkout
 	ci = commit
+	cam = commit -am
 	br = branch
 	diff = dff --word-diff
 	dc = diff --cached
 	dlc = diff --cached HEAD^
 	lt = describe --tags --abbrev=0
 	la = "!git config -l | grep alias | cut -c 7-"
+	undo = reset HEAD~1 --mixed
