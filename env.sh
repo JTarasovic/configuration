@@ -23,9 +23,6 @@ fi
 
 
 # Set my editor and git editor
-if [[ -e /usr/bin/atom ]]; then
-  export EDITOR="/usr/bin/atom -w"
-  export GIT_EDITOR='/usr/bin/atom -w'
-fi
+command -v atom > /dev/null 2>&1 && export EDITOR="$(which atom) -w"; export GIT_EDITOR="$(which atom) -w"
 
 export GOPATH=$HOME/Development/gocode/
