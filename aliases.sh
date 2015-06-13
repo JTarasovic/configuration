@@ -62,6 +62,7 @@ alias gs='git status'
 alias gh="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`"
 alias c='clear'
 alias ..='cd ..'
+alias ...='cd ../..'
 
 
 alias avd='emulator-x86 -avd avd1 -qemu -m 2047 -enable-kvm'
