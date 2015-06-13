@@ -1,10 +1,16 @@
 # ZSH
 
-# aliases
-[[ -f $DOTFILE/aliases.sh ]] && source $DOTFILE/aliases.sh
+# set history options
+HISTFILE=~/.histfile
+HISTSIZE=10000
+SAVEHIST=10000
 
-# path
-[[ -f $DOTFILE/path.sh ]] && source $DOTFILE/path.sh
+if [[ -e $DOTFILE ]]; then
+  # env.sh is sourced by zshenv
+  source $DOTFILE/aliases.sh
+  source $DOTFILE/path.sh
+fi
+
 
 # powerline-shell
 if [[ -e $PLINE ]]; then
@@ -28,13 +34,6 @@ zstyle ':completion:*' completer _expand _complete _ignored _approximate
 zstyle ':completion:*' max-errors 2
 zstyle ':completion:*' menu select
 #zstyle :compinstall filename '/home/jason/.zshrc'
-
-
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
-HISTSIZE=10000
-SAVEHIST=10000
-# End of lines configured by zsh-newuser-install
 
 
 
