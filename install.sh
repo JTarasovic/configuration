@@ -16,10 +16,14 @@ done
 
 
 # install speedtest-cli to ~/.local/bin
-[[ !(-d $HOME/.local/bin) ]] && `mkdir $HOME/.local/bin`
+[[ !(-d $HOME/.local/bin) ]] && `mkdir -p $HOME/.local/bin`
 if [[ !(-e $HOME/.local/bin/speedtest-cli) ]]; then
   `wget -O $HOME/.local/bin/speedtest-cli https://raw.github.com/sivel/speedtest-cli/master/speedtest_cli.py`
   `chmod +x $HOME/.local/bin/speedtest-cli`
+fi
+if [[ !(-e $HOME/.local/bin/hr) ]]; then
+ `wget -O curl https://raw.githubusercontent.com/LuRsT/hr/master/hr > $HOME/.local/bin/hr`
+ `chmod +x $HOME/.local/bin/hr`
 fi
 
 git submodule update --init

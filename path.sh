@@ -7,4 +7,6 @@
 [[ -d $HOME/android-studio/bin ]] && PATH=$PATH:$HOME/android-studio/bin
 [[ -d $HOME/Android/Sdk ]] && PATH=$PATH:$HOME/Android/Sdk/tools:$HOME/Android/Sdk/platform-tools
 
+[[ -d $HOME/Development/gocode/bin ]] && PATH=$PATH:$HOME/Development/gocode/bin
+
 export PATH

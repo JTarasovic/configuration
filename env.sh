@@ -27,3 +27,5 @@ if [[ -e /usr/bin/atom ]]; then
   export EDITOR="/usr/bin/atom -w"
   export GIT_EDITOR='/usr/bin/atom -w'
 fi
+
+export GOPATH=$HOME/Development/gocode/
