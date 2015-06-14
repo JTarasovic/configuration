@@ -47,14 +47,14 @@ else
 fi
 
 alias gs='git status'
+alias push='git push'
 alias c='clear'
 alias ..='cd ..'
 alias ...='cd ../..'
-
-# courtesy @igrigorik; open current gh repo in browser
-alias gh="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`"
-
 alias speed='speedtest-cli'
 alias avd='emulator-x86 -avd avd1 -qemu -m 2047 -enable-kvm'# misc.
 alias hdeploy='git push heroku master && sleep 5 && heroku logs && heroku ps'
 alias server='python -m SimpleHTTPServer &'
+
+# courtesy @igrigorik; open current gh repo in browser
+alias gh="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`"
