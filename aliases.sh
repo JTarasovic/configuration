@@ -30,18 +30,8 @@ if [[ $IS_LINUX -eq 1 ]]; then
     alias install='sudo pacman -S'
     alias search='pacman -Ss'
   fi
-fi
 
-command -v speedtest-cli >/dev/null 2>&1 && alias speed='speedtest-cli'
-command -v pm-hibernate >/dev/null 2>&1 && alias hibernate='sudo pm-hibernate'
-
-# heroku
-alias hdeploy='git push heroku master && sleep 5 && heroku logs && heroku ps'
-
-# misc.
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert.*$//'\'')"'
-alias server='python -m SimpleHTTPServer &'
-if [[ $IS_LINUX -eq 1 ]]; then
+  alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert.*$//'\'')"'
   alias l='ls --color=auto'
   alias l.='ls -d .* --color=auto'
   alias la='ls -la --color=auto'
@@ -56,13 +46,15 @@ else
   alias ll='ls -l'
 fi
 
-
-
 alias gs='git status'
-alias gh="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`"
 alias c='clear'
 alias ..='cd ..'
 alias ...='cd ../..'
 
+# courtesy @igrigorik; open current gh repo in browser
+alias gh="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`"
 
-alias avd='emulator-x86 -avd avd1 -qemu -m 2047 -enable-kvm'
+alias speed='speedtest-cli'
+alias avd='emulator-x86 -avd avd1 -qemu -m 2047 -enable-kvm'# misc.
+alias hdeploy='git push heroku master && sleep 5 && heroku logs && heroku ps'
+alias server='python -m SimpleHTTPServer &'
