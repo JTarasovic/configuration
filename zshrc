@@ -48,3 +48,5 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' verbose true
 
 zstyle ':completion:*:kill:*' command 'ps -u $USER -c -o command,pid,%cpu,tty,cputime,cmd'
+
+source $HOME/npm_completion
