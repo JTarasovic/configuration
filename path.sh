@@ -12,7 +12,7 @@
 [[ -d $HOME/Development/gocode/bin ]] && PATH=$PATH:$HOME/Development/gocode/bin
 
 # allow perlbrew to set itself up
-[[ -d $HOME/perl5/perlbrew/etc/bashrc ]] && source ~/perl5/perlbrew/etc/bashrc
+[[ -d $HOME/perl5/perlbrew/etc ]] && source $HOME/perl5/perlbrew/etc/bashrc
 
 # allow nvm to set up path
 [[ -d $NVM_DIR ]] && source $(brew --prefix nvm)/nvm.sh
