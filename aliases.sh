@@ -52,7 +52,8 @@ alias c='clear'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias speed='speedtest-cli'
-alias avd='emulator-x86 -avd avd1 -qemu -m 2047 -enable-kvm'# misc.
+alias avd='emulator-x86 -avd avd1 -qemu -m 2047 -enable-kvm'
+# misc.
 alias hdeploy='git push heroku master && sleep 5 && heroku logs && heroku ps'
 alias server='python -m SimpleHTTPServer &'
 alias pb='perlbrew'
