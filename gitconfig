@@ -5,9 +5,9 @@
 	helper = cache --timeout=3600
 [color]
 	branch = auto
-  diff = auto
-  interactive = auto
-  status = auto
+	diff = auto
+	interactive = auto
+	status = auto
 [push]
 	default = simple
 [help]
@@ -21,6 +21,7 @@
 	diff-stash = "!f() { git stash show -p stash@{${1:-0}}; }; f"
 	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	co = checkout
+	cob = checkout -b
 	ci = commit
 	cam = commit -am
 	br = branch

@@ -14,9 +14,6 @@ if [[ $IS_LINUX -eq 1 ]]; then
   command -v pacman >/dev/null 2>&1 && export HAS_PACMAN=1
 fi
 
-# set dotfiles directory
-[[ -d $HOME/.dotfiles ]] && export DOTFILE=$HOME/.dotfiles/
-
 # check where powerline-shell is installed
 [[ -d $DOTFILE/powerline-shell ]] && export PLINE=$DOTFILE/powerline-shell/
 [[ -e $HOME/powerline-shell.py ]] && export PLINE=$HOME

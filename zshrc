@@ -50,3 +50,6 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:kill:*' command 'ps -u $USER -c -o command,pid,%cpu,tty,cputime,cmd'
 
 source $HOME/npm_completion
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
