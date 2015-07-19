@@ -5,7 +5,6 @@
 # check if linux
 [[ $(uname) = 'Linux' ]] && export IS_LINUX=1
 
-
 # if linux, determine package manager
 if [[ $IS_LINUX -eq 1 ]]; then
   command -v yum >/dev/null 2>&1 && export HAS_YUM=1
