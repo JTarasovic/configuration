@@ -58,6 +58,7 @@ alias hdeploy='git push heroku master && sleep 5 && heroku logs && heroku ps'
 alias server='python -m SimpleHTTPServer &'
 alias pb='perlbrew'
 alias dtls='apropos dtrace'
+alias flatten='find ./ -type f -exec mv '{}' . \;'
 
 # courtesy @igrigorik; open current gh repo in browser
 alias gh="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`"
