@@ -34,8 +34,8 @@ setopt appendhistory histignorealldups sharehistory
 # do these even do anything???
 setopt beep notify
 
-
-bindkey -v
+# EMACS!!!
+bindkey -e
 
 autoload -Uz compinit promptinit
 compinit
