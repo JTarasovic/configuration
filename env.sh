@@ -2,8 +2,10 @@
 # called by both ZSH and BASH
 # $FROM_ZSH should eq 1 if called from ZSH
 
-# check if linux
+# get OS type
 [[ $(uname) = 'Linux' ]] && export IS_LINUX=1
+[[ $(uname) = 'Darwin' ]] && export IS_OSX=1
+
 
 # if linux, determine package manager
 if [[ $IS_LINUX -eq 1 ]]; then
@@ -13,15 +15,14 @@ if [[ $IS_LINUX -eq 1 ]]; then
   command -v pacman >/dev/null 2>&1 && export HAS_PACMAN=1
 fi
 
-# check where powerline-shell is installed
-[[ -d $DOTFILE/powerline-shell ]] && export PLINE=$DOTFILE/powerline-shell/
-[[ -e $HOME/powerline-shell.py ]] && export PLINE=$HOME
+# [[ $FROM_ZSH -eq 1 ]] && ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
 
 # Set my editor and git editor
 command -v atom > /dev/null 2>&1 && export EDITOR="$(which atom) -w"
 #; export GIT_EDITOR="$(which atom) -w"
 
-
+pip=`command -v pip || echo "/usr/local/bin/pip"`
+export POWERLINE_ROOT=`$pip show powerline-status | grep Location | awk '{print $2}'`
 export GOPATH=$HOME/Development/gocode/
 export NVM_DIR=~/.nvm

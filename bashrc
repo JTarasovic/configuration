@@ -31,17 +31,19 @@ shopt -s checkwinsize
 unset MAILCHECK
 
 export FROM_ZSH=0
+[[ -d $HOME/.dotfiles ]] && export DOTFILE=$HOME/.dotfiles/
 
 if [[ -e $DOTFILE ]]; then
   source $DOTFILE/env.sh
-  source $DOTFILE/aliases.sh
   source $DOTFILE/path.sh
+  source $DOTFILE/aliases.sh
+  source $DOTFILE/sources.sh
 fi
 
-if [[ $PLINE ]]; then
-  function _update_ps1() {
-    export PS1="$($PLINE/powerline-shell.py $? 2> /dev/null)"
-  }
-
-  export PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-fi
+# if [[ $PLINE ]]; then
+#   function _update_ps1() {
+#     export PS1="$($PLINE/powerline-shell.py $? 2> /dev/null)"
+#   }
+#
+#   export PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+# fi

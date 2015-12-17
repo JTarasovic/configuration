@@ -14,8 +14,6 @@ if [[ $IS_LINUX -eq 1 ]]; then
     fi
   fi
 
-
-
   # APT
   if [[ $HAS_APT -eq 1 ]]; then
     alias update='sudo apt-get update && sudo apt-get upgrade'
@@ -44,6 +42,12 @@ else
   alias l.='ls -d .*'
   alias la='ls -la'
   alias ll='ls -l'
+  alias dtls='apropos dtrace'
+
+  #brew aliases
+  alias update='brew update && brew upgrade'
+  alias install='brew install'
+  alias search='brew search'
 fi
 
 alias gs='git status'
@@ -57,7 +61,6 @@ alias avd='emulator-x86 -avd avd1 -qemu -m 2047 -enable-kvm'
 alias hdeploy='git push heroku master && sleep 5 && heroku logs && heroku ps'
 alias server='python -m SimpleHTTPServer &'
 alias pb='perlbrew'
-alias dtls='apropos dtrace'
 alias flatten='find ./ -type f -exec mv '{}' . \;'
 
 # courtesy @igrigorik; open current gh repo in browser
