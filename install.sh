@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-files=(zshrc zshenv vimrc bashrc bash_profile gitconfig)
+files=(zshrc zshenv vimrc bashrc bash_profile gitconfig csvignore vim)
 cwd=$(pwd)
 
 for file in ${files[@]}; do
