@@ -14,6 +14,8 @@ for file in ${files[@]}; do
   `ln -s $cwd/$file $HOME/.$file`
 done
 
+`git submodule update`
+
 `ln -s $cwd/vim/bundle/pathogen/autoload/pathogen.vim $cwd/vim/autoload/pathogen.vim`
 
 echo -e `pip install powerline-status hr speedtest-cli`

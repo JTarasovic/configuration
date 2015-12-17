@@ -3,3 +3,4 @@ sublime-text-3/Local/**
 sublime-text-3/Index/**
 sublime-text-3/Packages/User/sftp_servers/**
 _backup
+vim/autoload/pathogen.vim
