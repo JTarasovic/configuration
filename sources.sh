@@ -9,8 +9,6 @@
 # allow nvm to set up path
 [[ -d $NVM_DIR ]] && source $(brew --prefix nvm)/nvm.sh
 
-[[ -e /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 #powerline
 
 if [[ $FROM_ZSH -eq 0 ]]; then
@@ -19,5 +17,6 @@ if [[ $FROM_ZSH -eq 0 ]]; then
   POWERLINE_BASH_SELECT=1
   source $POWERLINE_ROOT/powerline/bindings/bash/powerline.sh
 else
+  source $DOTFILE/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   source $POWERLINE_ROOT/powerline/bindings/zsh/powerline.zsh
 fi

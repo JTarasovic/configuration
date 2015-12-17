@@ -7,22 +7,6 @@ HISTFILE=~/.histfile
 bindkey -v
 
 
-# powerline-shell
-# if [[ -e $PLINE ]]; then
-#   function powerline_precmd() {
-#     export PS1="$($PLINE/powerline-shell.py $? --shell zsh 2> /dev/null)"
-#   }
-#   function install_powerline_precmd() {
-#     for s in "${precmd_functions[@]}"; do
-#       if [ "$s" = "powerline_precmd" ]; then
-#         return
-#       fi
-#     done
-#     precmd_functions+=(powerline_precmd)
-#   }
-#   install_powerline_precmd
-# fi
-
 # behavioral options
 setopt autocd extendedglob completealiases
 # history options
@@ -31,7 +15,7 @@ setopt appendhistory histignorealldups sharehistory
 setopt beep notify
 
 # https://github.com/zsh-users/zsh-completions
-# [[ -e /usr/local/share/zsh-completions ]] && fpath=(/usr/local/share/zsh-completions $fpath)
+[[ -e $DOTFILE ]] && fpath=($DOTFILE/zsh-completions/src $fpath)
 
 autoload -Uz compinit promptinit
 compinit
