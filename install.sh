@@ -1,8 +1,9 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 files=(zshrc zshenv vimrc bashrc bash_profile gitconfig csvignore vim)
 cwd=$(pwd)
 
+# link version controled files to correct dotfile in ~
 for file in ${files[@]}; do
   new_path=$HOME/.$file
   if [[ -h $new_path ]]; then
@@ -16,11 +17,6 @@ done
 
 `git submodule update`
 
-`mkdir -p vim/autoload && ln -s $cwd/vim/bundle/pathogen/autoload/pathogen.vim $cwd/vim/autoload/pathogen.vim`
+`mkdir -p $cwd/vim/autoload && ln -s $cwd/vim/bundle/pathogen/autoload/pathogen.vim $cwd/vim/autoload/pathogen.vim`
 
-echo -e `pip install powerline-status hr speedtest-cli`
-
-
-# `ln -s $HOME/.dotfiles/config.py $HOME/.dotfiles/powerline-shell/config.py`
-echo -e "\nDon't forget to run ./install.py in the powerline-shell dir."
-echo -e "Also, don't forget to run ./install.sh in the fonts dir"
+temp=`pip install powerline-status hr speedtest-cli`
