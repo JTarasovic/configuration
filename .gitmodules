@@ -28,3 +28,6 @@
 [submodule "zsh-completions"]
 	path = zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
+[submodule "vim/bundle/nerdtree-git-plugin"]
+	path = vim/bundle/nerdtree-git-plugin
+	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
