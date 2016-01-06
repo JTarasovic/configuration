@@ -65,3 +65,15 @@ alias flatten='find ./ -type f -exec mv '{}' . \;'
 
 # courtesy @igrigorik; open current gh repo in browser
 alias gh="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`"
+
+
+# testing
+alias move_books="cd ~/NZBin\ Complete && \
+	book_walker -e 'epub|mobi|pdf|pdb|azw|azw3|lit|rtf|doc|docx' ~/NZBin\ Complete ~/staging && \
+	rmdir *(/)"
+alias move_nzbs="cd ~/Downloads && \
+	unzip '*.nzb.zip' && \
+	book_walker -e nzb ~/Downloads ~/nzbs && \
+	rm *.nzb.zip && \
+	open ~/nzbs/*"
+alias sync_books="rsync -vurW --delete ~/Calibre\ Library/ ~/Shares/Media/Books"
