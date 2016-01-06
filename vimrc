@@ -123,6 +123,11 @@ set termencoding=utf-8
 set laststatus=2
 set noshowmode
 
+
+
+colorscheme SlateDark
+
+
 python from powerline.vim import setup as powerline_setup
 python powerline_setup()
 python del powerline_setup
