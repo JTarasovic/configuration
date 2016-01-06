@@ -1,5 +1,3 @@
-[[ -e $HOME/npm_completion ]] && source $HOME/npm_completion
-
 # allow perlbrew to set itself up
 [[ -d $HOME/perl5/perlbrew/etc ]] && source $HOME/perl5/perlbrew/etc/bashrc
 

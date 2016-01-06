@@ -23,10 +23,6 @@ HISTFILESIZE=2000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-# alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
 # Don't check mail when opening terminal.
 unset MAILCHECK
 
@@ -38,12 +34,6 @@ if [[ -e $DOTFILE ]]; then
   source $DOTFILE/path.sh
   source $DOTFILE/aliases.sh
   source $DOTFILE/sources.sh
+  source $DOTFILE/completions.sh
 fi
 
-# if [[ $PLINE ]]; then
-#   function _update_ps1() {
-#     export PS1="$($PLINE/powerline-shell.py $? 2> /dev/null)"
-#   }
-#
-#   export PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-# fi
