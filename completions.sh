@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-source $HOME/npm_completion
+source $DOTFILE/npm_completion
 
 
 if [[ $FROM_ZSH -eq 1 ]]; then
