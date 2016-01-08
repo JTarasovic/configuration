@@ -7,9 +7,10 @@
 # allow nvm to set up path
 [[ -d $NVM_DIR ]] && source $(brew --prefix nvm)/nvm.sh
 
-#powerline
 
+# shell specific sources
 if [[ $FROM_ZSH -eq 0 ]]; then
+  # BASH
   powerline-daemon -q
   POWERLINE_BASH_CONTINUATION=1
   POWERLINE_BASH_SELECT=1
@@ -18,3 +19,7 @@ else
   source $DOTFILE/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   source $POWERLINE_ROOT/powerline/bindings/zsh/powerline.zsh
 fi
+
+# start powerline-daemon
+source $DOTFILE/start_powerline.sh
+
