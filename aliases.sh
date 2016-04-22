@@ -68,12 +68,12 @@ alias gh="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cu
 
 
 # testing
-alias move_books="cd ~/NZBin\ Complete && \
-	book_walker -e 'epub|mobi|pdf|pdb|azw|azw3|lit|rtf|doc|docx' ~/NZBin\ Complete ~/staging && \
+alias move_books="cd ~/staging/NZBin\ Complete && \
+	ex_rename -e 'epub|mobi|pdf|pdb|azw|azw3|lit|rtf|doc|docx|chm' ~/staging/NZBin\ Complete ~/staging && \
 	rmdir *(/)"
 alias move_nzbs="cd ~/Downloads && \
-	unzip '*.nzb.zip' && \
-	book_walker -e nzb ~/Downloads ~/nzbs && \
-	rm *.nzb.zip && \
-	open ~/nzbs/*"
-alias sync_books="rsync -vurW --delete ~/Calibre\ Library/ ~/Shares/Media/Books"
+	unzip '*.zip' && \
+	ex_rename -e nzb ~/Downloads ~/staging/nzbs && \
+	rm *.zip && \
+	open ~/staging/nzbs/*"
+alias sync_books="rsync -vurW --delete ~/Calibre\ Library/ freenas:/mnt/tank/media/Books"

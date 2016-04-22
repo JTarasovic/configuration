@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-files=(zshrc zshenv vimrc bashrc bash_profile gitconfig csvignore vim)
+files=(zshrc zshenv vimrc bashrc bash_profile gitconfig csvignore vim ctags)
 cwd=$(pwd)
 
 # link version controled files to correct dotfile in ~
@@ -15,8 +15,18 @@ for file in ${files[@]}; do
   `ln -s $cwd/$file $HOME/.$file`
 done
 
-`git submodule update`
+`git submodule update --init --recursive`
 
-`mkdir -p $cwd/vim/autoload && ln -s $cwd/vim/bundle/pathogen/autoload/pathogen.vim $cwd/vim/autoload/pathogen.vim`
-
-temp=`pip install powerline-status hr speedtest-cli`
+echo -e "Be sure to install:
+fonts in ../fonts dir
+(pip) hr
+(pip) speedtest-cli
+(brew/apt/dnf/pac) go
+(brew/apt/dnf/pac) elixir
+(brew/apt/dnf/pac) node
+(brew/apt/dnf/pac) perl
+(brew/apt/dnf/pac) nvm 
+(brew/apt/dnf/pac) rvm
+(brew/apt/dnf/pac) perlbrew
+(brew/apt/dnf/pac) vim/macvim/neovim
+"

@@ -1,36 +1,9 @@
 [submodule "fonts"]
 	path = fonts
 	url = https://github.com/powerline/fonts.git
-[submodule "vim/bundle/fugitive"]
-	path = vim/bundle/fugitive
-	url = http://github.com/tpope/vim-fugitive.git
-[submodule "vim/bundle/pathogen"]
-	path = vim/bundle/pathogen
-	url = http://github.com/tpope/vim-pathogen.git
-[submodule "vim/bundle/vim-elixir"]
-	path = vim/bundle/vim-elixir
-	url = http://github.com/elixir-lang/vim-elixir.git
-[submodule "vim/bundle/nerdtree"]
-	path = vim/bundle/nerdtree
-	url = http://github.com/scrooloose/nerdtree.git
-[submodule "vim/bundle/syntastic"]
-	path = vim/bundle/syntastic
-	url = http://github.com/scrooloose/syntastic.git
-[submodule "vim/bundle/ctrlp"]
-	path = vim/bundle/ctrlp
-	url = http://github.com/ctrlpvim/ctrlp.vim.git
-[submodule "vim/bundle/colorschemes"]
-	path = vim/bundle/colorschemes
-	url = https://github.com/flazz/vim-colorschemes.git
 [submodule "zsh-syntax-highlighting"]
 	path = zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule "zsh-completions"]
 	path = zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
-[submodule "vim/bundle/nerdtree-git-plugin"]
-	path = vim/bundle/nerdtree-git-plugin
-	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
-[submodule "vim/bundle/youcompleteme"]
-	path = vim/bundle/youcompleteme
-	url = https://github.com/Valloric/YouCompleteMe.git

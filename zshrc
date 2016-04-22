@@ -21,9 +21,6 @@ promptinit
 
 if [[ -e $DOTFILE ]]; then
   # env.sh is sourced by zshenv
-  source $DOTFILE/path.sh
+  source $DOTFILE/misc.sh
   source $DOTFILE/aliases.sh
-  source $DOTFILE/sources.sh
-  source $DOTFILE/completions.sh
 fi
-

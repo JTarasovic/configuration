@@ -31,9 +31,7 @@ export FROM_ZSH=0
 
 if [[ -e $DOTFILE ]]; then
   source $DOTFILE/env.sh
-  source $DOTFILE/path.sh
+  source $DOTFILE/misc.sh
   source $DOTFILE/aliases.sh
-  source $DOTFILE/sources.sh
-  source $DOTFILE/completions.sh
 fi
 

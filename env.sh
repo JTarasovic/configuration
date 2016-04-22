@@ -18,11 +18,8 @@ fi
 # [[ $FROM_ZSH -eq 1 ]] && ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
 
-# Set my editor and git editor
-command -v atom > /dev/null 2>&1 && export EDITOR="$(which atom) -w"
-#; export GIT_EDITOR="$(which atom) -w"
+# Set my editor
+command -v vim > /dev/null 2>&1 && export EDITOR=$(which vim)
 
-pip=`command -v pip || echo "/usr/local/bin/pip"`
-export POWERLINE_ROOT=`$pip show powerline-status | grep Location | awk '{print $2}'`
 export GOPATH=$HOME/Development/gocode/
 export NVM_DIR=~/.nvm
