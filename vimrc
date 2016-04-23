@@ -1,114 +1,51 @@
-" An example for a vimrc file.
-"
-" Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last change:	2015 Mar 24
-"
-" To use it, copy it to
-"     for Unix and OS/2:  ~/.vimrc
-"	      for Amiga:  s:.vimrc
-"  for MS-DOS and Win32:  $VIM\_vimrc
-"	    for OpenVMS:  sys$login:.vimrc
-
-
-" Use Vim settings, rather than Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-set nocompatible
-
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-
-if has("vms")
-		set nobackup		" do not keep a backup file, use versions instead
-else
-		set backup		" keep a backup file (restore to previous version)
-		set undofile		" keep an undo file (undo changes after closing)
-endif
-
-" Don't use Ex mode, use Q for formatting
-map Q gq
-
-" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
-" so that you can undo CTRL-U after inserting a line break.
-inoremap <C-U> <C-G>u<C-U>
-
-" In many terminal emulators the mouse works just fine, thus enable it.
-if has('mouse')
-		set mouse=a
-endif
-
-" Only do this part when compiled with support for autocommands.
-if has("autocmd")
-
-		" Enable file type detection.
-		" Use the default filetype settings, so that mail gets 'tw' set to 72,
-		" 'cindent' is on in C files, etc.
-		" Also load indent files, to automatically do language-dependent indenting.
-		filetype plugin indent on
-
-		" Put these in an autocmd group, so that we can delete them easily.
-		augroup vimrcEx
-				au!
-
-				" For all text files set 'textwidth' to 78 characters.
-				autocmd FileType text setlocal textwidth=78
-
-				" When editing a file, always jump to the last known cursor position.
-				" Don't do it when the position is invalid or when inside an event handler
-				" (happens when dropping a file on gvim).
-				autocmd BufReadPost *
-										\ if line("'\"") >= 1 && line("'\"") <= line("$") |
-										\   exe "normal! g`\"" |
-										\ endif
-
-		augroup END
-
-else
-
-		set autoindent		" always set autoindenting on
-
-endif " has("autocmd")
-
-" Convenient command to see the difference between the current buffer and the
-" file it was loaded from, thus the changes you made.
-" Only define it when not defined already.
-if !exists(":DiffOrig")
-		command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
-								\ | wincmd p | diffthis
-endif
-
-if has('langmap') && exists('+langnoremap')
-		" Prevent that the langmap option applies to characters that result from a
-		" mapping.  If unset (default), this may break plugins (but it's backward
-		" compatible).
-		set langnoremap
-endif
-
-set encoding=utf-8
-set t_Co=256
+set nocompatible				" ignore backwards compatibility - ignored by neovim
+set backspace=indent,eol,start	" allow backspacing over everything in insert mode
 set fillchars+=stl:\ ,stlnc:\
-" set term=xterm-256color
-set termencoding=utf-8
+set t_Co=256
+set encoding=utf-8              " neovim won't let one of these be changes after it's been set
+set termencoding=utf-8          " so it pitches a fit if you source this from a running instance
 set laststatus=2
 set noshowmode
-set ts=4
+set ts=4						" by default tabs are 4 spaces
+set expandtab					" and expand them
 set history=50					" keep 50 lines of command line history
 set ruler						" show the cursor position all the time
 set showcmd						" display incomplete commands
 set incsearch					" do incremental searching
+set hlsearch                    " turn on highlighting during searches
 set number						" show line numbers
-set background=dark
+set langnoremap
+" set background=dark
 set guifont=Inconsolata\ for\ Powerline:h15
+set mouse=a
+set backup						" keep a backup file (restore to previous version)
+set undofile					" keep an undo file (undo changes after closing)
 " move temporary files out of working directory
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
+filetype plugin indent on
 
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if &t_Co > 2 || has("gui_running")
-		syntax on
-		set hlsearch
-endif
+
+" MAPS
+map Q gq                                        " Don't use Ex mode, use Q for formatting
+nmap <F9> :TagbarToggle<CR>                     " F9 for Tagbar
+nmap <space> :set hlsearch! hlsearch?<CR>	    " clear highlighted search
+inoremap jj <esc>l 								" escape insert mode if you type jj
+" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
+" so that you can undo CTRL-U after inserting a line break.
+inoremap <C-U> <C-G>u<C-U>
+
+" location and quick fix helpers
+noremap [l :lprevious<CR>
+noremap ]l :lnext<CR>
+noremap [L :lfirst<CR>
+noremap ]L :llast<CR>
+noremap [q :cprevious<CR>
+noremap ]q :cnext<CR>
+noremap [Q :cfirst<CR>
+noremap ]Q :clast<CR>
+
 
 
 
@@ -128,11 +65,11 @@ Plug 'godlygeek/tabular'
 Plug 'sotte/presenting.vim'
 Plug 'benekastah/neomake'
 Plug 'vim-airline/vim-airline'
-Plug 'edkolev/promptline.vim'
 " Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'edkolev/promptline.vim'
+" Plug 'felixhummel/setcolors.vim'
 
-
-" language specific plugins 
+" language specific plugins
 " text
 Plug 'elzr/vim-json', 			{ 'for': 'json' }
 Plug 'chrisbra/csv.vim', 		{ 'for': ['csv','tsv'] }
@@ -154,27 +91,19 @@ Plug 'mattreduce/vim-mix',		{ 'for': 'elixir' }
 
 call plug#end()
 
-" misc mappings
-inoremap jj <esc>l 								" escape insert mode if you type jj
-noremap <space> :set hlsearch! hlsearch?<cr>	" clear highlighted search
-" location and quick fix helpers
-noremap [l :lprevious<cr>
-noremap ]l :lnext<cr>
-noremap [L :lfirst<cr>							
-noremap ]L :llast<cr>
-noremap [q :cprevious<cr>
-noremap ]q :cnext<cr>
-noremap [Q :cfirst<cr>
-noremap ]Q :clast<cr>
 
+" custom functions
+if !exists(":DiffOrig")
+    command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis | wincmd p | diffthis
+endif
 
-
-" airline settings
+" VARIABLES
+" airline
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'molokai'
+let g:airline_theme = 'papercolor'
 
-" tagbar
-nmap <F8> :TagbarToggle<CR>
+" vim-markdown
+let g:vim_markdown_folding_disabled = 1
 
 
 " language specific
@@ -188,72 +117,60 @@ let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
 
 let g:tagbar_type_go = {
-	\ 'ctagstype' : 'go',
-	\ 'kinds'     : [
-		\ 'p:package',
-		\ 'i:imports:1',
-		\ 'c:constants',
-		\ 'v:variables',
-		\ 't:types',
-		\ 'n:interfaces',
-		\ 'w:fields',
-		\ 'e:embedded',
-		\ 'm:methods',
-		\ 'r:constructor',
-		\ 'f:functions'
-	\ ],
-	\ 'sro' : '.',
-	\ 'kind2scope' : {
-		\ 't' : 'ctype',
-		\ 'n' : 'ntype'
-	\ },
-	\ 'scope2kind' : {
-		\ 'ctype' : 't',
-		\ 'ntype' : 'n'
-	\ },
-	\ 'ctagsbin'  : 'gotags',
-	\ 'ctagsargs' : '-sort -silent'
-\ }
+                        \ 'ctagstype' : 'go',
+                        \ 'kinds'     : [
+                        \ 'p:package', 'i:imports:1', 'c:constants', 'v:variables', 't:types',
+                        \ 'n:interfaces', 'w:fields', 'e:embedded', 'm:methods', 'r:constructor',
+                        \ 'f:functions'
+                        \ ],
+                        \ 'sro' : '.',
+                        \ 'kind2scope' : { 't' : 'ctype', 'n' : 'ntype' },
+                        \ 'scope2kind' : { 'ctype' : 't', 'ntype' : 'n' },
+                        \ 'ctagsbin'  : 'gotags',
+                        \ 'ctagsargs' : '-sort -silent'
+                        \ }
 
 
 " elixir
 let g:tagbar_type_elixir = {
-	\ 'ctagstype' : 'elixir',
-	\ 'kinds' : [
-		\ 'f:functions',
-		\ 'functions:functions',
-		\ 'c:callbacks',
-		\ 'd:delegates',
-		\ 'e:exceptions',
-		\ 'i:implementations',
-		\ 'a:macros',
-		\ 'o:operators',
-		\ 'm:modules',
-		\ 'p:protocols',
-		\ 'r:records'
-	\ ]
-\ }
+                        \ 'ctagstype' : 'elixir',
+                        \ 'kinds' : [ 'f:functions', 'functions:functions', 'c:callbacks',
+                        \ 'd:delegates', 'e:exceptions', 'i:implementations', 'a:macros',
+                        \ 'o:operators', 'm:modules', 'p:protocols', 'r:records'
+                        \ ]
+                        \ }
 
-augroup filestuff
-    autocmd!
-    " golang
-    au FileType go nmap <leader>r <Plug>(go-run)
-    au FileType go nmap <leader>t <Plug>(go-test)
-    au FileType go nmap <leader>b <Plug>(go-build)
-    au FileType go nmap <leader>c <Plug>(go-coverage)
-    au FileType go nmap <Leader>s <Plug>(go-implements)
-    au FileType go nmap <Leader>i <Plug>(go-info)
-    au FileType go nmap <Leader>e <Plug>(go-rename)
-    au FileType go nmap <Leader>gd <Plug>(go-doc)
+" AUTOCOMMAND GROUPS
+augroup filespecific
+        au!
+        " golang
+        au FileType go nmap <leader>r <Plug>(go-run)
+        au FileType go nmap <leader>t <Plug>(go-test)
+        au FileType go nmap <leader>b <Plug>(go-build)
+        au FileType go nmap <leader>c <Plug>(go-coverage)
+        au FileType go nmap <leader>s <Plug>(go-implements)
+        au FileType go nmap <leader>i <Plug>(go-info)
+        au FileType go nmap <leader>e <Plug>(go-rename)
+        au FileType go nmap <leader>gd <Plug>(go-doc)
 
-	" elixir
-	au FileType elixir nmap <leader>r :Mix<CR>
-	au FileType elixir nmap <leader>t :Mtest<CR>
-	au FileType elixir nmap <leader>b :Mcompile<CR>
+        " elixir
+        au FileType elixir nmap <leader>r :Mix<CR>
+        au FileType elixir nmap <leader>t :Mtest<CR>
+        au FileType elixir nmap <leader>b :Mcompile<CR>
 
-    " misc
-    autocmd! BufWritePost * Neomake
-    autocmd BufWritePost .vimrc source %
 augroup END
 
-colorscheme SlateDark
+augroup general
+        au!
+        au FileType text setlocal textwidth=78
+        au BufWritePost .vimrc source %
+        au! BufWritePost * Neomake
+
+        " When editing a file, always jump to the last known cursor position.
+        " Don't do it when the position is invalid or when inside an event handler
+        au BufReadPost *
+            \ if line("'\"") >= 1 && line("'\"") <= line("$") |  exe "normal! g`\"" | endif
+augroup END
+" antares,badwolf,SlateDark,sonofobsidian,southernlights,
+" 0x7A69_dark,adaryn,advantage,af,alduin,antares,badwolf,base16-atelierforest,baycomb,bensday,billw,campfire,candycode,candyman,chance-of-storm,smyck,sonofobsidian,southernlights,stingray,dante,darkBlue,darkbone,darkocean,darkrobot,darth,denim,desertedocean,eclm_wombat,feral,flatland,flattown,forneus,fruity,fu,getafe,h80,harlequin,hemisu,holokai,hybrid_reverse,iangenzo,impactjs,ingretu,inkpot,kib_darktango,late_evening,lilypink,manxome,metacosm,mizore,molokai,moria,mrkn256,neverland-darker,OceanicNext,obsidian,parsec,peaksea,pencil,penultimate,phd,phphaxor,preto,radicalgoodspeed,rastafari,rcg_gui,sandydune,scheakur,scooby,selenitic,settlemyer,termschool,ubaryd,xoria256,xterm16,zmrok
+colorscheme antares
