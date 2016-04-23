@@ -145,14 +145,23 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'fatih/vim-go', 			{ 'for': 'go' }
 " elixir
 Plug 'elixir-lang/vim-elixir',	{ 'for': 'elixir' }
+Plug 'mattreduce/vim-mix',		{ 'for': 'elixir' }
 
 
 call plug#end()
 
-" escape insert mode if you type jj
-inoremap jj <esc>l
-" clear highlighted search
-noremap <space> :set hlsearch! hlsearch?<cr>
+" misc mappings
+inoremap jj <esc>l 								" escape insert mode if you type jj
+noremap <space> :set hlsearch! hlsearch?<cr>	" clear highlighted search
+" location and quick fix helpers
+noremap [l :lprevious<cr>
+noremap ]l :lnext<cr>
+noremap [L :lfirst<cr>							
+noremap ]L :llast<cr>
+noremap [q :cprevious<cr>
+noremap ]q :cnext<cr>
+noremap [Q :cfirst<cr>
+noremap ]Q :clast<cr>
 
 
 
@@ -225,14 +234,18 @@ augroup filestuff
     autocmd!
     " golang
     au FileType go nmap <leader>r <Plug>(go-run)
-    au FileType go nmap <leader>b <Plug>(go-build)
     au FileType go nmap <leader>t <Plug>(go-test)
+    au FileType go nmap <leader>b <Plug>(go-build)
     au FileType go nmap <leader>c <Plug>(go-coverage)
     au FileType go nmap <Leader>s <Plug>(go-implements)
     au FileType go nmap <Leader>i <Plug>(go-info)
     au FileType go nmap <Leader>e <Plug>(go-rename)
     au FileType go nmap <Leader>gd <Plug>(go-doc)
 
+	" elixir
+	au FileType elixir nmap <leader>r :Mix<CR>
+	au FileType elixir nmap <leader>t :Mtest<CR>
+	au FileType elixir nmap <leader>b :Mcompile<CR>
 
     " misc
     autocmd! BufWritePost * Neomake
