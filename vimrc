@@ -98,6 +98,10 @@ set incsearch					" do incremental searching
 set number						" show line numbers
 set background=dark
 set guifont=Inconsolata\ for\ Powerline:h15
+" move temporary files out of working directory
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
