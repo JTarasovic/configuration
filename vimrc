@@ -83,6 +83,30 @@ if has('langmap') && exists('+langnoremap')
 		set langnoremap
 endif
 
+set encoding=utf-8
+set t_Co=256
+set fillchars+=stl:\ ,stlnc:\
+" set term=xterm-256color
+set termencoding=utf-8
+set laststatus=2
+set noshowmode
+set ts=4
+set history=50					" keep 50 lines of command line history
+set ruler						" show the cursor position all the time
+set showcmd						" display incomplete commands
+set incsearch					" do incremental searching
+set number						" show line numbers
+set background=dark
+set guifont=Inconsolata\ for\ Powerline:h15
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if &t_Co > 2 || has("gui_running")
+		syntax on
+		set hlsearch
+endif
+
+
 
 " Plugins (vim-plug)
 call plug#begin('~/.vim/plugged')
@@ -97,8 +121,10 @@ Plug 'majutsushi/tagbar'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-commentary'
 Plug 'godlygeek/tabular'
+Plug 'sotte/presenting.vim'
+Plug 'benekastah/neomake'
 Plug 'vim-airline/vim-airline'
-" Plug 'sotte/presenting.vim'
+Plug 'edkolev/promptline.vim'
 " Plug 'ctrlpvim/ctrlp.vim'
 
 
@@ -123,31 +149,12 @@ Plug 'elixir-lang/vim-elixir',	{ 'for': 'elixir' }
 
 call plug#end()
 
-set encoding=utf-8
-set t_Co=256
-set fillchars+=stl:\ ,stlnc:\
-" set term=xterm-256color
-set termencoding=utf-8
-set laststatus=2
-set noshowmode
-set ts=4
-set history=50					" keep 50 lines of command line history
-set ruler						" show the cursor position all the time
-set showcmd						" display incomplete commands
-set incsearch					" do incremental searching
-set number						" show line numbers
-set background=dark
-set guifont=Inconsolata\ for\ Powerline:h15
-
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if &t_Co > 2 || has("gui_running")
-		syntax on
-		set hlsearch
-endif
-
 " escape insert mode if you type jj
 inoremap jj <esc>l
+" clear highlighted search
+noremap <space> :set hlsearch! hlsearch?<cr>
+
+
 
 " airline settings
 let g:airline_powerline_fonts = 1
@@ -195,17 +202,6 @@ let g:tagbar_type_go = {
 	\ 'ctagsargs' : '-sort -silent'
 \ }
 
-if has("autocmd")
-	au FileType go nmap <leader>r <Plug>(go-run)
-	au FileType go nmap <leader>b <Plug>(go-build)
-	au FileType go nmap <leader>t <Plug>(go-test)
-	au FileType go nmap <leader>c <Plug>(go-coverage)
-	au FileType go nmap <Leader>s <Plug>(go-implements)
-	au FileType go nmap <Leader>i <Plug>(go-info)
-	au FileType go nmap <Leader>e <Plug>(go-rename)
-	au FileType go nmap <Leader>gd <Plug>(go-doc)	
-endif
-
 
 " elixir
 let g:tagbar_type_elixir = {
@@ -224,5 +220,23 @@ let g:tagbar_type_elixir = {
 		\ 'r:records'
 	\ ]
 \ }
+
+augroup filestuff
+    autocmd!
+    " golang
+    au FileType go nmap <leader>r <Plug>(go-run)
+    au FileType go nmap <leader>b <Plug>(go-build)
+    au FileType go nmap <leader>t <Plug>(go-test)
+    au FileType go nmap <leader>c <Plug>(go-coverage)
+    au FileType go nmap <Leader>s <Plug>(go-implements)
+    au FileType go nmap <Leader>i <Plug>(go-info)
+    au FileType go nmap <Leader>e <Plug>(go-rename)
+    au FileType go nmap <Leader>gd <Plug>(go-doc)
+
+
+    " misc
+    autocmd! BufWritePost * Neomake
+    autocmd BufWritePost .vimrc source %
+augroup END
 
 colorscheme SlateDark
