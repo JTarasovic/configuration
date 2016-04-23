@@ -17,7 +17,6 @@
 	color = true
 [core]
 	pager = less -R
-	editor=nano
 	excludesfile=~/.csvignore
 [alias]
 	diff-stash = "!f() { git stash show -p stash@{${1:-0}}; }; f"
