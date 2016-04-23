@@ -5,7 +5,7 @@ function __promptline_host {
   local only_if_ssh="0"
 
   if [ ! $only_if_ssh -o -n "${SSH_CLIENT}" ]; then
-    if [[ -n ${ZSH_VERSION-} ]]; then print %m; elif [[ -n ${FISH_VERSION-} ]]; then hostname -s; else printf "%s" \\h; fi
+    if [[ -n ${ZSH_VERSION-} ]]; then print %m; else printf "%s" \\h; fi
   fi
 }
 
@@ -148,8 +148,6 @@ function __promptline {
   local esc=$'[' end_esc=m
   if [[ -n ${ZSH_VERSION-} ]]; then
     local noprint='%{' end_noprint='%}'
-  elif [[ -n ${FISH_VERSION-} ]]; then
-    local noprint='' end_noprint=''
   else
     local noprint='\[' end_noprint='\]'
   fi
@@ -179,12 +177,6 @@ function __promptline {
   if [[ -n ${ZSH_VERSION-} ]]; then
     PROMPT="$(__promptline_left_prompt)"
     RPROMPT="$(__promptline_right_prompt)"
-  elif [[ -n ${FISH_VERSION-} ]]; then
-    if [[ -n "$1" ]]; then
-      [[ "$1" = "left" ]] && __promptline_left_prompt || __promptline_right_prompt
-    else
-      __promptline_ps1
-    fi
   else
     PS1="$(__promptline_ps1)"
   fi
@@ -194,8 +186,6 @@ if [[ -n ${ZSH_VERSION-} ]]; then
   if [[ ! ${precmd_functions[(r)__promptline]} == __promptline ]]; then
     precmd_functions+=(__promptline)
   fi
-elif [[ -n ${FISH_VERSION-} ]]; then
-  __promptline "$1"
 else
   if [[ ! "$PROMPT_COMMAND" == *__promptline* ]]; then
     PROMPT_COMMAND='__promptline;'$'\n'"$PROMPT_COMMAND"
