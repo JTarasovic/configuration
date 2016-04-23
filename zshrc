@@ -29,7 +29,7 @@ fpath=($DOTFILE/zsh-completions/src $fpath)
 source $DOTFILE/exercism_completion.zsh
 
 
-# source settings common between zsh and other shells 
+# source settings common between zsh and other shells
 if [[ -e $DOTFILE ]]; then
   # env.sh is sourced by zshenv
   source $DOTFILE/misc.sh
