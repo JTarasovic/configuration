@@ -15,9 +15,6 @@ if [[ $IS_LINUX -eq 1 ]]; then
   command -v pacman >/dev/null 2>&1 && export HAS_PACMAN=1
 fi
 
-# [[ $FROM_ZSH -eq 1 ]] && ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-
-
 # Set my editor
 command -v vim > /dev/null 2>&1 && export EDITOR=$(which vim)
 
