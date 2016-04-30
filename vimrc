@@ -151,6 +151,7 @@ augroup filespecific
         au FileType go nmap <leader>s <Plug>(go-implements)
         au FileType go nmap <leader>i <Plug>(go-info)
         au FileType go nmap <leader>e <Plug>(go-rename)
+        au FileType go nmap <leader>a :GoAlternate<CR>
         au FileType go nmap <leader>gd <Plug>(go-doc)
 
         " elixir
@@ -164,6 +165,7 @@ augroup general
         au!
         au FileType text setlocal textwidth=78
         au BufWritePost .vimrc source %
+        au BufWritePost init.vim source %       " for neovim
         au! BufWritePost * Neomake
 
         " When editing a file, always jump to the last known cursor position.
