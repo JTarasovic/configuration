@@ -1,3 +1,5 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-[ -f ~/.bashrc ] && source ~/.bashrc
+# don't follow. checked seperately
+# shellcheck source=/dev/null
+[ -f ~/.bashrc ] && source $HOME/.bashrc

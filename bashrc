@@ -1,3 +1,4 @@
+#!/bin/bash
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -30,8 +31,10 @@ export FROM_ZSH=0
 [[ -d $HOME/.dotfiles ]] && export DOTFILE=$HOME/.dotfiles
 
 if [[ -e $DOTFILE ]]; then
+  # shellcheck source=/dev/null
   source $DOTFILE/env.sh
+  # shellcheck source=/dev/null
   source $DOTFILE/misc.sh
+  # shellcheck source=/dev/null
   source $DOTFILE/aliases.sh
 fi
-

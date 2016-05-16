@@ -1,8 +1,10 @@
-if [[ $IS_LINUX -eq 1 ]]; then
+#!/bin/sh
+
+if [ "$IS_LINUX" -eq 1 ]; then
   # YUM
-  if [[ $HAS_YUM -eq 1 ]]; then
+  if [ "$HAS_YUM" -eq 1 ]; then
     # DNF
-    if [[ $HAS_DNF -eq 1 ]]; then
+    if [ "$HAS_DNF" -eq 1 ]; then
       alias update='sudo dnf update'
       alias install='sudo dnf install'
       alias search='dnf search'
@@ -15,7 +17,7 @@ if [[ $IS_LINUX -eq 1 ]]; then
   fi
 
   # APT
-  if [[ $HAS_APT -eq 1 ]]; then
+  if [ "$HAS_APT" -eq 1 ]; then
     alias update='sudo apt-get update && sudo apt-get upgrade'
     alias install='sudo apt-get install'
     alias search='apt-cache search'
@@ -23,7 +25,7 @@ if [[ $IS_LINUX -eq 1 ]]; then
   fi
 
   # PACMAN
-  if [[ $HAS_PACMAN -eq 1 ]]; then
+  if [ "$HAS_PACMAN" -eq 1 ]; then
     alias update='sudo pacman -Syu'
     alias install='sudo pacman -S'
     alias search='pacman -Ss'
@@ -69,11 +71,11 @@ alias gh="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cu
 
 # testing
 alias move_books="cd ~/staging/NZBin\ Complete && \
-	ex_rename -e 'epub|mobi|pdf|pdb|azw|azw3|lit|rtf|doc|docx|chm' ~/staging/NZBin\ Complete ~/staging && \
-	rmdir *(/)"
+ex_rename -e 'epub|mobi|pdf|pdb|azw|azw3|lit|rtf|doc|docx|chm' ~/staging/NZBin\ Complete ~/staging && \
+rmdir *(/)"
 alias move_nzbs="cd ~/Downloads && \
-	unzip '*.zip' && \
-	ex_rename -e nzb ~/Downloads ~/staging/nzbs && \
-	rm *.zip && \
-	open ~/staging/nzbs/*"
+unzip '*.zip' && \
+ex_rename -e nzb ~/Downloads ~/staging/nzbs && \
+rm *.zip && \
+open ~/staging/nzbs/*"
 alias sync_books="rsync -vurW --delete ~/Calibre\ Library/ freenas:/mnt/tank/media/Books"

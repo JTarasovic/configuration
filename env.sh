@@ -1,14 +1,15 @@
+#!/bin/sh
 # set key variables
 # called by both ZSH and BASH
 # $FROM_ZSH should eq 1 if called from ZSH
 
 # get OS type
-[[ $(uname) = 'Linux' ]] && export IS_LINUX=1
-[[ $(uname) = 'Darwin' ]] && export IS_OSX=1
+[ "$(uname)" = 'Linux' ] && export IS_LINUX=1
+[ "$(uname)" = 'Darwin' ] && export IS_OSX=1
 
 
 # if linux, determine package manager
-if [[ $IS_LINUX -eq 1 ]]; then
+if [ "$IS_LINUX" -eq 1 ]; then
   command -v yum >/dev/null 2>&1 && export HAS_YUM=1
   command -v dnf >/dev/null 2>&1 && export HAS_DNF=1
   command -v apt-get >/dev/null 2>&1 && export HAS_APT=1
@@ -16,7 +17,8 @@ if [[ $IS_LINUX -eq 1 ]]; then
 fi
 
 # Set my editor
-command -v vim > /dev/null 2>&1 && export EDITOR=$(which vim)
+export EDITOR
+command -v vim > /dev/null 2>&1 && EDITOR="$(which vim)"
 
 export GOPATH=$HOME/Development/gocode/
 export NVM_DIR=~/.nvm
