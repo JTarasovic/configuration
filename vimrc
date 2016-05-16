@@ -173,6 +173,5 @@ augroup general
         au BufReadPost *
             \ if line("'\"") >= 1 && line("'\"") <= line("$") |  exe "normal! g`\"" | endif
 augroup END
-" antares,badwolf,SlateDark,sonofobsidian,southernlights,
-" 0x7A69_dark,adaryn,advantage,af,alduin,antares,badwolf,base16-atelierforest,baycomb,bensday,billw,campfire,candycode,candyman,chance-of-storm,smyck,sonofobsidian,southernlights,stingray,dante,darkBlue,darkbone,darkocean,darkrobot,darth,denim,desertedocean,eclm_wombat,feral,flatland,flattown,forneus,fruity,fu,getafe,h80,harlequin,hemisu,holokai,hybrid_reverse,iangenzo,impactjs,ingretu,inkpot,kib_darktango,late_evening,lilypink,manxome,metacosm,mizore,molokai,moria,mrkn256,neverland-darker,OceanicNext,obsidian,parsec,peaksea,pencil,penultimate,phd,phphaxor,preto,radicalgoodspeed,rastafari,rcg_gui,sandydune,scheakur,scooby,selenitic,settlemyer,termschool,ubaryd,xoria256,xterm16,zmrok
+
 colorscheme antares
