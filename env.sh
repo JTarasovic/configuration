@@ -9,7 +9,7 @@
 
 
 # if linux, determine package manager
-if [ "$IS_LINUX" -eq 1 ]; then
+if [ -n "$IS_LINUX" ]; then
   command -v yum >/dev/null 2>&1 && export HAS_YUM=1
   command -v dnf >/dev/null 2>&1 && export HAS_DNF=1
   command -v apt-get >/dev/null 2>&1 && export HAS_APT=1

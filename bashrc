@@ -28,9 +28,9 @@ shopt -s checkwinsize
 unset MAILCHECK
 
 export FROM_ZSH=0
-[[ -d $HOME/.dotfiles ]] && export DOTFILE=$HOME/.dotfiles
+[ -d "$HOME/.dotfiles" ] && export DOTFILE=$HOME/.dotfiles
 
-if [[ -e $DOTFILE ]]; then
+if [ -e "$DOTFILE" ]; then
   # shellcheck source=/dev/null
   source $DOTFILE/env.sh
   # shellcheck source=/dev/null
