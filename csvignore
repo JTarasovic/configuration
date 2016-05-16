@@ -1,3 +1,6 @@
+# ignore trash files from editors
 *~
 *.swp
 
+# ignore .DS_Store (thanks Apple...)
+.DS_Store
