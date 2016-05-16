@@ -15,7 +15,7 @@ set incsearch					" do incremental searching
 set hlsearch                    " turn on highlighting during searches
 set number						" show line numbers
 set langnoremap
-" set background=dark
+set background=dark
 set guifont=Inconsolata\ for\ Powerline:h15
 set mouse=a
 set backup						" keep a backup file (restore to previous version)
@@ -87,6 +87,8 @@ Plug 'fatih/vim-go', 			{ 'for': 'go' }
 " elixir
 Plug 'elixir-lang/vim-elixir',	{ 'for': 'elixir' }
 Plug 'mattreduce/vim-mix',		{ 'for': 'elixir' }
+" Dockerfile
+Plug 'ekalinin/Dockerfile.vim',  { 'for': 'Dockerfile' }
 
 
 call plug#end()
