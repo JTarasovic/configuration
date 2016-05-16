@@ -16,7 +16,7 @@ set hlsearch                    " turn on highlighting during searches
 set number						" show line numbers
 set langnoremap
 set background=dark
-set guifont=Inconsolata\ for\ Powerline:h15
+set guifont=Knack\ Nerd\ Font\ for\ Powerline\ Plus\ Nerd\ File\ Types:h12
 set mouse=a
 set backup						" keep a backup file (restore to previous version)
 set undofile					" keep an undo file (undo changes after closing)
@@ -68,6 +68,7 @@ Plug 'vim-airline/vim-airline'
 " Plug 'ctrlpvim/ctrlp.vim'
 " Plug 'edkolev/promptline.vim'
 " Plug 'felixhummel/setcolors.vim'
+Plug 'ryanoasis/vim-devicons'
 
 " language specific plugins
 " text
