@@ -147,7 +147,7 @@ augroup filespecific
         au FileType go nmap <leader>r <Plug>(go-run)
         au FileType go nmap <leader>t <Plug>(go-test)
         au FileType go nmap <leader>b <Plug>(go-build)
-        au FileType go nmap <leader>c <Plug>(go-coverage)
+        au FileType go nmap <leader>c <Plug>(go-coverage-toggle)
         au FileType go nmap <leader>s <Plug>(go-implements)
         au FileType go nmap <leader>i <Plug>(go-info)
         au FileType go nmap <leader>e <Plug>(go-rename)
