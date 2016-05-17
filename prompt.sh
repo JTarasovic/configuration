@@ -4,13 +4,13 @@
 function __promptline_host {
   local only_if_ssh="1"
 
-  if [ ! $only_if_ssh -o -n "${SSH_CLIENT}" ]; then
+  if [ $only_if_ssh -eq 0 ] || [ -n "${SSH_CLIENT}" ]; then
     if [[ -n ${ZSH_VERSION-} ]]; then print %m; elif [[ -n ${FISH_VERSION-} ]]; then hostname -s; else printf "%s" \\h; fi
   fi
 }
 function __promptline_battery {
   local percent_sign="%"
-  local battery_symbol=""
+  local battery_symbol=""
   local threshold="100"
 
   # escape percent "%" in zsh
@@ -26,7 +26,7 @@ function __promptline_battery {
       local current_capacity=${ioreg_output#*CurrentCapacity\"\ \=}
       current_capacity=${current_capacity%%\ \"*}
 
-      local battery_level=$(($current_capacity * 100 / $battery_capacity))
+      local battery_level=$((current_capacity * 100 / battery_capacity))
       [[ $battery_level -gt $threshold ]] && return 1
 
       printf "%s" "${battery_symbol}${battery_level}${percent_sign}"
@@ -35,7 +35,7 @@ function __promptline_battery {
   fi
 
   # linux
-  [ $(find /sys/class/power_supply/ -maxdepth 0 -type d -empty 2>/dev/null) ] && return 1
+  [ "$(find /sys/class/power_supply/ -maxdepth 0 -type d -empty 2>/dev/null)" ] && return 1
   for possible_battery_dir in /sys/class/power_supply/BAT*; do
     if [[ -d $possible_battery_dir && -f "$possible_battery_dir/energy_full" && -f "$possible_battery_dir/energy_now" ]]; then
       current_capacity=$( <"$possible_battery_dir/energy_now" )
@@ -181,14 +181,14 @@ function __promptline_git_status {
   # Added (A), Copied (C), Deleted (D), Modified (M), Renamed (R), changed (T), Unmerged (U), Unknown (X), Broken (B)
   while read line; do
     case "$line" in
-      M*) modified_count=$(( $modified_count + 1 )) ;;
-      U*) unmerged_count=$(( $unmerged_count + 1 )) ;;
+      M*) modified_count=$(( modified_count + 1 )) ;;
+      U*) unmerged_count=$(( unmerged_count + 1 )) ;;
     esac
   done < <(git diff --name-status)
 
   while read line; do
     case "$line" in
-      *) added_count=$(( $added_count + 1 )) ;;
+      *) added_count=$(( added_count + 1 )) ;;
     esac
   done < <(git diff --name-status --cached)
 
