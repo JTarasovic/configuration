@@ -35,6 +35,7 @@ function __promptline_battery {
   fi
 
   # linux
+  [ $(find /sys/class/power_supply/ -maxdepth 0 -type d -empty 2>/dev/null) ] && return 1
   for possible_battery_dir in /sys/class/power_supply/BAT*; do
     if [[ -d $possible_battery_dir && -f "$possible_battery_dir/energy_full" && -f "$possible_battery_dir/energy_now" ]]; then
       current_capacity=$( <"$possible_battery_dir/energy_now" )
@@ -57,7 +58,7 @@ function __promptline_ps1 {
   [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
   # section "a" slices
   __promptline_wrapper "$(__promptline_host)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
-  __promptline_wrapper "$( nvm_version="$(nvm_ls_current)"; echo ${nvm_version#none} )" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
+  __promptline_wrapper "$( command -v nvm_ls_current > /dev/null 2>&1 && nvm_version="$(nvm_ls_current)" && echo ${nvm_version#none} )" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
   __promptline_wrapper "$USER" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
 
   # section "b" header
@@ -140,7 +141,7 @@ function __promptline_left_prompt {
   [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
   # section "a" slices
   __promptline_wrapper "$(__promptline_host)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
-  __promptline_wrapper "$( nvm_version="$(nvm_ls_current)"; echo ${nvm_version#none} )" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
+  __promptline_wrapper "$( command -v nvm_ls_current > /dev/null 2>&1 && nvm_version="$(nvm_ls_current)" && echo ${nvm_version#none} )" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
   __promptline_wrapper "$USER" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
 
   # section "b" header
