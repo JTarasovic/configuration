@@ -1,3 +1,6 @@
+syntax on
+filetype plugin indent on
+
 " Plugins (vim-plug)
 call plug#begin('~/.vim/plugged')
 
@@ -21,24 +24,25 @@ Plug 'ryanoasis/vim-devicons'
 
 " language specific plugins
 " text
-Plug 'elzr/vim-json', 			{ 'for': 'json' }
-Plug 'chrisbra/csv.vim', 		{ 'for': ['csv','tsv'] }
+Plug 'elzr/vim-json', 			        { 'for': 'json' }
+Plug 'chrisbra/csv.vim', 		        { 'for': ['csv','tsv'] }
 " web stuff
-Plug 'gregsexton/MatchTag', 	{ 'for': 'html' }
-Plug 'othree/html5.vim', 		{ 'for': 'html' }
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'moll/vim-node', 			{ 'for': 'javascript' }
-Plug 'othree/yajs.vim', 		{ 'for': 'javascript' }
-Plug 'mxw/vim-jsx', 			{ 'for': 'jsx' }
+Plug 'gregsexton/MatchTag', 	        { 'for': 'html' }
+Plug 'othree/html5.vim', 		        { 'for': 'html' }
+Plug 'pangloss/vim-javascript',         { 'for': 'javascript' }
+Plug 'moll/vim-node', 			        { 'for': 'javascript' }
+Plug 'othree/yajs.vim', 		        { 'for': 'javascript' }
+Plug 'millermedeiros/vim-esformatter',  { 'for': 'javascript' }
+Plug 'mxw/vim-jsx', 			        { 'for': 'jsx' }
 " markdown
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+Plug 'plasticboy/vim-markdown',         { 'for': 'markdown' }
 " golang
-Plug 'fatih/vim-go', 			{ 'for': 'go' }
+Plug 'fatih/vim-go', 			        { 'for': 'go' }
 " elixir
-Plug 'elixir-lang/vim-elixir',	{ 'for': 'elixir' }
-Plug 'mattreduce/vim-mix',		{ 'for': 'elixir' }
+Plug 'elixir-lang/vim-elixir',	        { 'for': 'elixir' }
+Plug 'mattreduce/vim-mix',		        { 'for': 'elixir' }
 " Dockerfile
-Plug 'ekalinin/Dockerfile.vim',  { 'for': 'Dockerfile' }
+Plug 'ekalinin/Dockerfile.vim',         { 'for': 'Dockerfile' }
 
 call plug#end()
 
@@ -69,8 +73,6 @@ set undofile					" keep an undo file (undo changes after closing)
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
-filetype plugin indent on
-syntax on
 
 " VARIABLES
 " airline
@@ -160,6 +162,9 @@ endif
 " AUTOCOMMAND GROUPS
 augroup filespecific
         au!
+        " javascript
+        au BufWritePost *.js Esformatter
+
         " golang
         au FileType go nmap <leader>r <Plug>(go-run)
         au FileType go nmap <leader>t <Plug>(go-test)
