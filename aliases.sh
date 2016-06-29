@@ -75,7 +75,7 @@ alias server='python -m SimpleHTTPServer &'
 # helpers for managing ebooks and such
 alias gh="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`" # courtesy @igrigorik; open current gh repo in browser
 alias move_books="cd ~/staging/NZBin\ Complete && \
-ex_rename -e 'epub|mobi|pdf|pdb|azw|azw3|lit|rtf|doc|docx|chm' ~/staging/NZBin\ Complete ~/staging && \
+ex_rename -e 'epub|mobi|pdf|pdb|azw|azw3|lit|rtf|doc|docx|chm' ~/staging/NZBin\ Complete ~/staging/staging && \
 rmdir *(/)"
 alias move_nzbs="cd ~/Downloads && \
 unzip '*.zip' && \
