@@ -31,7 +31,6 @@ Plug 'gregsexton/MatchTag', 	        { 'for': 'html' }
 Plug 'othree/html5.vim', 		        { 'for': 'html' }
 Plug 'pangloss/vim-javascript',         { 'for': 'javascript' }
 Plug 'moll/vim-node', 			        { 'for': 'javascript' }
-Plug 'othree/yajs.vim', 		        { 'for': 'javascript' }
 Plug 'millermedeiros/vim-esformatter',  { 'for': 'javascript' }
 Plug 'mxw/vim-jsx', 			        { 'for': 'jsx' }
 " markdown
@@ -162,8 +161,6 @@ endif
 " AUTOCOMMAND GROUPS
 augroup filespecific
         au!
-        " javascript
-        au BufWritePost *.js Esformatter
 
         " golang
         au FileType go nmap <leader>r <Plug>(go-run)
@@ -185,10 +182,10 @@ augroup END
 
 augroup general
         au!
-        au FileType text setlocal textwidth=78
         au BufWritePost .vimrc source %
         au BufWritePost init.vim source %       " for neovim
-        au! BufWritePost * Neomake
+        au BufWritePost * Neomake
+        "au BufWritePost *.js Esformatter
 
         " When editing a file, always jump to the last known cursor position.
         " Don't do it when the position is invalid or when inside an event handler
