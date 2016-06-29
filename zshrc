@@ -38,4 +38,3 @@ fi
 
 # syntax highlighting
 source $DOTFILE/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
