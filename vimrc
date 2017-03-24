@@ -24,50 +24,54 @@ Plug 'ryanoasis/vim-devicons'
 
 " language specific plugins
 " text
-Plug 'elzr/vim-json', 			        { 'for': 'json' }
-Plug 'chrisbra/csv.vim', 		        { 'for': ['csv','tsv'] }
+Plug 'elzr/vim-json',                   { 'for': 'json' }
+Plug 'chrisbra/csv.vim',                { 'for': ['csv','tsv'] }
 " web stuff
-Plug 'gregsexton/MatchTag', 	        { 'for': 'html' }
-Plug 'othree/html5.vim', 		        { 'for': 'html' }
+Plug 'gregsexton/MatchTag',             { 'for': 'html' }
+Plug 'othree/html5.vim',                { 'for': 'html' }
 Plug 'pangloss/vim-javascript',         { 'for': 'javascript' }
-Plug 'moll/vim-node', 			        { 'for': 'javascript' }
+Plug 'moll/vim-node',                   { 'for': 'javascript' }
 Plug 'millermedeiros/vim-esformatter',  { 'for': 'javascript' }
-Plug 'mxw/vim-jsx', 			        { 'for': 'jsx' }
+Plug 'mxw/vim-jsx',                     { 'for': 'jsx' }
 " markdown
 Plug 'plasticboy/vim-markdown',         { 'for': 'markdown' }
 " golang
-Plug 'fatih/vim-go', 			        { 'for': 'go' }
+Plug 'fatih/vim-go',                    { 'for': 'go' }
 " elixir
-Plug 'elixir-lang/vim-elixir',	        { 'for': 'elixir' }
-Plug 'mattreduce/vim-mix',		        { 'for': 'elixir' }
+Plug 'elixir-lang/vim-elixir',          { 'for': 'elixir' }
+Plug 'mattreduce/vim-mix',              { 'for': 'elixir' }
 " Dockerfile
 Plug 'ekalinin/Dockerfile.vim',         { 'for': 'Dockerfile' }
 
 call plug#end()
 
 " set variables and such
-set nocompatible				" ignore backwards compatibility - ignored by neovim
-set backspace=indent,eol,start	" allow backspacing over everything in insert mode
+set tabstop=4                       " by default tabs are 4 spaces
+set softtabstop=4
+set shiftwidth=4
+set expandtab                       " and expand them
+set clipboard+=unnamedplus          " use system clipboard always
+
+set nocompatible                    " ignore backwards compatibility - ignored by neovim
+set backspace=indent,eol,start      " allow backspacing over everything in insert mode
 set fillchars+=stl:\ ,stlnc:\
 set t_Co=256
-set encoding=utf-8              " neovim won't let one of these be changes after it's been set
-set termencoding=utf-8          " so it pitches a fit if you source this from a running instance
+set encoding=utf-8                  " neovim won't let one of these be changes after it's been set
+set termencoding=utf-8              " so it pitches a fit if you source this from a running instance
 set laststatus=2
 set noshowmode
-set ts=4						" by default tabs are 4 spaces
-set expandtab					" and expand them
-set history=50					" keep 50 lines of command line history
-set ruler						" show the cursor position all the time
-set showcmd						" display incomplete commands
-set incsearch					" do incremental searching
-set hlsearch                    " turn on highlighting during searches
-set number						" show line numbers
+set history=50                      " keep 50 lines of command line history
+set ruler                           " show the cursor position all the time
+set showcmd                         " display incomplete commands
+set incsearch                       " do incremental searching
+set hlsearch                        " turn on highlighting during searches
+set number                          " show line numbers
 set langnoremap
 set background=dark
 set guifont=SauceCodePro\ Nerd\ Font\ Regular:h12
 set mouse=a
-set backup						" keep a backup file (restore to previous version)
-set undofile					" keep an undo file (undo changes after closing)
+set backup                          " keep a backup file (restore to previous version)
+set undofile                        " keep an undo file (undo changes after closing)
 " move temporary files out of working directory
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
@@ -137,8 +141,8 @@ let g:tagbar_type_elixir = {
 " MAPS
 map Q gq                                        " Don't use Ex mode, use Q for formatting
 nmap <F9> :TagbarToggle<CR>                     " F9 for Tagbar
-nmap <space> :set hlsearch! hlsearch?<CR>	    " clear highlighted search
-inoremap jj <esc>l 								" escape insert mode if you type jj
+nmap <space> :set hlsearch! hlsearch?<CR>       " clear highlighted search
+inoremap jj <esc>l                              " escape insert mode if you type jj
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
@@ -177,6 +181,11 @@ augroup filespecific
         au FileType elixir nmap <leader>r :Mix<CR>
         au FileType elixir nmap <leader>t :Mtest<CR>
         au FileType elixir nmap <leader>b :Mcompile<CR>
+
+        " javascript
+        au FileType javascript setlocal shiftwidth=2
+        au FileType javascript setlocal tabstop=2
+
 
 augroup END
 

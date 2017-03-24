@@ -1,0 +1,17 @@
+-- prompt
+\set PROMPT1 '%[%033[1;32m%]%M%[%033[0m%]:%[%033[1;31m%]%>%[%033[0m%] %[%033[1;36m%]%n%[%033[0m%]@%/%R%#%x '
+\set PROMPT2 '%/%R %# '
+
+
+\set ON_ERROR_ROLLBACK interactive
+\set COMP_KEYWORD_CASE upper
+\set HISTFILE ~/.psql/history
+\set HISTSIZE 100000
+
+\set linestyle unicode
+\set border 2
+\set null ¤
+
+
+\timing
+\x auto

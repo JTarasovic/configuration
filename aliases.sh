@@ -84,3 +84,7 @@ rm *.zip && \
 open ~/staging/nzbs/*"
 alias sync_books="rsync -vurW --delete ~/Calibre\ Library/ freenas:/mnt/tank/media/Books"
 
+alias kubeprod="kubectl --kubeconfig=/Users/j_tarasovic/dev/ansible_scripts/kubernetes/prod/prodconfig.conf"
+alias kubestage="kubectl --kubeconfig=/Users/j_tarasovic/dev/ansible_scripts/kubernetes/staging/staging-config"
+alias kubewatchpodsprod="watch -n 5 'kubectl --kubeconfig ~/dev/ansible_scripts/kubernetes/prod/prodconfig.conf get pods'"
+alias kubewatchpodsstage="watch -n 5 'kubectl --kubeconfig ~/dev/ansible_scripts/kubernetes/staging/staging-config get pods'"

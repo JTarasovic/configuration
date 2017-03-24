@@ -1,7 +1,6 @@
 #!/bin/sh
 # set key variables
 # called by both ZSH and BASH
-# $FROM_ZSH should eq 1 if called from ZSH
 
 # get OS type
 [ "$(uname)" = 'Linux' ] && export IS_LINUX=1
@@ -16,9 +15,16 @@ if [ -n "$IS_LINUX" ]; then
   command -v pacman >/dev/null 2>&1 && export HAS_PACMAN=1
 fi
 
-# Set my editor
-export EDITOR
-command -v vim > /dev/null 2>&1 && EDITOR="$(which vim)"
+# set up path
+# shellcheck source=/dev/null
+source "$DOTFILE/path.sh"
 
-export GOPATH=$HOME/Development/gocode/
+# Set my editor
+# sh doesn't support arrays or i would use one here
+# last command that exists wins, so order based on preference
+command -v vim > /dev/null 2>&1 && EDITOR="$(command -v vim)"
+command -v nvim > /dev/null 2>&1 && EDITOR="$(command -v nvim)"
+
+export EDITOR
+
 export NVM_DIR=~/.nvm
