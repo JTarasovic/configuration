@@ -1,6 +1,6 @@
 #!/bin/bash
 
-files=(zshrc zshenv vimrc bashrc bash_profile gitconfig csvignore vim ctags)
+files=(zshrc zshenv vimrc bashrc bash_profile vcsignore vim ctags)
 cwd=$(pwd)
 
 # link version controled files to correct dotfile in ~
@@ -24,7 +24,7 @@ echo -e "Be sure to install:
 (brew/apt/dnf/pac) elixir
 (brew/apt/dnf/pac) node
 (brew/apt/dnf/pac) perl
-(brew/apt/dnf/pac) nvm 
+(brew/apt/dnf/pac) nvm
 (brew/apt/dnf/pac) rvm
 (brew/apt/dnf/pac) perlbrew
 (brew/apt/dnf/pac) vim/macvim/neovim

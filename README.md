@@ -29,3 +29,21 @@ From (https://github.com/rbenv/rbenv/wiki/Unix-shell-initialization)
 
 
 ### zsh
+
+* Basic flow
+    * `zshenv`
+        * `env.sh`
+        * `path.sh`
+    * `zprofile`
+    * `zshrc`
+        * `zsh-completion`
+        * `misc.sh`
+            * `<$(brew --prefix nvm)/nvm.sh>`
+            * `<~/.rvm/scripts/rvm>`
+            * `<~/perl5/perlbrew/etc/bashrc>`
+            * `npm_completion`
+            * `prompt.sh` - sets up prompt
+            * `gitconfig.sh`
+                * `email.sh` - gitignored. contains email address
+        * `aliases.sh`
+        * `zsh-syntax-highlighting`
