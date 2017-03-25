@@ -39,4 +39,4 @@ fi
 
 # syntax highlighting
 source $DOTFILE/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /Users/j_tarasovic/dev/Environment/environment_vars
+[ -f /Users/j_tarasovic/dev/Environment/environment_var ] && ssource /Users/j_tarasovic/dev/Environment/environment_vars
