@@ -27,6 +27,7 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:kill:*' command 'ps -u $USER -c -o command,pid,%cpu,tty,cputime,cmd'
 fpath=($DOTFILE/zsh-completions/src $fpath)
 source $DOTFILE/exercism_completion.zsh
+compinit
 
 
 # source settings common between zsh and other shells
@@ -38,3 +39,4 @@ fi
 
 # syntax highlighting
 source $DOTFILE/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /Users/j_tarasovic/dev/Environment/environment_vars
