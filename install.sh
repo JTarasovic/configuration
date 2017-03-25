@@ -17,6 +17,8 @@ done
 
 git submodule update --init --recursive
 
+ln -s "$DOTFILE/vimrc" "$HOME/.vim/init.vim"
+
 echo -e "Be sure to install:
 (pip) hr
 (pip) speedtest-cli
