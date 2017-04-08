@@ -68,7 +68,6 @@ set hlsearch                        " turn on highlighting during searches
 set number                          " show line numbers
 set langnoremap
 set background=dark
-set guifont=SauceCodePro\ Nerd\ Font\ Regular:h12
 set mouse=a
 set backup                          " keep a backup file (restore to previous version)
 set undofile                        " keep an undo file (undo changes after closing)
@@ -97,7 +96,7 @@ let g:promptline_preset = {
         \'warn' : [ promptline#slices#last_exit_code() ]}
 let g:promptline_theme = 'airline'
 let g:promptline_symbols = {
-        \'battery'   : ''}
+        \'battery'   : ''}
 
 " language specific
 " csv

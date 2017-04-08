@@ -10,7 +10,7 @@ function __promptline_host {
 }
 function __promptline_battery {
   local percent_sign="%"
-  local battery_symbol=""
+  local battery_symbol=""
   local threshold="100"
 
   # escape percent "%" in zsh
