@@ -93,9 +93,7 @@ let g:vim_markdown_folding_disabled = 1
 
 " promptline
 let g:promptline_preset = {
-        \'a'    : [ promptline#slices#host({ 'only_if_ssh': 1 }),
-                \'$( command -v nvm_ls_current > /dev/null 2>&1 && nvm_version="$(nvm_ls_current)" && echo ${nvm_version#none} )',
-                \'$USER' ],
+        \'a'    : [ promptline#slices#host({ 'only_if_ssh': 1 }),'$USER' ],
         \'b'    : [ promptline#slices#cwd() ],
         \'y'    : [ promptline#slices#vcs_branch(), promptline#slices#git_status() ],
         \'z'    : [ promptline#slices#battery({ 'threshold': 100 }) ],
