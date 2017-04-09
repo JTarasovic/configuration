@@ -17,7 +17,7 @@ Plug 'godlygeek/tabular'
 Plug 'sotte/presenting.vim'
 Plug 'benekastah/neomake'
 Plug 'vim-airline/vim-airline'
-" Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'edkolev/promptline.vim'
 " Plug 'felixhummel/setcolors.vim'
 Plug 'ryanoasis/vim-devicons'
@@ -26,20 +26,24 @@ Plug 'ryanoasis/vim-devicons'
 " text
 Plug 'elzr/vim-json',                   { 'for': 'json' }
 Plug 'chrisbra/csv.vim',                { 'for': ['csv','tsv'] }
+Plug 'stephpy/vim-yaml',                { 'for': ['yaml','yml'] }
+Plug 'plasticboy/vim-markdown',         { 'for': 'markdown' }
+
 " web stuff
 Plug 'gregsexton/MatchTag',             { 'for': 'html' }
 Plug 'othree/html5.vim',                { 'for': 'html' }
-Plug 'pangloss/vim-javascript',         { 'for': 'javascript' }
-Plug 'moll/vim-node',                   { 'for': 'javascript' }
-Plug 'millermedeiros/vim-esformatter',  { 'for': 'javascript' }
+Plug 'pangloss/vim-javascript',         { 'for': ['javascript','js'] }
+Plug 'moll/vim-node',                   { 'for': ['javascript','js'] }
+Plug 'millermedeiros/vim-esformatter',  { 'for': ['javascript','js'] }
 Plug 'mxw/vim-jsx',                     { 'for': 'jsx' }
-" markdown
-Plug 'plasticboy/vim-markdown',         { 'for': 'markdown' }
+
 " golang
 Plug 'fatih/vim-go',                    { 'for': 'go' }
+
 " elixir
 Plug 'elixir-lang/vim-elixir',          { 'for': 'elixir' }
 Plug 'mattreduce/vim-mix',              { 'for': 'elixir' }
+
 " Dockerfile
 Plug 'ekalinin/Dockerfile.vim',         { 'for': 'Dockerfile' }
 
