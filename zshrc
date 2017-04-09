@@ -15,7 +15,6 @@ setopt appendhistory histignorealldups sharehistory
 setopt beep notify
 
 autoload -Uz compinit promptinit
-compinit
 promptinit
 
 zstyle ':completion:*' auto-description 'specify: %d'
@@ -26,7 +25,6 @@ zstyle ':completion:*' verbose true
 
 zstyle ':completion:*:kill:*' command 'ps -u $USER -c -o command,pid,%cpu,tty,cputime,cmd'
 fpath=($DOTFILE/zsh-completions/src $fpath)
-source $DOTFILE/exercism_completion.zsh
 compinit
 
 
