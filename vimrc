@@ -50,13 +50,13 @@ Plug 'ekalinin/Dockerfile.vim',         { 'for': 'Dockerfile' }
 call plug#end()
 
 " set variables and such
+set nocompatible                    " ignore backwards compatibility - ignored by neovim
 set tabstop=4                       " by default tabs are 4 spaces
 set softtabstop=4
 set shiftwidth=4
 set expandtab                       " and expand them
 set clipboard+=unnamedplus          " use system clipboard always
 
-set nocompatible                    " ignore backwards compatibility - ignored by neovim
 set backspace=indent,eol,start      " allow backspacing over everything in insert mode
 set fillchars+=stl:\ ,stlnc:\
 set t_Co=256
@@ -70,7 +70,6 @@ set showcmd                         " display incomplete commands
 set incsearch                       " do incremental searching
 set hlsearch                        " turn on highlighting during searches
 set number                          " show line numbers
-set langnoremap
 set background=dark
 set mouse=a
 set backup                          " keep a backup file (restore to previous version)
@@ -79,6 +78,9 @@ set undofile                        " keep an undo file (undo changes after clos
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
+if has('langmap') && exists('+langnoremap')
+    set langnoremap
+endif
 
 " VARIABLES
 " airline
