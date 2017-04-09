@@ -1,3 +1,5 @@
+#!/bin/sh
+
 [ -f "$HOME/.gitconfig" ] && return
 
 # shellcheck source=/dev/null
