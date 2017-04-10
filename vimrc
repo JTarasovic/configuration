@@ -16,18 +16,22 @@ Plug 'tpope/vim-commentary'
 Plug 'godlygeek/tabular'
 Plug 'sotte/presenting.vim'
 Plug 'benekastah/neomake'
-Plug 'vim-airline/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'edkolev/promptline.vim'
-" Plug 'felixhummel/setcolors.vim'
+Plug 'vim-airline/vim-airline'
 Plug 'ryanoasis/vim-devicons'
+
+" tmux and prompt generators
+" leave these commented out normally
+" Plug 'edkolev/promptline.vim'
+" Plug 'edkolev/tmuxline.vim'
+" Plug 'felixhummel/setcolors.vim'
 
 " language specific plugins
 " text
 Plug 'elzr/vim-json',                   { 'for': 'json' }
+Plug 'plasticboy/vim-markdown',         { 'for': 'markdown' }
 Plug 'chrisbra/csv.vim',                { 'for': ['csv','tsv'] }
 Plug 'stephpy/vim-yaml',                { 'for': ['yaml','yml'] }
-Plug 'plasticboy/vim-markdown',         { 'for': 'markdown' }
 
 " web stuff
 Plug 'gregsexton/MatchTag',             { 'for': 'html' }
@@ -92,15 +96,15 @@ let g:airline_theme = 'papercolor'
 let g:vim_markdown_folding_disabled = 1
 
 " promptline
-let g:promptline_preset = {
-        \'a'    : [ promptline#slices#host({ 'only_if_ssh': 1 }),'$USER' ],
-        \'b'    : [ promptline#slices#cwd() ],
-        \'y'    : [ promptline#slices#vcs_branch(), promptline#slices#git_status() ],
-        \'z'    : [ promptline#slices#battery({ 'threshold': 100 }) ],
-        \'warn' : [ promptline#slices#last_exit_code() ]}
-let g:promptline_theme = 'airline'
-let g:promptline_symbols = {
-        \'battery'   : ''}
+" let g:promptline_preset = {
+"         \'a'    : [ promptline#slices#host({ 'only_if_ssh': 1 }),'$USER' ],
+"         \'b'    : [ promptline#slices#cwd() ],
+"         \'y'    : [ promptline#slices#vcs_branch(), promptline#slices#git_status() ],
+"         \'z'    : [ promptline#slices#battery({ 'threshold': 100 }) ],
+"         \'warn' : [ promptline#slices#last_exit_code() ]}
+" let g:promptline_theme = 'airline'
+" let g:promptline_symbols = {
+"         \'battery'   : ''}
 
 " language specific
 " csv
@@ -144,7 +148,7 @@ let g:tagbar_type_elixir = {
 " MAPS
 map Q gq                                        " Don't use Ex mode, use Q for formatting
 nmap <F9> :TagbarToggle<CR>                     " F9 for Tagbar
-nmap <space> :set hlsearch! hlsearch?<CR>       " clear highlighted search
+" nmap <space> :set hlsearch! hlsearch?<CR>       " clear highlighted search
 inoremap jj <esc>l                              " escape insert mode if you type jj
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
