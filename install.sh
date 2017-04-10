@@ -1,6 +1,6 @@
 #!/bin/bash
 
-files=(zshrc zshenv vimrc bashrc bash_profile vcsignore vim ctags psqlrc mongorc.js)
+files=(zshrc zshenv vimrc bashrc bash_profile vcsignore vim ctags psqlrc mongorc.js tmux.conf)
 cwd=$(pwd)
 
 # link version controled files to correct dotfile in ~
