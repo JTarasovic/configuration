@@ -3,10 +3,15 @@
 # which is called for both bash and zsh
 
 pathmunge () {
+    # exit early if dir doesn't exist
+    [ ! -d "$1" ] && return
+    # if path isn't already in path
     if ! echo "$PATH" | grep -Eq "(^|:)$1($|:)" ; then
-        [ -d "$1" ] && PATH=$1:$PATH
+         PATH=$1:$PATH
     fi
 }
+
+# add whatever you want to get added to path here
 
 pathmunge "$HOME"/android-studio/bin
 pathmunge "$HOME"/Android/Sdk/tools
