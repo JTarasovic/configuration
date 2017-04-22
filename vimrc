@@ -16,6 +16,8 @@ Plug 'tpope/vim-commentary'
 Plug 'godlygeek/tabular'
 Plug 'sotte/presenting.vim'
 Plug 'benekastah/neomake'
+Plug 'shougo/deoplete.nvim',            { 'do': ':UpdateRemotePlugins' }
+Plug 'ervandew/supertab'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'ryanoasis/vim-devicons'
@@ -42,6 +44,7 @@ Plug 'millermedeiros/vim-esformatter',  { 'for': ['javascript','js'] }
 Plug 'mxw/vim-jsx',                     { 'for': 'jsx' }
 
 " golang
+Plug 'zchee/deoplete-go',               { 'do': 'make', 'for': 'go'}
 Plug 'fatih/vim-go',                    { 'for': 'go' }
 
 " elixir
@@ -78,6 +81,11 @@ set background=dark
 set mouse=a
 set backup                          " keep a backup file (restore to previous version)
 set undofile                        " keep an undo file (undo changes after closing)
+
+" completion related settings
+set completeopt-=preview
+set completeopt+=noselect
+
 " move temporary files out of working directory
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
@@ -106,6 +114,10 @@ let g:vim_markdown_folding_disabled = 1
 " let g:promptline_symbols = {
 "         \'battery'   : ''}
 
+" deoplete
+let g:deoplete#enable_at_startup = 1
+
+
 " language specific
 " csv
 let g:csv_highlight_column = 'y'
@@ -118,6 +130,10 @@ let g:go_highlight_interfaces = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
+
+let g:deoplete#sources#go#use_cache = 1
+let g:deoplete#sources#go#json_directory = "~/.cache/deoplete/go/$GOOS_$GOARCH"
+let g:deoplete#sources#go#gocode_binary = "~/go/bin/gocode"
 
 let g:tagbar_type_go = {
                         \ 'ctagstype' : 'go',
