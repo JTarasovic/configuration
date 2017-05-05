@@ -30,7 +30,6 @@ cat << "EOF" >> "$HOME/.gitconfig"
     excludesfile=~/.vcsignore
 [alias]
     diff-stash = "!f() { git stash show -p stash@{${1:-0}}; }; f"
-    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
     co = checkout
     cob = checkout -b
     ci = commit
@@ -43,4 +42,8 @@ cat << "EOF" >> "$HOME/.gitconfig"
     la = "!git config -l | grep alias | cut -c 7-"
     undo = reset HEAD~1 --mixed
     tagcommit = rev-list -n 1
+    l = log --oneline --graph --decorate -n 20
+    lg = log -p
+    ll = log --oneline --graph --decorate
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 EOF
