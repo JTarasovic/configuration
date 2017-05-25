@@ -53,6 +53,32 @@ else
   alias search='brew search'
 fi
 
+recursive_git_pull() {
+    initial=$(pwd -P)
+    cd "${1:-.}" || exit 1
+    start=$(pwd -P)
+    desired_branch=${2:-develop}
+
+    echo Starting in "$start"
+    for dir in "$start"/*/
+    do
+        cd "$dir" || break
+        branch=$(git rev-parse --abbrev-ref HEAD)
+        if [ "$branch" = "$desired_branch" ]; then
+            if [ -z "$(git status --porcelain)" ]; then
+                echo "$dir" is clean. Pulling.
+                git pull
+            else
+                echo "$dir" is unclean. Skipping.
+            fi
+        else
+            echo "$dir" not on "$desired_branch". Skipping.
+        fi
+        cd "$start" || break
+    done
+    cd "$initial" || exit 1
+}
+
 # terminal manipulation
 alias c='clear'
 alias ..='cd ..'
@@ -84,7 +110,7 @@ rm *.zip && \
 open ~/staging/nzbs/*"
 alias sync_books="rsync -vurW --delete ~/Calibre\ Library/ freenas:/mnt/tank/media/Books"
 
-alias kubeprod="kubectl --kubeconfig=/Users/j_tarasovic/dev/ansible_scripts/kubernetes/prod/prodconfig.conf"
-alias kubestage="kubectl --kubeconfig=/Users/j_tarasovic/dev/ansible_scripts/kubernetes/staging/staging-config"
-alias kubewatchpodsprod="watch -n 5 'kubectl --kubeconfig ~/dev/ansible_scripts/kubernetes/prod/prodconfig.conf get pods'"
-alias kubewatchpodsstage="watch -n 5 'kubectl --kubeconfig ~/dev/ansible_scripts/kubernetes/staging/staging-config get pods'"
+alias kubeprod="kubectl --kubeconfig=/Users/j_tarasovic/Development/inf/ansible_scripts/kubernetes/prod/prodconfig.conf"
+alias kubestage="kubectl --kubeconfig=/Users/j_tarasovic/Development/inf/ansible_scripts/kubernetes/staging/staging-config"
+alias kubewatchpodsprod="watch -n 5 'kubectl --kubeconfig ~/Development/inf/ansible_scripts/kubernetes/prod/prodconfig.conf get pods'"
+alias kubewatchpodsstage="watch -n 5 'kubectl --kubeconfig ~/Development/inf/ansible_scripts/kubernetes/staging/staging-config get pods'"
