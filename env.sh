@@ -15,6 +15,17 @@ if [ -n "$IS_LINUX" ]; then
   command -v pacman >/dev/null 2>&1 && export HAS_PACMAN=1
 fi
 
+SPEC_DIR="$HOME"/Development/int/yardstick/specs
+if [ -d  "$SPEC_DIR" ]; then
+    export OFLPMTR="$SPEC_DIR"/OFLPMTR.json
+    export WEBMSTR="$SPEC_DIR"/WEBMSTR.json
+    export WEBBILL="$SPEC_DIR"/WEBBILL.json
+    export WEBVEH="$SPEC_DIR"/WEBVEH.json
+    export ACTBAL="$SPEC_DIR"/actbal.json
+    export FEDWIRE="$SPEC_DIR"/fedwire.json
+    export GR_MORTCOMP="$SPEC_DIR"/gr-mortcomp.json
+fi
+
 # set up path
 # shellcheck source=/dev/null
 source "$DOTFILE/path.sh"
