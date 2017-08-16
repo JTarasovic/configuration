@@ -9,6 +9,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'vim-airline/vim-airline-themes'
 
 " utilities / generic
+Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'majutsushi/tagbar'
 Plug 'Raimondi/delimitMate'
