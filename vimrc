@@ -118,7 +118,6 @@ let g:vim_markdown_folding_disabled = 1
 " deoplete
 let g:deoplete#enable_at_startup = 1
 
-
 " language specific
 " csv
 let g:csv_highlight_column = 'y'
@@ -130,11 +129,14 @@ let g:go_highlight_structs = 1
 let g:go_highlight_interfaces = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+let g:go_metalinter_autosave = 0
 let g:go_fmt_command = "goimports"
 
 let g:deoplete#sources#go#use_cache = 1
 let g:deoplete#sources#go#json_directory = "~/.cache/deoplete/go/$GOOS_$GOARCH"
 let g:deoplete#sources#go#gocode_binary = "~/go/bin/gocode"
+
+let g:neomake_go_gometalinter_args = ['--disable-all', '--enable=errcheck', '--enable=goimports' , '--enable=golint', '--enable=vet' ]
 
 let g:tagbar_type_go = {
                         \ 'ctagstype' : 'go',

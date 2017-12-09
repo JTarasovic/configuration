@@ -110,7 +110,10 @@ rm *.zip && \
 open ~/staging/nzbs/*"
 alias sync_books="rsync -vurW --delete ~/Calibre\ Library/ freenas:/mnt/tank/media/Books"
 
-alias kubeprod="kubectl --kubeconfig=/Users/j_tarasovic/Development/inf/ansible_scripts/kubernetes/prod/prodconfig.conf"
-alias kubestage="kubectl --kubeconfig=/Users/j_tarasovic/Development/inf/ansible_scripts/kubernetes/staging/staging-config"
-alias kubewatchpodsprod="watch -n 5 'kubectl --kubeconfig ~/Development/inf/ansible_scripts/kubernetes/prod/prodconfig.conf get pods'"
-alias kubewatchpodsstage="watch -n 5 'kubectl --kubeconfig ~/Development/inf/ansible_scripts/kubernetes/staging/staging-config get pods'"
+alias kubestage="kubectl --kubeconfig=/Users/j_tarasovic/Development/inf/core_infra/staging/staging-config"
+alias kubewatchpodsstage="watch -n 5 'kubectl --kubeconfig ~/Development/inf/core_infra/staging/staging-config get pods'"
+alias kubeprod="kubectl --kubeconfig=/Users/j_tarasovic/Development/inf/core_infra/prod/prod-config"
+alias kubewatchpodsprod="watch -n 5 'kubectl --kubeconfig ~/Development/inf/core_infra/prod/prod-config get pods'"
+
+# shellcheck disable=SC2142
+alias watch_url='function _doIt(){ while :; do curl -s -o /dev/null -w "%{http_code} - %{size_download}\n" -k "$1"; sleep ${2:-"5"}; done };_doIt'

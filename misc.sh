@@ -14,6 +14,11 @@ command -v npm > /dev/null 2>&1 && source /dev/stdin <<EOF
 $(npm completion)
 EOF
 
+shell=$([ "$FROM_ZSH" = 1 ] && echo "zsh" || echo "bash")
+command -v minikube > /dev/null 2>&1 && source /dev/stdin <<EOF
+$(minikube completion "$shell")
+EOF
+
 # shellcheck source=/dev/null
 source $DOTFILE/prompt.sh
 # shellcheck source=/dev/null
