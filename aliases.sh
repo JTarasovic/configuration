@@ -79,6 +79,7 @@ recursive_git_pull() {
     cd "$initial" || exit 1
 }
 
+
 # terminal manipulation
 alias c='clear'
 alias ..='cd ..'
@@ -117,3 +118,5 @@ alias kubewatchpodsprod="watch -n 5 'kubectl --kubeconfig ~/Development/inf/core
 
 # shellcheck disable=SC2142
 alias watch_url='function _doIt(){ while :; do curl -s -o /dev/null -w "%{http_code} - %{size_download}\n" -k "$1"; sleep ${2:-"5"}; done };_doIt'
+
+alias dirty_dirs='for dir in *; do pushd "$dir" > /dev/null; $(git -c diff.autorefreshindex=true diff --quiet) || echo "$dir is dirty"; popd > /dev/null; done'
