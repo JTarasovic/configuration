@@ -111,9 +111,9 @@ rm *.zip && \
 open ~/staging/nzbs/*"
 alias sync_books="rsync -vurW --delete ~/Calibre\ Library/ freenas:/mnt/tank/media/Books"
 
-alias kubedev="kubectl --kubeconfig=/Users/j_tarasovic/Development/inf/core_infra/dev/dev-config"
-alias kubestage="kubectl --kubeconfig=/Users/j_tarasovic/Development/inf/core_infra/staging/staging-config"
-alias kubeprod="kubectl --kubeconfig=/Users/j_tarasovic/Development/inf/core_infra/prod/prod-config"
+alias kubedev="kubectl --kubeconfig=$HOME/Development/inf/core_infra/dev/dev-config"
+alias kubestage="kubectl --kubeconfig=$HOME/Development/inf/core_infra/staging/staging-config"
+alias kubeprod="kubectl --kubeconfig=$HOME/Development/inf/core_infra/prod/prod-config"
 
 # shellcheck disable=SC2142
 alias watch_url='function _doIt(){ while :; do curl -s -o /dev/null -w "%{http_code} - %{size_download}\n" -k "$1"; sleep ${2:-"5"}; done };_doIt'
