@@ -6,15 +6,12 @@ SAVEHIST=10000
 HISTFILE=~/.histfile
 bindkey -v
 
+# man 1 zshoptions
+setopt incappendhistory histignorealldups sharehistory extendedhistory
+setopt autocd extendedglob completealiases correct autopushd
+setopt notify
 
-# behavioral options
-setopt autocd extendedglob completealiases
-# history options
-setopt appendhistory histignorealldups sharehistory
-# do these even do anything???
-setopt beep notify
-
-autoload -Uz compinit promptinit
+autoload -Uz promptinit
 promptinit
 
 zstyle ':completion:*' auto-description 'specify: %d'
@@ -25,6 +22,7 @@ zstyle ':completion:*' verbose true
 
 zstyle ':completion:*:kill:*' command 'ps -u $USER -c -o command,pid,%cpu,tty,cputime,cmd'
 fpath=($DOTFILE/zsh-completions/src $fpath)
+autoload -Uz compinit
 compinit
 
 
