@@ -46,4 +46,5 @@ cat << "EOF" >> "$HOME/.gitconfig"
     lg = log -p
     ll = log --oneline --graph --decorate
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    rp = remote prune
 EOF
