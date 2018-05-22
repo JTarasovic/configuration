@@ -34,16 +34,16 @@ if [ -n "$IS_LINUX" ]; then
   # alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert.*$//'\'')"'
   alias l='ls --color=auto'
   alias l.='ls -d .* --color=auto'
-  alias la='ls -la --color=auto'
-  alias ll='ls -l --color=auto'
+  alias la='ls -lah --color=auto'
+  alias ll='ls -lh --color=auto'
   alias ls='ls --color=auto'
 else
   #for *BSD/darwin
   export CLICOLOR=1
   alias l='ls'
   alias l.='ls -d .*'
-  alias la='ls -la'
-  alias ll='ls -l'
+  alias la='ls -lah'
+  alias ll='ls -lh'
   alias dtls='apropos dtrace'
 
   # TODO: seperate out BSD (pkg) vs OSX (brew)
