@@ -209,9 +209,10 @@ augroup filespecific
         au FileType elixir nmap <leader>b :Mcompile<CR>
 
         " javascript
-        au FileType javascript setlocal shiftwidth=2
-        au FileType javascript setlocal tabstop=2
+        au FileType javascript setlocal ts=2 sw=2
 
+        " yaml
+        au FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 augroup END
 
