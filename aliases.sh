@@ -111,6 +111,7 @@ rm *.zip && \
 open ~/staging/nzbs/*"
 alias sync_books="rsync -vurW --delete ~/Calibre\ Library/ freenas:/mnt/tank/media/Books"
 
+alias kubetest="kubectl --kubeconfig=$HOME/Development/inf/core_infra/test-config"
 alias kubedev="kubectl --kubeconfig=$HOME/Development/inf/core_infra/dev/dev-config"
 alias kubestage="kubectl --kubeconfig=$HOME/Development/inf/core_infra/staging/staging-config"
 alias kubeprod="kubectl --kubeconfig=$HOME/Development/inf/core_infra/prod/prod-config"

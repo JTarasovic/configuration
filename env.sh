@@ -28,13 +28,16 @@ fi
 
 # set up path
 # shellcheck source=/dev/null
-source "$DOTFILE/path.sh"
+. "$DOTFILE/path.sh"
 
 # Set my editor
 # sh doesn't support arrays or i would use one here
 # last command that exists wins, so order based on preference
 command -v vim > /dev/null 2>&1 && EDITOR="$(command -v vim)"
 command -v nvim > /dev/null 2>&1 && EDITOR="$(command -v nvim)"
+
+
+command -v bat > /dev/null 2>&1 && export BAT_THEME="TwoDark"
 
 export EDITOR
 
