@@ -20,6 +20,7 @@ pathmunge "$HOME"/.rvm/bin
 pathmunge "$HOME"/mongo/current/bin
 pathmunge /usr/local/bin
 pathmunge /usr/local/heroku/bin
+pathmunge "$HOME"/Library/Python/3.7/bin
 
 # add go binaries to path
 command -v go > /dev/null 2>&1 && pathmunge "$(go env GOPATH)/bin"
