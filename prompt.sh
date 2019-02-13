@@ -63,6 +63,12 @@ function __promptline_ps1 {
   slice_prefix="${b_bg}${sep}${b_fg}${b_bg}${space}" slice_suffix="$space${b_sep_fg}" slice_joiner="${b_fg}${b_bg}${alt_sep}${space}" slice_empty_prefix="${b_fg}${b_bg}${space}"
   [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
   # section "b" slices
+  __promptline_wrapper "$(kube_status)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
+
+  # section "c" header
+  slice_prefix="${c_bg}${sep}${c_fg}${c_bg}${space}" slice_suffix="$space${c_sep_fg}" slice_joiner="${c_fg}${c_bg}${alt_sep}${space}" slice_empty_prefix="${c_fg}${c_bg}${space}"
+  [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
+  # section "c" slices
   __promptline_wrapper "$(__promptline_cwd)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
 
   # section "y" header
@@ -131,6 +137,13 @@ function __promptline_cwd {
 
   printf "%s" "$first_char$formatted_cwd"
 }
+function kube_status {
+  local context="$(kubectl config current-context 2>/dev/null)"
+  context="${context:-N/A}"
+  local ns=$(kubectl config view --minify --output "jsonpath={..namespace}" 2>/dev/null)
+  ns="${ns:-default}"
+  printf "\u2388 %s:%s" "$context" "$ns"
+}
 function __promptline_left_prompt {
   local slice_prefix slice_empty_prefix slice_joiner slice_suffix is_prompt_empty=1
 
@@ -145,6 +158,12 @@ function __promptline_left_prompt {
   slice_prefix="${b_bg}${sep}${b_fg}${b_bg}${space}" slice_suffix="$space${b_sep_fg}" slice_joiner="${b_fg}${b_bg}${alt_sep}${space}" slice_empty_prefix="${b_fg}${b_bg}${space}"
   [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
   # section "b" slices
+  __promptline_wrapper "$(kube_status)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
+
+  # section "c" header
+  slice_prefix="${c_bg}${sep}${c_fg}${c_bg}${space}" slice_suffix="$space${c_sep_fg}" slice_joiner="${c_fg}${c_bg}${alt_sep}${space}" slice_empty_prefix="${c_fg}${c_bg}${space}"
+  [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
+  # section "c" slices
   __promptline_wrapper "$(__promptline_cwd)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
 
   # close sections
@@ -260,6 +279,9 @@ function __promptline {
   local b_fg="${wrap}38;5;254${end_wrap}"
   local b_bg="${wrap}48;5;31${end_wrap}"
   local b_sep_fg="${wrap}38;5;31${end_wrap}"
+  local c_fg="${wrap}38;5;255${end_wrap}"
+  local c_bg="${wrap}48;5;24${end_wrap}"
+  local c_sep_fg="${wrap}38;5;24${end_wrap}"
   local warn_fg="${wrap}38;5;232${end_wrap}"
   local warn_bg="${wrap}48;5;166${end_wrap}"
   local warn_sep_fg="${wrap}38;5;166${end_wrap}"

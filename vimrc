@@ -105,15 +105,29 @@ let g:airline_theme = 'papercolor'
 let g:vim_markdown_folding_disabled = 1
 
 " promptline
+" let kube_status = {
+"     \'function_name': 'kube_status',
+"     \'function_body': [
+"         \'function kube_status {',
+"         \'  local context="$(kubectl config current-context 2>/dev/null)"',
+"         \'  context="${context:-N/A}"',
+"         \'  local ns=$(kubectl config view --minify --output "jsonpath={..namespace}" 2>/dev/null)',
+"         \'  ns="${ns:-default}"',
+"         \'  printf "\u2388 %s:%s" "$context" "$ns"',
+"         \'}']}
+
+
 " let g:promptline_preset = {
 "         \'a'    : [ promptline#slices#host({ 'only_if_ssh': 1 }),'$USER' ],
-"         \'b'    : [ promptline#slices#cwd() ],
+"         \'b'    : [ kube_status ],
+"         \'c'    : [ promptline#slices#cwd() ],
 "         \'y'    : [ promptline#slices#vcs_branch(), promptline#slices#git_status() ],
 "         \'z'    : [ promptline#slices#battery({ 'threshold': 100 }) ],
 "         \'warn' : [ promptline#slices#last_exit_code() ]}
 " let g:promptline_theme = 'airline'
 " let g:promptline_symbols = {
 "         \'battery'   : ''}
+
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
@@ -129,8 +143,15 @@ let g:go_highlight_structs = 1
 let g:go_highlight_interfaces = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_extra_types = 1
+" let g:go_auto_type_info = 1
+" let g:go_auto_sameids = 1
 let g:go_metalinter_autosave = 0
 let g:go_fmt_command = "goimports"
+let g:go_addtags_transform = "camelcase"
+
 
 let g:deoplete#sources#go#use_cache = 1
 let g:deoplete#sources#go#json_directory = "~/.cache/deoplete/go/$GOOS_$GOARCH"
@@ -193,6 +214,7 @@ augroup filespecific
         au!
 
         " golang
+        au FileType go set noexpandtab
         au FileType go nmap <leader>r <Plug>(go-run)
         au FileType go nmap <leader>t <Plug>(go-test)
         au FileType go nmap <leader>b <Plug>(go-build)
