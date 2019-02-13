@@ -15,7 +15,7 @@ if [ -n "$IS_LINUX" ]; then
   command -v pacman >/dev/null 2>&1 && export HAS_PACMAN=1
 fi
 
-SPEC_DIR="$HOME"/Development/int/yardstick/specs
+SPEC_DIR="$HOME/Development/int/yardstick/specs"
 if [ -d  "$SPEC_DIR" ]; then
     export OFLPMTR="$SPEC_DIR"/OFLPMTR.json
     export WEBMSTR="$SPEC_DIR"/WEBMSTR.json
@@ -25,6 +25,17 @@ if [ -d  "$SPEC_DIR" ]; then
     export FEDWIRE="$SPEC_DIR"/fedwire.json
     export GR_MORTCOMP="$SPEC_DIR"/gr-mortcomp.json
 fi
+
+KUBE_INFRA_DIR="$HOME/Development/inf/core_infra"
+if [ -d  "$KUBE_INFRA_DIR" ]; then
+    export KUBE_TEST_CONFIG="$KUBE_INFRA_DIR/test/test-config"
+    export KUBE_MGMT_CONFIG="$KUBE_INFRA_DIR/mgmt/mgmt-config"
+    export KUBE_DEV_CONFIG="$KUBE_INFRA_DIR/dev/dev-config"
+    export KUBE_STAGING_CONFIG="$KUBE_INFRA_DIR/staging/staging-config"
+    export KUBE_PROD_CONFIG="$KUBE_INFRA_DIR/prod/prod-config"
+    export KUBECONFIG=$KUBE_TEST_CONFIG:$KUBE_MGMT_CONFIG:$KUBE_DEV_CONFIG:$KUBE_STAGING_CONFIG:$KUBE_PROD_CONFIG
+fi
+
 
 # set up path
 # shellcheck source=/dev/null

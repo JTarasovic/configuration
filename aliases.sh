@@ -113,10 +113,12 @@ rm *.zip && \
 open ~/staging/nzbs/*"
 alias sync_books="rsync -vurW --delete ~/Calibre\\ Library/ freenas:/mnt/tank/media/Books"
 
-alias kubetest='kubectl --kubeconfig=$HOME/Development/inf/core_infra/test-config'
-alias kubedev='kubectl --kubeconfig=$HOME/Development/inf/core_infra/dev/dev-config'
-alias kubestage='kubectl --kubeconfig=$HOME/Development/inf/core_infra/staging/staging-config'
-alias kubeprod='kubectl --kubeconfig=$HOME/Development/inf/core_infra/prod/prod-config'
+alias kubetest='kubectl --kubeconfig=$KUBE_TEST_CONFIG'
+alias kubemgmt='kubectl --kubeconfig=$KUBE_MGMT_CONFIG'
+alias kubedev='kubectl --kubeconfig=$KUBE_DEV_CONFIG'
+alias kubestage='kubectl --kubeconfig=$KUBE_STAGING_CONFIG'
+alias kubeprod='kubectl --kubeconfig=$KUBE_PROD_CONFIG'
+alias k='kubectl'
 
 # shellcheck disable=SC2142
 alias watch_url='function _doIt(){ while :; do curl -s -o /dev/null -w "%{http_code} - %{size_download}\n" -k "$1"; sleep ${2:-"5"}; done };_doIt'
@@ -125,4 +127,4 @@ alias dirty_dirs='for dir in *; do pushd "$dir" > /dev/null; $(git -c diff.autor
 alias donotuse1='for dir in *; do pushd "$dir" > /dev/null; [[ $(git rev-parse --abbrev-ref HEAD) = "develop" ]] || echo "$dir not on develop"; popd > /dev/null; done'
 alias donotuse2='for dir in *; do pushd "$dir" > /dev/null; git pull; popd > /dev/null; done'
 alias donotuse3='for dir in *; do pushd "$dir" > /dev/null; git remote prune origin; popd > /dev/null; done'
-alias clean='old=$(git rev-parse --abbrev-ref HEAD);git checkout develop && git pull && git remote prune origin && git br -d "$old"'
+alias clean='old=$(git rev-parse --abbrev-ref HEAD);git checkout develop && git pull && git remote prune origin && git br -D "$old"'
