@@ -92,6 +92,7 @@ alias cat='bat'
 alias gs='git status'
 alias gr='git reset --hard @'
 alias push='git push'
+alias gprp='git pull && git remote prune origin'
 
 # short version of longer commands
 alias speed='speedtest-cli'
