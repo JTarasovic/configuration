@@ -28,12 +28,8 @@ fi
 
 KUBE_INFRA_DIR="$HOME/Development/inf/core_infra"
 if [ -d  "$KUBE_INFRA_DIR" ]; then
-    export KUBE_TEST_CONFIG="$KUBE_INFRA_DIR/test/test-config"
     export KUBE_MGMT_CONFIG="$KUBE_INFRA_DIR/mgmt/mgmt-config"
-    export KUBE_DEV_CONFIG="$KUBE_INFRA_DIR/dev/dev-config"
-    export KUBE_STAGING_CONFIG="$KUBE_INFRA_DIR/staging/staging-config"
     export KUBE_PROD_CONFIG="$KUBE_INFRA_DIR/prod/prod-config"
-    export KUBECONFIG=$KUBE_TEST_CONFIG:$KUBE_MGMT_CONFIG:$KUBE_DEV_CONFIG:$KUBE_STAGING_CONFIG:$KUBE_PROD_CONFIG
 fi
 
 
