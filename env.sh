@@ -26,13 +26,6 @@ if [ -d  "$SPEC_DIR" ]; then
     export GR_MORTCOMP="$SPEC_DIR"/gr-mortcomp.json
 fi
 
-KUBE_INFRA_DIR="$HOME/Development/inf/core_infra"
-if [ -d  "$KUBE_INFRA_DIR" ]; then
-    export KUBE_MGMT_CONFIG="$KUBE_INFRA_DIR/mgmt/mgmt-config"
-    export KUBE_PROD_CONFIG="$KUBE_INFRA_DIR/prod/prod-config"
-fi
-
-
 # set up path
 # shellcheck source=/dev/null
 . "$DOTFILE/path.sh"
