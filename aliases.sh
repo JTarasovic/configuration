@@ -117,8 +117,8 @@ alias sync_books="rsync -vurW --delete ~/Calibre\\ Library/ freenas:/mnt/tank/me
 alias kubetest='kubectl --context=test '
 alias kubedev='kubectl --context=dev'
 alias kubestage='kubectl --context=staging '
-alias kubeprod='kubectl --kubeconfig=$KUBE_PROD_CONFIG '
-alias kubemgmt='kubectl --kubeconfig=$KUBE_MGMT_CONFIG '
+alias kubeprod='kubectl --context=prod '
+alias kubemgmt='kubectl --context=mgmt '
 alias k='kubectl '
 
 # shellcheck disable=SC2142
