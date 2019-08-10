@@ -37,6 +37,8 @@ if [ -n "$IS_LINUX" ]; then
   alias la='ls -lah --color=auto'
   alias ll='ls -lh --color=auto'
   alias ls='ls --color=auto'
+  alias pbcopy='xclip -selection clipboard'
+  alias pbpaste='xclip -selection clipboard -o'
 else
   #for *BSD/darwin
   export CLICOLOR=1
