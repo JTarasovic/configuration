@@ -50,7 +50,7 @@ else
 
   # TODO: seperate out BSD (pkg) vs OSX (brew)
   #brew aliases
-  alias update='brew update && brew upgrade'
+  alias update='brew update && brew upgrade && brew cask upgrade'
   alias install='brew install'
   alias search='brew search'
 fi
