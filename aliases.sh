@@ -131,3 +131,9 @@ alias donotuse1='for dir in *; do pushd "$dir" > /dev/null; [[ $(git rev-parse -
 alias donotuse2='for dir in *; do pushd "$dir" > /dev/null; git pull; popd > /dev/null; done'
 alias donotuse3='for dir in *; do pushd "$dir" > /dev/null; git remote prune origin; popd > /dev/null; done'
 alias clean='old=$(git rev-parse --abbrev-ref HEAD);git checkout develop && git pull && git remote prune origin && git br -D "$old"'
+
+
+_cf_validate() {
+    aws cloudformation --profile default validate-template --template-body "file://$1" | jq '.'
+}
+alias cf_validate='_cf_validate'
