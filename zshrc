@@ -8,7 +8,7 @@ bindkey -v
 
 # man 1 zshoptions
 setopt incappendhistory histignorealldups sharehistory extendedhistory
-setopt autocd extendedglob completealiases correct autopushd
+setopt autocd extendedglob no_complete_aliases correct autopushd
 setopt notify
 
 autoload -Uz promptinit
@@ -36,8 +36,9 @@ fi
 # syntax highlighting
 source $DOTFILE/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# stoopid
-[ -f $HOME/Development/inf/environment/environment_vars ] && source $HOME/Development/inf/environment/environment_vars
+source /Users/jason/Development/inf/environment/environment_vars
+source /Users/jason/Development/inf/environment/local_vars
+
 
 # if we make it this far return cleanly /shrug
 return 0
