@@ -117,7 +117,7 @@ open ~/staging/nzbs/*"
 alias sync_books="rsync -vurW --delete ~/Calibre\\ Library/ freenas:/mnt/tank/media/Books"
 
 alias kubetest='kubectl --context=test '
-alias kubedev='kubectl --context=dev'
+alias kubedev='kubectl --context=dev '
 alias kubestage='kubectl --context=staging '
 alias kubeprod='kubectl --context=prod '
 alias kubemgmt='kubectl --context=mgmt '
