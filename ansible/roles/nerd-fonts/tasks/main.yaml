@@ -1,0 +1,9 @@
+- name: Ensure directory exists
+  file:
+    name: "{{ font_dir }}"
+    state: directory
+
+- name: Download font
+  get_url:
+    url: "{{ url }}"
+    dest: "{{ font_dir }}/{{name}}"

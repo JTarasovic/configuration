@@ -1,0 +1,50 @@
+# THIS SUCKS.
+# FIX IT
+firefox_profiles:
+  default-release:
+    extensions:
+      # apparently dashlane isn't in the firefox marketplace thing
+      # figure it oot
+      # - dashlane
+      - decentraleyes
+      - https-everywhere
+      - neat-url
+      - privacy-badger17
+      - vue-js-devtools
+    preferences:
+      browser.ctrlTab.recentlyUsedOrder: "true"
+      browser.formfill.enable: "false"
+      browser.preferences.defaultPerformanceSettings.enabled: "true"
+      browser.send_pings: "false"
+      browser.shell.checkDefaultBrowser: "false"
+      browser.tabs.warnOnClose: "false"
+      browser.tabs.warnOnCloseOtherTabs: "false"
+      privacy.clearOnShutdown.cache: "true"
+      privacy.clearOnShutdown.cookies: "true"
+      privacy.clearOnShutdown.downloads: "true"
+      privacy.clearOnShutdown.formdata: "true"
+      privacy.clearOnShutdown.history: "true"
+      privacy.clearOnShutdown.offlineApps: "true"
+      privacy.clearOnShutdown.sessions: "true"
+      privacy.clearOnShutdown.siteSettings: "true"
+      privacy.cpd.cache: "true"
+      privacy.cpd.cookies: "true"
+      privacy.cpd.downloads: "true"
+      privacy.cpd.formdata: "true"
+      privacy.cpd.history: "true"
+      privacy.cpd.offlineApps: "true"
+      privacy.cpd.passwords: "true"
+      privacy.cpd.sessions: "true"
+      privacy.cpd.siteSettings: "true"
+      privacy.documentCookies.maxage: "0"
+      privacy.donottrackheader.enabled: "false"
+      privacy.trackingprotection.enabled: "true"
+      privacy.sanitize.sanitizeOnShutdown: "true"
+
+      signon.autofillForms: "false"
+      signon.autofillForms.autocompleteOff: "true"
+      signon.rememberSignons: "false"
+      signon.storeSignons: "false"
+      signon.storeWhenAutocompleteOff: "false"
+      datareporting.healthreport.uploadEnabled: "false"
+
