@@ -3,12 +3,16 @@ Configuration
 
 Remote repository for my configuration files
 
+
+## Fedora
+- `git clone https://github.com/jtarasovic/configuration.git ~/.dotfiles && ~/.dotfiles/install/fedora.sh`
+
+
+
 Additional files are symlinked to their corresponding dot file in ~/
 
 
 ### Practical guide to which files get sourced when
-From (https://github.com/rbenv/rbenv/wiki/Unix-shell-initialization)
-
 
 * Opening a new Terminal window/tab:
   * **bash**
@@ -26,6 +30,8 @@ From (https://github.com/rbenv/rbenv/wiki/Unix-shell-initialization)
 * Remote git hook triggered by push over SSH:
   * *no init files* get sourced, since hooks are running [within a restricted shell](http://git-scm.com/docs/git-shell)
   * PATH will be roughly: `/usr/libexec/git-core:/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin`
+
+[HT](https://github.com/rbenv/rbenv/wiki/Unix-shell-initialization)
 
 
 ### zsh

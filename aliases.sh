@@ -94,7 +94,7 @@ alias cat='bat'
 alias gs='git status'
 alias gr='git reset --hard @'
 alias push='git push'
-alias gprp='git pull && git remote prune origin'
+alias gprp='git pull && git remote prune origin && git gc'
 
 # short version of longer commands
 alias speed='speedtest-cli'
@@ -121,6 +121,8 @@ alias kubedev='kubectl --context=dev '
 alias kubestage='kubectl --context=staging '
 alias kubeprod='kubectl --context=prod '
 alias kubemgmt='kubectl --context=mgmt '
+alias kubecastaging='kubectl --context=ca-staging '
+alias kubecaprod='kubectl --context=ca-prod '
 alias k='kubectl '
 
 # shellcheck disable=SC2142
@@ -131,6 +133,8 @@ alias donotuse1='for dir in *; do pushd "$dir" > /dev/null; [[ $(git rev-parse -
 alias donotuse2='for dir in *; do pushd "$dir" > /dev/null; git pull; popd > /dev/null; done'
 alias donotuse3='for dir in *; do pushd "$dir" > /dev/null; git remote prune origin; popd > /dev/null; done'
 alias clean='old=$(git rev-parse --abbrev-ref HEAD);git checkout develop && git pull && git remote prune origin && git br -D "$old"'
+
+alias yml2yaml='for f in *.yml; do mv -- "$f" "${f%.yml}.yaml"; done'
 
 
 _cf_validate() {
