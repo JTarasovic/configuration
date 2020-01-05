@@ -43,13 +43,6 @@
         - dependencies
         - packages
 
-    - name: install Go
-      import_role:
-        name: andrewrothstein.go
-      tags:
-        - packages
-        - go
-
     - name: configure user
       user:
         name: "{{ user }}"
@@ -133,7 +126,7 @@
           - "git@github.com:JTarasovic/configuration.git"
       tags:
         - git
-        - remote
+
 
     - name: configure neovim
       file:
@@ -163,6 +156,15 @@
         - fonts
 
 
+    - name: install Go
+      import_role:
+        name: andrewrothstein.go
+      tags:
+        - packages
+        - go
+
+
+
 
 - hosts: distribution_fedora
   tasks:
@@ -186,6 +188,7 @@
         - packages
         - dnf
 
+    # figure this out for mac / work / developer edition
     - name: configure firefox
       import_role:
         name: basvandenbrink.firefox
