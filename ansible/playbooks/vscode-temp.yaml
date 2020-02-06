@@ -1,0 +1,38 @@
+---
+- hosts: all
+  tasks:
+  - name: install vscode
+    import_role:
+      # temporary fork
+      # needs to get merged back upstream?
+      # with extension support?
+      name: /home/jason/clone/vscode
+    become: true
+    vars:
+      vscode_install: false
+      vscode_insiders_install: true
+      vscode_extension:
+        - alefragnani.Bookmarks
+        - christian-kohler.npm-intellisense
+        - CoenraadS.bracket-pair-colorizer
+        - donjayamanne.githistory
+        - esbenp.prettier-vscode
+        - formulahendry.terminal
+        - haaaad.ansible
+        - ms-azuretools.vscode-docker
+        - ms-vscode.Go
+        - ms-python.python
+        - octref.vetur
+        - redhat.vscode-yaml
+        - sdras.vue-vscode-extensionpack
+        - sdras.vue-vscode-snippets
+        - tombonnike.vscode-status-bar-format-toggle
+        - VisualStudioExptTeam.vscodeintellicode
+        - vscodevim.vim
+        - wholroyd.jinja
+        - xabikos.JavaScriptSnippets
+    tags:
+      - packages
+      - vscode
+
+

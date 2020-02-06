@@ -10,11 +10,12 @@ dconf:
 
 packages:
   - bat
-  - bcc
   - "@development-tools"
   - git
   - jq
   - neovim
   - python3-devel
+  - vagrant
+  - wireshark
   - zsh
 

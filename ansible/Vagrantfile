@@ -1,0 +1,27 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "2"
+
+$bootstrap=<<SCRIPT
+dnf install make glibc-devel.i686 elfutils-libelf-devel wget tar clang bcc strace kernel-devel-5.0.9-301.fc30 -y
+SCRIPT
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+	config.vm.provider :libvirt do |libvirt|
+
+		libvirt.qemu_use_session = false
+		libvirt.memory = 1024
+	end
+
+	config.vm.define "bpfbook" do |fedora|
+		fedora.vm.box = "fedora/30-cloud-base"
+		fedora.vm.box_version = "30.20190425.0"
+		net_index = 1
+		fedora.vm.hostname = "bpfbook"
+		fedora.vm.network :private_network,
+			:type => "dhcp",
+      		:libvirt__network_address => '10.20.30.0'
+		fedora.vm.provision :shell, inline: $bootstrap
+	end
+end

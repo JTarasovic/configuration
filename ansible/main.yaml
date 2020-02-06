@@ -30,6 +30,20 @@
         - dependencies
         - packages
 
+    - name: install docker
+      become: true
+      import_role:
+        name: geerlingguy.docker
+      vars:
+        docker_package_state: latest
+        docker_install_compose: false
+        docker_users:
+          - "{{ user }}"
+      tags:
+        - dependencies
+        - packages
+        - docker
+
     - name: install pip packages
       pip:
         name:
@@ -187,6 +201,17 @@
       tags:
         - packages
         - dnf
+
+    - name: add wheel to passwordless sudoers
+      lineinfile:
+        dest: /etc/sudoers
+        state: present
+        regexp: '^%wheel'
+        line: '%wheel	ALL=(ALL)	NOPASSWD: ALL'
+        validate: 'visudo -cf %s'
+      become: true
+      tags:
+        - user
 
     # figure this out for mac / work / developer edition
     - name: configure firefox

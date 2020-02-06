@@ -1,3 +1,5 @@
 - src: basvandenbrink.firefox
 
 - src: andrewrothstein.go
+
+- src: geerlingguy.docker
