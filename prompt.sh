@@ -138,11 +138,14 @@ function __promptline_cwd {
   printf "%s" "$first_char$formatted_cwd"
 }
 function kube_status {
-  local context="$(kubectl config current-context 2>/dev/null)"
-  context="${context:-N/A}"
-  local ns=$(kubectl config view --minify --output "jsonpath={..namespace}" 2>/dev/null)
-  ns="${ns:-default}"
-  printf "\u2388 %s:%s" "$context" "$ns"
+  if hash kubectl 2> /dev/null; then
+      local context="$(kubectl config current-context 2>/dev/null)"
+      context="${context:-N/A}"
+      local ns=$(kubectl config view --minify --output "jsonpath={..namespace}" 2>/dev/null)
+      ns="${ns:-default}"
+      printf "\u2388 %s:%s" "$context" "$ns"
+  fi
+  return
 }
 function __promptline_left_prompt {
   local slice_prefix slice_empty_prefix slice_joiner slice_suffix is_prompt_empty=1
