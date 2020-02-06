@@ -1,0 +1,47 @@
+---
+- hosts: localhost
+  vars:
+    vm_output_dir: "{{ ansible_env.HOME }}/vm"
+  tasks:
+    - name: install packages
+      package:
+        name:
+          - '@virtualization'
+          - libvirt-devel
+        state: latest
+      become: true
+      tags:
+        - dependencies
+
+
+    - name: install requirements
+      pip:
+        name:
+          - libvirt-python
+          - lxml
+        extra_args: "--user"
+        state: latest
+      tags:
+        - dependencies
+
+    - name: define default bridge network
+      virt_net:
+        command: define
+        name: default
+        xml: /usr/share/libvirt/networks/default.xml
+        state: active
+      tags:
+        - network
+
+
+    - name: ensure vm dir
+      file:
+        name: "{{ vm_output_dir }}"
+        state: directory
+
+    - name: download cloud images
+      get_url:
+        url: https://download.fedoraproject.org/pub/fedora/linux/releases/31/Cloud/x86_64/images/Fedora-Cloud-Base-31-1.9.x86_64.qcow2
+        dest: "{{ vm_output_dir }}/fedora31.qcow2"
+
+

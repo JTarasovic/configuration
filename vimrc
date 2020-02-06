@@ -88,8 +88,8 @@ set completeopt-=preview
 set completeopt+=noselect
 
 " move temporary files out of working directory
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set backupdir=~/.tmp,~/tmp,/var/tmp,/tmp
+set directory=~/.tmp,~/tmp,/var/tmp,/tmp
 
 if has('langmap') && exists('+langnoremap')
     set langnoremap

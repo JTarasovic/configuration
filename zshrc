@@ -36,8 +36,8 @@ fi
 # syntax highlighting
 source $DOTFILE/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-source /Users/jason/Development/inf/environment/environment_vars
-source /Users/jason/Development/inf/environment/local_vars
+# source /Users/jason/Development/inf/environment/environment_vars
+# source /Users/jason/Development/inf/environment/local_vars
 
 
 # if we make it this far return cleanly /shrug

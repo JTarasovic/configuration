@@ -1,0 +1,21 @@
+dconf:
+  - key: /org/gnome/desktop/peripherals/mouse/natural-scroll
+    value: "false"
+  - key: /org/gnome/desktop/peripherals/touchpad/natural-scroll
+    value: "false"
+  - key: /org/gnome/desktop/input-sources/xkb-options
+    value: "['caps:escape']"
+  - key: /org/gnome/settings-daemon/plugins/power/ambient-enabled
+    value: "false"
+
+packages:
+  - bat
+  - "@development-tools"
+  - git
+  - jq
+  - neovim
+  - python3-devel
+  - vagrant
+  - wireshark
+  - zsh
+

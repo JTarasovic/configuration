@@ -1,0 +1,33 @@
+---
+- hosts: localhost
+  vars:
+    vm_output_dir: "{{ ansible_env.HOME }}/vm/{{ distro }}"
+  tasks:
+    - name: ensure dir
+      file:
+        name: "{{ vm_output_dir }}"
+        state: directory
+
+    - name: instantiate templates
+      template:
+        src: templates/{{ item }}.j2
+        dest: "{{ vm_output_dir }}/{{ item }}"
+      vars:
+        id: "{{ distro }}"
+        ssh_authorized_keys: "{{ lookup('file', lookup('env', 'HOME') + '/.ssh/id_ecdsa.pub') }}"
+      loop:
+        - meta-data
+        - user-data
+
+    - name: create ISO
+      shell: "genisoimage -output {{ iso }} -volid cidata -joliet -rock {{ userdata }} {{ metadata }}"
+      vars:
+        iso: "{{ vm_output_dir }}/{{ distro }}.iso"
+        userdata: "{{ vm_output_dir }}/user-data"
+        metadata: "{{ vm_output_dir }}/meta-data"
+      tags:
+        - iso
+
+
+
+    # ip address="192.168.122.1" netmask="255.255.255.0"
