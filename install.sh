@@ -3,5 +3,5 @@
 ansible-galaxy install -r ansible/requirements.yaml
 
 pushd ansible
-ansible-playbook -i inventory.ini main.yaml -K
+ansible-playbook -i inventory.ini main.yaml -K --ask-vault-pass
 popd
