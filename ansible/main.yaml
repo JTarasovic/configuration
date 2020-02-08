@@ -65,6 +65,8 @@
         ssh_key_bits: 256
         ssh_key_type: ecdsa
         ssh_key_file: "{{ ansible_env.HOME }}/.ssh/{{ ssh_key_name }}"
+        groups:
+          - libvirt
       register: userinfo
       become: true
       tags:
