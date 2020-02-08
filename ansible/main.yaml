@@ -69,6 +69,7 @@
           - docker
           - libvirt
           - wheel
+          - "{{ user }}"
       register: userinfo
       become: true
       tags:
@@ -98,13 +99,14 @@
         - dotfiles
 
     - stat:
-        path: "{{ ansible_env.HOME }}/.dotfiles/zsh-syntax-highlighting"
+        path: "{{ ansible_env.HOME }}/.dotfiles/zsh-syntax-highlighting/.git"
       register: submodule_stat
       tags:
         - git
         - dotfiles
+        - submodules
 
-    # hack. probably doesn't work right
+    # hack
     # not idempotent :sob:
     # would be cool to automagically upgrade
     # maybe don't submodule. maybe just clone?
@@ -114,6 +116,7 @@
       tags:
         - git
         - dotfiles
+        - submodules
 
     - name: push ssh pubkey to github
       local_action:
@@ -148,12 +151,24 @@
 
     - name: configure neovim
       file:
-        src: "{{ ansible_env.HOME }}/.dotfiles/vim"
-        dest: "{{ ansible_env.HOME }}/.config/nvim"
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
         state: link
-        force: true
+      loop:
+        - src: "{{ ansible_env.HOME }}/.dotfiles/vim"
+          dest: "{{ ansible_env.HOME }}/.config/nvim"
+        - src: "{{ ansible_env.HOME }}/.dotfiles/vimrc"
+          dest: "{{ ansible_env.HOME }}/.config/nvim/init.vim"
       tags:
         - dotfiles
+
+    - name: ensure neovim backup directory
+      file:
+        path: "{{ ansible_env.HOME }}/.local/share/nvim/backup/"
+        state: directory
+      tags:
+        - dotfiles
+
 
     - name: install font(s)
       include_role:
