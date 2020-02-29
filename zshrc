@@ -11,6 +11,8 @@ setopt incappendhistory histignorealldups sharehistory extendedhistory
 setopt autocd extendedglob no_complete_aliases correct autopushd
 setopt notify
 
+unsetopt nomatch
+
 autoload -Uz promptinit
 promptinit
 
