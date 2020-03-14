@@ -57,6 +57,14 @@
         - dependencies
         - packages
 
+
+    - name: install keybase
+      import_role:
+        name: leonallen22.ansible_role_keybase
+      tags:
+        - packages
+        - keybase
+
     - name: configure user
       user:
         name: "{{ user }}"

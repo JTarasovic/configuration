@@ -19,6 +19,8 @@ cat << "EOF" >> "$HOME/.gitconfig"
     diff = auto
     interactive = auto
     status = auto
+[commit]
+    gpgsign = true
 [push]
     default = simple
 [help]
