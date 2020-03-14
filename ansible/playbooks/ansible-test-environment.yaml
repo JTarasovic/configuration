@@ -5,8 +5,8 @@
     images:
       - name: fedora31.qcow2
         url: https://download.fedoraproject.org/pub/fedora/linux/releases/31/Cloud/x86_64/images/Fedora-Cloud-Base-31-1.9.x86_64.qcow2
-      - name: fedora30.qcow2
-        url: https://download.fedoraproject.org/pub/fedora/linux/releases/30/Cloud/x86_64/images/Fedora-Cloud-Base-30-1.2.x86_64.qcow2
+      # - name: fedora30.qcow2
+      #   url: https://download.fedoraproject.org/pub/fedora/linux/releases/30/Cloud/x86_64/images/Fedora-Cloud-Base-30-1.2.x86_64.qcow2
   tasks:
     - name: install packages
       package:
@@ -49,9 +49,6 @@
         path: "{{ vm_output_dir }}/{{ item.name }}"
       register: files
       loop: "{{ images }}"
-
-    # - debug:
-    #     msg: "{{ files }}"
 
     - name: download cloud images
       get_url:
