@@ -32,15 +32,12 @@ compinit
 if [[ -e $DOTFILE ]]; then
   # env.sh is sourced by zshenv
   source $DOTFILE/misc.sh
+  source $DOTFILE/functions.sh
   source $DOTFILE/aliases.sh
 fi
 
 # syntax highlighting
 source $DOTFILE/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# source /Users/jason/Development/inf/environment/environment_vars
-# source /Users/jason/Development/inf/environment/local_vars
-
 
 # if we make it this far return cleanly /shrug
 return 0

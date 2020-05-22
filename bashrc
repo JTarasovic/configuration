@@ -32,9 +32,11 @@ export FROM_ZSH=0
 
 if [ -e "$DOTFILE" ]; then
   # shellcheck source=/dev/null
-  source $DOTFILE/env.sh
+  source "$DOTFILE/env.sh"
   # shellcheck source=/dev/null
-  source $DOTFILE/misc.sh
+  source "$DOTFILE/misc.sh"
   # shellcheck source=/dev/null
-  source $DOTFILE/aliases.sh
+  source "$DOTFILE/functions.sh"
+  # shellcheck source=/dev/null
+  source "$DOTFILE/aliases.sh"
 fi

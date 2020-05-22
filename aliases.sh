@@ -55,33 +55,6 @@ else
   alias search='brew search'
 fi
 
-recursive_git_pull() {
-    initial=$(pwd -P)
-    cd "${1:-.}" || exit 1
-    start=$(pwd -P)
-    desired_branch=${2:-develop}
-
-    echo Starting in "$start"
-    for dir in "$start"/*/
-    do
-        cd "$dir" || break
-        branch=$(git rev-parse --abbrev-ref HEAD)
-        if [ "$branch" = "$desired_branch" ]; then
-            if [ -z "$(git status --porcelain)" ]; then
-                echo "$dir" is clean. Pulling.
-                git pull
-            else
-                echo "$dir" is unclean. Skipping.
-            fi
-        else
-            echo "$dir" not on "$desired_branch". Skipping.
-        fi
-        cd "$start" || break
-    done
-    cd "$initial" || exit 1
-}
-
-
 # terminal manipulation
 alias c='clear'
 alias ..='cd ..'
@@ -96,56 +69,13 @@ alias gr='git reset --hard @'
 alias push='git push'
 alias gprp='git pull && git remote prune origin && git gc'
 
-# short version of longer commands
-alias speed='speedtest-cli'
-
-alias server='python -m SimpleHTTPServer &'
-
 # long chains of things that i don't want to commit to long term memmory.
 alias flatten='find ./ -type f -exec mv '{}' . \;'
-alias hdeploy='git push heroku master && sleep 5 && heroku logs && heroku ps'
 
-# helpers for managing ebooks and such
-alias move_books="cd ~/staging/NZBin\\ Complete && \
-ex_rename -e 'epub|mobi|pdf|pdb|azw|azw3|lit|rtf|doc|docx|chm' ~/staging/NZBin\\ Complete ~/staging/staging && \
-rmdir *(/)"
-alias move_nzbs="cd ~/Downloads && \
-unzip '*.zip' && \
-ex_rename -e nzb ~/Downloads ~/staging/nzbs && \
-rm *.zip && \
-open ~/staging/nzbs/*"
-alias sync_books="rsync -vurW --delete ~/Calibre\\ Library/ freenas:/mnt/tank/media/Books"
-
-alias kubetest='kubectl --context=test '
-alias kubedev='kubectl --context=dev '
-alias kubestage='kubectl --context=staging '
-alias kubeprod='kubectl --context=prod '
-alias kubemgmt='kubectl --context=mgmt '
-alias kubecastaging='kubectl --context=ca-staging '
-alias kubecaprod='kubectl --context=ca-prod '
 alias k='kubectl '
 
-# shellcheck disable=SC2142
-alias watch_url='function _doIt(){ while :; do curl -s -o /dev/null -w "%{http_code} - %{size_download}\n" -k "$1"; sleep ${2:-"5"}; done };_doIt'
-
 alias dirty_dirs='for dir in *; do pushd "$dir" > /dev/null; $(git -c diff.autorefreshindex=true diff --quiet) || echo "$dir is dirty"; popd > /dev/null; done'
-alias donotuse1='for dir in *; do pushd "$dir" > /dev/null; [[ $(git rev-parse --abbrev-ref HEAD) = "develop" ]] || echo "$dir not on develop"; popd > /dev/null; done'
-alias donotuse2='for dir in *; do pushd "$dir" > /dev/null; git pull; popd > /dev/null; done'
-alias donotuse3='for dir in *; do pushd "$dir" > /dev/null; git remote prune origin; popd > /dev/null; done'
-clean () {
-    old=$(git rev-parse --abbrev-ref HEAD);
-    git checkout "${1:-master}" && git pull && git remote prune origin && git br -D "$old"
-}
 
 alias yml2yaml='for f in *.yml; do mv -- "$f" "${f%.yml}.yaml"; done'
 
-
-_cf_validate() {
-    aws cloudformation --profile default validate-template --template-body "file://$1" | jq '.'
-}
-alias cf_validate='_cf_validate'
-
-
-node2instance() {
-    kubectl get node "$1" -o jsonpath="{.spec.providerID}" | cut -d "/" -f 5
-}
+build_kube_aliases ""
