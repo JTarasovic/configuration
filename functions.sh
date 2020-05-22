@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 clean () {
     old=$(git rev-parse --abbrev-ref HEAD);
@@ -42,6 +42,17 @@ build_kube_aliases() {
         alias "$alias_to_create=kubectl --context=$context "
     done
 }
+
+pods_ready() {
+    namespace="$1"
+    label_selector="$2"
+
+    while IFS="|" read -r pod node statuses;
+    do
+        [[ "$statuses" =~ false ]] && echo "$pod in $namespace has unready containers on instance $node"
+    done < <(kubectl -n "$namespace" get pod -l "$label_selector" -o jsonpath='{range .items[*]}{.metadata.name}|{.spec.nodeName}|{.status.containerStatuses[*].ready}{"\n"}{end}')
+}
+
 
 # this is bullshit
 recursive_git_pull() {
