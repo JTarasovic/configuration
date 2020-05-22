@@ -132,7 +132,10 @@ alias dirty_dirs='for dir in *; do pushd "$dir" > /dev/null; $(git -c diff.autor
 alias donotuse1='for dir in *; do pushd "$dir" > /dev/null; [[ $(git rev-parse --abbrev-ref HEAD) = "develop" ]] || echo "$dir not on develop"; popd > /dev/null; done'
 alias donotuse2='for dir in *; do pushd "$dir" > /dev/null; git pull; popd > /dev/null; done'
 alias donotuse3='for dir in *; do pushd "$dir" > /dev/null; git remote prune origin; popd > /dev/null; done'
-alias clean='old=$(git rev-parse --abbrev-ref HEAD);git checkout master && git pull && git remote prune origin && git br -D "$old"'
+clean () {
+    old=$(git rev-parse --abbrev-ref HEAD);
+    git checkout "${1:-master}" && git pull && git remote prune origin && git br -D "$old"
+}
 
 alias yml2yaml='for f in *.yml; do mv -- "$f" "${f%.yml}.yaml"; done'
 
@@ -141,3 +144,8 @@ _cf_validate() {
     aws cloudformation --profile default validate-template --template-body "file://$1" | jq '.'
 }
 alias cf_validate='_cf_validate'
+
+
+node2instance() {
+    kubectl get node "$1" -o jsonpath="{.spec.providerID}" | cut -d "/" -f 5
+}

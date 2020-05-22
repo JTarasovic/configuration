@@ -55,6 +55,10 @@ Plug 'mattreduce/vim-mix',              { 'for': 'elixir' }
 " Dockerfile
 Plug 'ekalinin/Dockerfile.vim',         { 'for': 'Dockerfile' }
 
+
+" Ansible
+Plug 'pearofducks/ansible-vim'
+
 call plug#end()
 
 " set variables and such
