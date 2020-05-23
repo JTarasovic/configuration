@@ -3,3 +3,5 @@ vim/plugged
 email.sh
 vim/init.vim
 **/plug.vim.old
+
+ansible/vars/aws_credentials.yaml
