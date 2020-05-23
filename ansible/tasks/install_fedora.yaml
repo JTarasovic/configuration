@@ -28,8 +28,7 @@
     method: user
   loop: "{{ flatpak_remotes }}"
 
-  # TODO: troubleshoot these on VM!!!
-- name: Install the spotify flatpak
+- name: Install flatpaks
   flatpak:
     name: "{{ item.name }}"
     remote: "{{ item.remote is defined | ternary(item.remote, '') }}"
