@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: all
   vars:
     aws_default_output: json
     optional_credentials_file: "{{ lookup('first_found', 'vars/aws_credentials.yaml', errors='ignore') }}"

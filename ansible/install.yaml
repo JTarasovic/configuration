@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: all
   tasks:
     - name: Install host specific packages
       include_tasks: "tasks/install_{{ ansible_facts.distribution | lower }}.yaml"
