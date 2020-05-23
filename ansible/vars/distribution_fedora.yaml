@@ -1,0 +1,48 @@
+---
+dconf:
+  - key: /org/gnome/desktop/peripherals/mouse/natural-scroll
+    value: "false"
+  - key: /org/gnome/desktop/peripherals/touchpad/natural-scroll
+    value: "false"
+  - key: /org/gnome/desktop/input-sources/xkb-options
+    value: "['caps:escape']"
+  - key: /org/gnome/settings-daemon/plugins/power/ambient-enabled
+    value: "false"
+
+packages:
+  - bat
+  - "@development-tools"
+  - flatpak
+  - git
+  - google-cloud-sdk
+  - iotop
+  - jq
+  - kicad
+  - kicad-packages3d
+  - libvirt-devel
+  - lm_sensors
+  - neovim
+  - podman-docker
+  - python3-devel
+  - ShellCheck
+  - speedtest-cli
+  - strace
+  - vagrant
+  - '@virtualization'
+  - wireshark
+  - xclip
+  - zoom
+  - zsh
+
+flatpak_remotes:
+  - name: flathub
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+  - name: org.mozilla.FirefoxRepo
+    flatpakrepo_url: https://firefox-flatpak.mojefedora.cz/org.mozilla.FirefoxRepo.flatpakrepo
+
+flatpak_packages:
+  - name: https://s3.amazonaws.com/alexlarsson/spotify-repo/spotify.flatpakref
+  - name: com.github.johnfactotum.Foliate
+  - name: com.slack.Slack
+  - name: org.mozilla.FirefoxDevEdition
+    remote: org.mozilla.FirefoxRepo

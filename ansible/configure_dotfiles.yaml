@@ -1,0 +1,51 @@
+---
+- hosts: localhost
+  vars:
+    dotfiles_dir: '{{ ansible_env.HOME }}/.dotfiles'
+  tasks:
+    - name: Check if dotfiles directory exists
+      stat:
+        path: "{{ dotfiles_dir }}"
+      register: dotfiles_stat
+
+    - name: Checkout dotfiles
+      git:
+        repo: 'git@github.com:J_Tarasovic/configuration.git'
+        dest: '{{ dotfiles_dir }}'
+      when: dotfiles_stat.stat.exists == false or dotfiles_stat.stat.isdir == false
+
+    - name: Copy dotfiles to their respective locations
+      file:
+        src: "{{ dotfiles_dir }}/{{ item }}"
+        dest: "{{ ansible_env.HOME }}/.{{ item }}"
+        state: link
+        force: true
+      loop:
+        - bashrc
+        - bash_profile
+        - ctags
+        - mongorc.js
+        - psqlrc
+        - tmux.conf
+        - vcsignore
+        - vimrc
+        - vim
+        - zshenv
+        - zshrc
+
+
+    - name: Configure neovim
+      file:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        state: link
+      loop:
+        - src: "{{ dotfiles_dir }}/vim"
+          dest: "{{ ansible_env.HOME }}/.config/nvim"
+        - src: "{{ dotfiles_dir }}/vimrc"
+          dest: "{{ ansible_env.HOME }}/.config/nvim/init.vim"
+
+    - name: Ensure neovim backup directory
+      file:
+        path: "{{ ansible_env.HOME }}/.local/share/nvim/backup/"
+        state: directory

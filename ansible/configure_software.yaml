@@ -1,0 +1,60 @@
+---
+- hosts: localhost
+  vars:
+    aws_default_output: json
+    optional_credentials_file: "{{ lookup('first_found', 'vars/aws_credentials.yaml', errors='ignore') }}"
+  tasks:
+    - name: Configure firefox profiles
+      import_role:
+        name: basvandenbrink.firefox
+
+    - name: Include AWS credential variables
+      include_vars: "{{ optional_credentials_file }}"
+      when: optional_credentials_file is file
+      tags:
+        - aws
+
+    - name: Configure AWS profiles
+      import_role:
+        name: christiangda.awscli_configure
+      tags:
+        - aws
+      vars:
+        awscliconf_files_owner: "{{ ansible_env.USER }}"
+        awscliconf_files_group: "{{ ansible_env.USER }}"
+        awscliconf_path: "{{ ansible_env.HOME }}"
+        awscliconf_folder_permission: 0755
+        awscliconf_files:
+          credentials: "{{ credentials is defined | ternary(credentials, '') }}"
+
+          config:
+            - "profile test":
+                region: us-east-1
+                output: "{{ aws_default_output }}"
+            - "profile dev":
+                region: us-east-2
+                output: "{{ aws_default_output }}"
+            - "profile staging":
+                region: us-west-2
+                output: "{{ aws_default_output }}"
+            - "profile prod":
+                region: us-gov-west-1
+                output: "{{ aws_default_output }}"
+            - "profile cde-dev":
+                region: us-east-2
+                output: "{{ aws_default_output }}"
+            - "profile cde-staging":
+                region: us-west-2
+                output: "{{ aws_default_output }}"
+            - "profile cde-prod":
+                region: us-east-1
+                output: "{{ aws_default_output }}"
+            - "profile mgmt":
+                region: us-east-2
+                output: "{{ aws_default_output }}"
+            - "profile ca-staging":
+                region: ca-central-1
+                output: "{{ aws_default_output }}"
+            - "profile ca-prod":
+                region: ca-central-1
+                output: "{{ aws_default_output }}"

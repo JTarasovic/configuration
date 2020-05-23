@@ -1,0 +1,48 @@
+---
+- hosts: localhost
+
+  vars:
+    user: jason
+    ssh_key_name: id_ecdsa
+
+  tasks:
+    - name: configure user
+      user:
+        name: "{{ user }}"
+        shell: /usr/bin/zsh
+        generate_ssh_key: true
+        ssh_key_bits: 256
+        ssh_key_type: ecdsa
+        ssh_key_file: "{{ ansible_env.HOME }}/.ssh/{{ ssh_key_name }}"
+        groups:
+          - libvirt
+          - wheel
+          - "{{ user }}"
+      register: userinfo
+      become: true
+
+    # make it work for osx
+    - name: add wheel to passwordless sudoers
+      lineinfile:
+        dest: /etc/sudoers
+        state: present
+        regexp: '^%wheel'
+        line: '%wheel	ALL=(ALL)	NOPASSWD: ALL'
+        validate: 'visudo -cf %s'
+      become: true
+
+    - name: push ssh pubkey to github
+      local_action:
+        module: github_key
+        name: "ansible-{{ ansible_machine_id }}"
+        token: "{{ token }}"
+        pubkey: "{{ userinfo.ssh_public_key }}"
+      vars:
+        token: !vault |
+            $ANSIBLE_VAULT;1.1;AES256
+            32316534626438353632313536306530643862613939356532663063376338356338356633346433
+            6162643562313233633839396465333330303239366165630a626631636134666133323432353134
+            63666663386432646461316537323133376265363334666634653865373534616535306635336439
+            6261633162306163630a663861663437376262396236346666386537656639636566653332656462
+            36313161313033323630363265613337353335396538376466343531643866343030633135623233
+            3963623162626130376630373963366162636637353866666635

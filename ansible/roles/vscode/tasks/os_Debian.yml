@@ -1,0 +1,27 @@
+---
+
+- name: set gpg key
+  apt_key:
+    url: "https://packages.microsoft.com/keys/microsoft.asc"
+    state: present
+
+- name: add repository
+  apt_repository:
+    repo: 'deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main'
+    filename: vscode
+    state: present
+    update_cache: yes
+
+- name: install vscode
+  apt:
+    name: code
+    update_cache: true
+  when:
+    - vscode_install
+
+- name: install vscode insiders
+  apt:
+    name: code-insiders
+    update_cache: true
+  when:
+    - vscode_insiders_install

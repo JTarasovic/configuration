@@ -1,211 +1,26 @@
 ---
 - hosts: localhost
 
-  vars:
-    user: jason
-    ssh_key_name: id_ecdsa
-
   pre_tasks:
-  - name: classify host by type of system
-    group_by:
-      key: "system_{{ ansible_facts.system | lower }}"
-    tags:
-      - always
-
-  - name: classify host by distribution
-    group_by:
-      key: "distribution_{{ ansible_facts.distribution | lower }}"
-      parents:
-        - "system_{{ ansible_facts.system | lower }}"
-    tags:
-      - always
-
-  tasks:
-    - name: install packages
-      package:
-        name: "{{ packages }}"
-        state: latest
-      become: true
+    - name: classify host by type of system
+      group_by:
+        key: "system_{{ ansible_facts.system | lower }}"
       tags:
-        - dependencies
-        - packages
+        - always
 
-    - name: install docker
-      become: true
-      import_role:
-        name: geerlingguy.docker
-      vars:
-        docker_package_state: latest
-        docker_install_compose: false
-        docker_users:
-          - "{{ user }}"
+    - name: classify host by distribution
+      group_by:
+        key: "distribution_{{ ansible_facts.distribution | lower }}"
+        parents:
+          - "system_{{ ansible_facts.system | lower }}"
       tags:
-        - dependencies
-        - packages
-        - docker
-
-    - name: install pip packages
-      pip:
-        name:
-          - hr
-          - psutil
-          - pynvim
-          - requests
-        extra_args: "--user"
-        state: latest
-      tags:
-        - dependencies
-        - packages
+        - always
 
 
-    - name: install keybase
-      import_role:
-        name: leonallen22.ansible_role_keybase
-      tags:
-        - packages
-        - keybase
-
-    - name: configure user
-      user:
-        name: "{{ user }}"
-        shell: /usr/bin/zsh
-        generate_ssh_key: yes
-        ssh_key_bits: 256
-        ssh_key_type: ecdsa
-        ssh_key_file: "{{ ansible_env.HOME }}/.ssh/{{ ssh_key_name }}"
-        groups:
-          - docker
-          - libvirt
-          - wheel
-          - "{{ user }}"
-      register: userinfo
-      become: true
-      tags:
-        - user
-        - ssh
-        - git
-
-    - name: copy dotfiles
-      file:
-        src: "{{ ansible_env.HOME }}/.dotfiles/{{ item }}"
-        dest: "{{ ansible_env.HOME }}/.{{ item }}"
-        state: link
-        force: true
-      loop:
-        - bashrc
-        - bash_profile
-        - ctags
-        - mongorc.js
-        - psqlrc
-        - tmux.conf
-        - vcsignore
-        - vimrc
-        - vim
-        - zshenv
-        - zshrc
-      tags:
-        - dotfiles
-
-    - stat:
-        path: "{{ ansible_env.HOME }}/.dotfiles/zsh-syntax-highlighting/.git"
-      register: submodule_stat
-      tags:
-        - git
-        - dotfiles
-        - submodules
-
-    # hack
-    # not idempotent :sob:
-    # would be cool to automagically upgrade
-    # maybe don't submodule. maybe just clone?
-    - name: init submodules
-      shell: "git submodule update --init --recursive"
-      when: submodule_stat.stat.exists == false or submodule_stat.stat.isdir == false
-      tags:
-        - git
-        - dotfiles
-        - submodules
-
-    - name: push ssh pubkey to github
-      local_action:
-        module: github_key
-        name: "ansible-{{ ansible_machine_id }}"
-        token: "{{ token }}"
-        pubkey: "{{ userinfo.ssh_public_key }}"
-      vars:
-        token: !vault |
-            $ANSIBLE_VAULT;1.1;AES256
-            32316534626438353632313536306530643862613939356532663063376338356338356633346433
-            6162643562313233633839396465333330303239366165630a626631636134666133323432353134
-            63666663386432646461316537323133376265363334666634653865373534616535306635336439
-            6261633162306163630a663861663437376262396236346666386537656639636566653332656462
-            36313161313033323630363265613337353335396538376466343531643866343030633135623233
-            3963623162626130376630373963366162636637353866666635
-      tags:
-        - git
-
-    - name: set git origin
-      command:
-        chdir: "{{ ansible_env.HOME }}/.dotfiles"
-        argv:
-          - git
-          - remote
-          - set-url
-          - origin
-          - "git@github.com:JTarasovic/configuration.git"
-      tags:
-        - git
-
-
-    - name: configure neovim
-      file:
-        src: "{{ item.src }}"
-        dest: "{{ item.dest }}"
-        state: link
-      loop:
-        - src: "{{ ansible_env.HOME }}/.dotfiles/vim"
-          dest: "{{ ansible_env.HOME }}/.config/nvim"
-        - src: "{{ ansible_env.HOME }}/.dotfiles/vimrc"
-          dest: "{{ ansible_env.HOME }}/.config/nvim/init.vim"
-      tags:
-        - dotfiles
-
-    - name: ensure neovim backup directory
-      file:
-        path: "{{ ansible_env.HOME }}/.local/share/nvim/backup/"
-        state: directory
-      tags:
-        - dotfiles
-
-
-    - name: install font(s)
-      include_role:
-        name: nerd-fonts
-        apply:
-          tags:
-            - fonts
-      vars:
-        name: "{{ item.name }}"
-        url: "{{ item.url }}"
-      loop:
-        # this kinda sucks
-        - name: GoMonoNerdFontComplete.ttf
-          url: "https://github.com/ryanoasis/nerd-fonts/raw/2.0.0/patched-fonts/Go-Mono/Regular/complete/Go%20Mono%20Nerd%20Font%20Complete.ttf"
-        - name: GoMonoNerdFontCompleteMono.ttf
-          url: "https://github.com/ryanoasis/nerd-fonts/raw/2.0.0/patched-fonts/Go-Mono/Regular/complete/Go%20Mono%20Nerd%20Font%20Complete%20Mono.ttf"
-      tags:
-        - fonts
-
-
-    - name: install Go
-      import_role:
-        name: andrewrothstein.go
-      tags:
-        - packages
-        - go
-
-
-
+- import_playbook: user.yaml
+- import_playbook: install.yaml
+- import_playbook: configure_dotfiles.yaml
+- import_playbook: configure_software.yaml
 
 - hosts: distribution_fedora
   tasks:
@@ -220,29 +35,7 @@
         - xkb
         - scroll
 
-    - name: upgrade DNF packages
-      dnf:
-        name: '*'
-        state: latest
-      become: true
-      tags:
-        - packages
-        - dnf
 
-    - name: add wheel to passwordless sudoers
-      lineinfile:
-        dest: /etc/sudoers
-        state: present
-        regexp: '^%wheel'
-        line: '%wheel	ALL=(ALL)	NOPASSWD: ALL'
-        validate: 'visudo -cf %s'
-      become: true
-      tags:
-        - user
-
-    # figure this out for mac / work / developer edition
-    - name: configure firefox
-      import_role:
-        name: basvandenbrink.firefox
-      tags:
-        - firefox
+# FIX PACKAGES!!!
+# kubectl
+# krew

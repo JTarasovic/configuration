@@ -1,0 +1,44 @@
+---
+- name: Include Fedora vars
+  include_vars: distribution_fedora.yaml
+
+- name: Add gcloud sdk repository
+  yum_repository:
+    name: google-cloud-sdk
+    description: GCloud SDK Upstream
+    baseurl: https://packages.cloud.google.com/yum/repos/cloud-sdk-el7-x86_64
+    repo_gpgcheck: true
+    gpgcheck: true
+    gpgkey:
+      - 'https://packages.cloud.google.com/yum/doc/yum-key.gpg'
+      - 'https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg'
+  become: true
+
+- name: Install DNF packages
+  dnf:
+    name: "{{ packages }}"
+    state: latest
+  become: true
+
+- name: Install flatpak remotes
+  flatpak_remote:
+    name: "{{ item.name }}"
+    flatpakrepo_url: "{{ item.flatpakrepo_url }}"
+    state: present
+    method: user
+  loop: "{{ flatpak_remotes }}"
+
+  # TODO: troubleshoot these on VM!!!
+- name: Install the spotify flatpak
+  flatpak:
+    name: "{{ item.name }}"
+    remote: "{{ item.remote is defined | ternary(item.remote, '') }}"
+    state: present
+    method: user
+  loop: "{{ flatpak_packages }}"
+
+- name: Upgrade DNF packages
+  dnf:
+    name: '*'
+    state: latest
+  become: true

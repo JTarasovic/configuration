@@ -1,7 +1,9 @@
-- src: basvandenbrink.firefox
+---
+roles:
+  - src: andrewrothstein.go
+  - src: basvandenbrink.firefox
+  - src: christiangda.awscli_configure
+  - src: leonallen22.ansible_role_keybase
 
-- src: andrewrothstein.go
-
-- src: geerlingguy.docker
-
-- src: leonallen22.ansible_role_keybase
+  - src: https://github.com/jtarasovic/vscode
+    version: added-insiders-build-for-redhat

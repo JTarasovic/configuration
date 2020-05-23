@@ -1,0 +1,80 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Install host specific packages
+      include_tasks: "tasks/install_{{ ansible_facts.distribution | lower }}.yaml"
+
+    # fix this
+    - name: Install pip packages
+      pip:
+        name:
+          - ansible-lint
+          - autopep8
+          - awscli
+          - docker
+          - flake8
+          - libvirt-python
+          - lxml
+          - molecule
+          - psutil
+          - pynvim
+          - requests
+          - yamllint
+        extra_args: "--user"
+        state: latest
+
+    - name: Install keybase
+      import_role:
+        name: leonallen22.ansible_role_keybase
+
+    - name: Install Go
+      import_role:
+        name: andrewrothstein.go
+
+    - name: Install font(s)
+      include_role:
+        name: nerd-fonts
+      vars:
+        name: "{{ item.name }}"
+        url: "{{ item.url }}"
+      loop:
+        # this kinda sucks
+        - name: GoMonoNerdFontComplete.ttf
+          url: "https://github.com/ryanoasis/nerd-fonts/raw/2.0.0/patched-fonts/Go-Mono/Regular/complete/Go%20Mono%20Nerd%20Font%20Complete.ttf"
+        - name: GoMonoNerdFontCompleteMono.ttf
+          url: "https://github.com/ryanoasis/nerd-fonts/raw/2.0.0/patched-fonts/Go-Mono/Regular/complete/Go%20Mono%20Nerd%20Font%20Complete%20Mono.ttf"
+
+    - name: Install vscode-insiders
+      import_role:
+        name: vscode
+      become: true
+      vars:
+        vscode_install: false
+        vscode_insiders_install: true
+
+    - name: Install vscode-insiders extensions
+      import_role:
+        name: vscode
+      vars:
+        vscode_install: false
+        vscode_insiders_install: false
+        vscode_extension:
+          - alefragnani.Bookmarks
+          - christian-kohler.npm-intellisense
+          - CoenraadS.bracket-pair-colorizer
+          - donjayamanne.githistory
+          - esbenp.prettier-vscode
+          - formulahendry.terminal
+          - haaaad.ansible
+          - ms-azuretools.vscode-docker
+          - ms-vscode.Go
+          - ms-python.python
+          - octref.vetur
+          - redhat.vscode-yaml
+          - sdras.vue-vscode-extensionpack
+          - sdras.vue-vscode-snippets
+          - tombonnike.vscode-status-bar-format-toggle
+          - VisualStudioExptTeam.vscodeintellicode
+          - vscodevim.vim
+          - wholroyd.jinja
+          - xabikos.JavaScriptSnippets

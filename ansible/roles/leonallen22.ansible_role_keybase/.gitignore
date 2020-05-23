@@ -1,0 +1,4 @@
+*.swp
+*.retry
+*/__pycache__
+*.pyc
