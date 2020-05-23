@@ -17,8 +17,8 @@
         - always
 
 
-- import_playbook: user.yaml
 - import_playbook: install.yaml
+- import_playbook: user.yaml
 - import_playbook: configure_dotfiles.yaml
 - import_playbook: configure_software.yaml
 
