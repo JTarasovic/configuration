@@ -6,7 +6,12 @@
     ssh_key_name: id_ecdsa
 
   tasks:
-    - name: configure user
+    - name: Ensure group exists
+      group:
+        name: "{{ user }}"
+        state: present
+
+    - name: Configure user
       user:
         name: "{{ user }}"
         shell: /usr/bin/zsh
@@ -22,7 +27,7 @@
       become: true
 
     # make it work for osx
-    - name: add wheel to passwordless sudoers
+    - name: Add wheel to passwordless sudoers
       lineinfile:
         dest: /etc/sudoers
         state: present
@@ -31,7 +36,7 @@
         validate: 'visudo -cf %s'
       become: true
 
-    - name: push ssh pubkey to github
+    - name: Push SSH pubkey to GitHub
       local_action:
         module: github_key
         name: "ansible-{{ ansible_machine_id }}"
