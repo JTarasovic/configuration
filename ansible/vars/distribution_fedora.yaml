@@ -41,7 +41,7 @@ flatpak_remotes:
     flatpakrepo_url: https://firefox-flatpak.mojefedora.cz/org.mozilla.FirefoxRepo.flatpakrepo
 
 flatpak_packages:
-  - name: https://s3.amazonaws.com/alexlarsson/spotify-repo/spotify.flatpakref
+  - name: com.spotify.Client
   - name: com.github.johnfactotum.Foliate
   - name: com.slack.Slack
   - name: org.mozilla.FirefoxDevEdition
