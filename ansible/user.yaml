@@ -10,6 +10,7 @@
       group:
         name: "{{ user }}"
         state: present
+      become: true
 
     - name: Configure user
       user:
