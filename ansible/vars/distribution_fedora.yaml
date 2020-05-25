@@ -29,9 +29,7 @@ packages:
   - strace
   - vagrant
   - '@virtualization'
-  - wireshark
   - xclip
-  # - zoom
   - zsh
 
 flatpak_remotes:
@@ -44,5 +42,7 @@ flatpak_packages:
   - name: com.spotify.Client
   - name: com.github.johnfactotum.Foliate
   - name: com.slack.Slack
+  - name: org.wireshark.Wireshark
+  - name: us.zoom.Zoom
   - name: org.mozilla.FirefoxDevEdition
     remote: org.mozilla.FirefoxRepo
