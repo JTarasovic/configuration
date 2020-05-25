@@ -54,6 +54,7 @@ firefox_profiles:
       # - dashlane
       - decentraleyes
       - https-everywhere
+      - lastpass-password-manager
       - neat-url
       - privacy-badger17
       - vue-js-devtools
