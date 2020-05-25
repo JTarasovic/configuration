@@ -61,6 +61,14 @@
           - whoami
           - who-can
 
+    - name: Install clusterctl
+      import_role:
+        name: install_clusterctl
+
+    - name: Install clusterawsadm
+      import_role:
+        name: install_clusterawsadm
+
     - name: Install font(s)
       include_role:
         name: nerd-fonts
