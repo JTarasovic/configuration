@@ -37,8 +37,6 @@
       file:
         name: "{{ ansible_env.HOME }}/.config/yamllint"
         state: directory
-      tags:
-        - yamllint
 
     - name: Link default yamllint config
       file:
@@ -46,8 +44,6 @@
         dest: "{{ ansible_env.HOME }}/.config/yamllint/config"
         state: link
         force: true
-      tags:
-        - yamllint
 
     - name: Configure neovim
       file:
