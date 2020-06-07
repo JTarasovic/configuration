@@ -69,6 +69,10 @@
       import_role:
         name: install_clusterawsadm
 
+    - name: Install kustomize
+      import_role:
+        name: install_kustomize
+
     - name: Install font(s)
       include_role:
         name: nerd-fonts
