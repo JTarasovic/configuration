@@ -19,6 +19,7 @@ packages:
   - jq
   - kicad
   - kicad-packages3d
+  - lastpass-cli
   - libvirt-devel
   - lm_sensors
   - neovim
