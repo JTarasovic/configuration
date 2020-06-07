@@ -87,6 +87,8 @@ set mouse=a
 set backup                          " keep a backup file (restore to previous version)
 set undofile                        " keep an undo file (undo changes after closing)
 
+set inccommand=split                " shows :s preview in split
+
 " completion related settings
 set completeopt-=preview
 set completeopt+=noselect
