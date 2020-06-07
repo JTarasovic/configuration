@@ -23,9 +23,11 @@ packages:
   - libvirt-devel
   - lm_sensors
   - neovim
+  - nvme-cli
   - podman-docker
   - python3-devel
   - ShellCheck
+  - smartmontools
   - speedtest-cli
   - strace
   - vagrant
