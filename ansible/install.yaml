@@ -43,6 +43,8 @@
     - name: Install krew
       import_role:
         name: install_krew
+      environment:
+        PATH: "{{ ansible_env.HOME }}/.krew/bin:{{ ansible_env.PATH }}"
 
     - name: Install krew plugins
       krew:
@@ -60,18 +62,23 @@
           - view-secret
           - whoami
           - who-can
+      environment:
+        PATH: "{{ ansible_env.HOME }}/.krew/bin:{{ ansible_env.PATH }}"
 
     - name: Install clusterctl
       import_role:
         name: install_clusterctl
+      become: true
 
     - name: Install clusterawsadm
       import_role:
         name: install_clusterawsadm
+      become: true
 
     - name: Install kustomize
       import_role:
         name: install_kustomize
+      become: true
 
     - name: Install font(s)
       include_role:
