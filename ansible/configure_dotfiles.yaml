@@ -14,7 +14,7 @@
         dest: '{{ dotfiles_dir }}'
       when: dotfiles_stat.stat.exists == false or dotfiles_stat.stat.isdir == false
 
-    - name: Copy dotfiles to their respective locations
+    - name: Link dotfiles to their respective locations
       file:
         src: "{{ dotfiles_dir }}/{{ item }}"
         dest: "{{ ansible_env.HOME }}/.{{ item }}"
@@ -33,6 +33,21 @@
         - zshenv
         - zshrc
 
+    - name: Ensure yamllint config directory
+      file:
+        name: "{{ ansible_env.HOME }}/.config/yamllint"
+        state: directory
+      tags:
+        - yamllint
+
+    - name: Link default yamllint config
+      file:
+        src: "{{ dotfiles_dir }}/yamllint"
+        dest: "{{ ansible_env.HOME }}/.config/yamllint/config"
+        state: link
+        force: true
+      tags:
+        - yamllint
 
     - name: Configure neovim
       file:
