@@ -6,7 +6,7 @@ clean () {
 }
 
 cf_validate() {
-    aws cloudformation --profile default validate-template --template-body "file://$1" | jq '.'
+    aws cloudformation validate-template --template-body "file://$1" | jq '.'
 }
 
 node2instance() {
@@ -16,7 +16,7 @@ node2instance() {
 watch_url() {
     while :;
     do
-        curl -s -o /dev/null -w "%{http_code} - %{size_download}\n" -k "$1";
+        curl -s -o /dev/null -w "%{http_code} - %{size_download}\n" --connect-timeout 2 -k "$1";
         sleep "${2:-5}";
     done
 }
