@@ -11,20 +11,19 @@ dconf:
 
 packages:
   - bat
+  - cloc
   - "@development-tools"
   - flatpak
   - git
   - google-cloud-sdk
   - iotop
   - jq
-  - kicad
-  - kicad-packages3d
   - lastpass-cli
   - libvirt-devel
   - lm_sensors
+  - moby-engine
   - neovim
   - nvme-cli
-  - podman-docker
   - python3-devel
   - ShellCheck
   - smartmontools
@@ -46,6 +45,9 @@ flatpak_packages:
   - name: com.spotify.Client
   - name: com.github.johnfactotum.Foliate
   - name: com.slack.Slack
+  - name: org.blender.Blender
+  - name: org.freecadweb.FreeCAD
+  - name: org.kicad_pcb.KiCad
   - name: org.wireshark.Wireshark
   - name: us.zoom.Zoom
   - name: org.mozilla.FirefoxDevEdition
