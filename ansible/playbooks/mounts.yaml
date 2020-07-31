@@ -1,0 +1,48 @@
+---
+- hosts: all
+  vars:
+    mount_path: /mnt/data
+    fstype: btrfs
+    dirs:
+      - .aws
+      - .gnupg
+      - .local/share/libvirt
+      - .local/share/gnome-boxes
+      - .vagrant.d/boxes
+      - Development
+      - Documents
+      - Downloads
+      - go
+      - Music
+      - Pictures
+      - Videos
+
+  become: true
+  tasks:
+    - name: Ensure mount path exists as directory
+      file:
+        path: "{{ mount_path }}"
+        state: directory
+
+    - name: Mount secondary device
+      mount:
+        src: /dev/nvme1n1
+        path: "{{ mount_path }}"
+        fstype: "{{ fstype }}"
+        opts: nosuid,nodev,noatime,nodiratime
+        state: mounted
+
+    - name: Ensure correct directories exist
+      file:
+        path: "{{ mount_path }}/{{ item }}"
+        state: directory
+      loop: "{{ dirs }}"
+
+    - name: Bind mount into home
+      mount:
+        src: "{{ mount_path }}/{{ item }}"
+        path: "/home/jason/{{ item }}"
+        fstype: "none"
+        opts: bind
+        state: mounted
+      loop: "{{ dirs }}"
