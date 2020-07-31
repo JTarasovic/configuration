@@ -41,3 +41,8 @@
     name: '*'
     state: latest
   become: true
+
+- name: Configure sensors
+  template:
+    src: ../templates/custom.conf
+    dest: /etc/sensors.d/custom.conf
