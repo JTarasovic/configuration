@@ -1,13 +1,13 @@
 ---
 roles:
   - src: andrewrothstein.go
+    version: v2.1.33
   - src: andrewrothstein.kubectl
   - src: basvandenbrink.firefox
   - src: christiangda.awscli_configure
   - src: leonallen22.ansible_role_keybase
 
-  - src: https://github.com/jtarasovic/vscode
-    version: added-insiders-build-for-redhat
+  - src: https://github.com/ngetchell/vscode
 
 collections:
   - name: jtarasovic.kubernetes_tooling
