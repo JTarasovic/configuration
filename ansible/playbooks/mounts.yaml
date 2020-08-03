@@ -9,6 +9,7 @@
       - .local/share/libvirt
       - .local/share/gnome-boxes
       - .vagrant.d/boxes
+      - Calibre Library
       - Development
       - Documents
       - Downloads
@@ -35,6 +36,8 @@
     - name: Ensure correct directories exist
       file:
         path: "{{ mount_path }}/{{ item }}"
+        owner: jason
+        group: jason
         state: directory
       loop: "{{ dirs }}"
 

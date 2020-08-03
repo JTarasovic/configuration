@@ -42,13 +42,14 @@ flatpak_remotes:
     flatpakrepo_url: https://firefox-flatpak.mojefedora.cz/org.mozilla.FirefoxRepo.flatpakrepo
 
 flatpak_packages:
-  - name: com.spotify.Client
+  - name: com.calibre_ebook.calibre
   - name: com.github.johnfactotum.Foliate
   - name: com.slack.Slack
+  - name: com.spotify.Client
   - name: org.blender.Blender
   - name: org.freecadweb.FreeCAD
   - name: org.kicad_pcb.KiCad
+  - name: org.mozilla.FirefoxDevEdition
   - name: org.wireshark.Wireshark
   - name: us.zoom.Zoom
-  - name: org.mozilla.FirefoxDevEdition
     remote: org.mozilla.FirefoxRepo
