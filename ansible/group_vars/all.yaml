@@ -2,14 +2,12 @@
 firefox_profiles:
   stable:
     extensions:
-      # apparently dashlane isn't in the firefox marketplace thing
-      # figure it oot
-      # - dashlane
       - decentraleyes
       - https-everywhere
       - neat-url
       - privacy-badger17
       - vue-js-devtools
+      - lastpass-password-manager
     preferences:
       browser.ctrlTab.recentlyUsedOrder: "true"
       browser.formfill.enable: "false"
@@ -18,6 +16,7 @@ firefox_profiles:
       browser.shell.checkDefaultBrowser: "false"
       browser.tabs.warnOnClose: "false"
       browser.tabs.warnOnCloseOtherTabs: "false"
+
       privacy.clearOnShutdown.cache: "true"
       privacy.clearOnShutdown.cookies: "true"
       privacy.clearOnShutdown.downloads: "true"
@@ -41,10 +40,11 @@ firefox_profiles:
       privacy.sanitize.sanitizeOnShutdown: "true"
 
       signon.autofillForms: "false"
-      signon.autofillForms.autocompleteOff: "true"
+      signon.generation.enabled: "false"
+      signon.management.page.bread-alerts.enabled: "false"
       signon.rememberSignons: "false"
-      signon.storeSignons: "false"
       signon.storeWhenAutocompleteOff: "false"
+
       datareporting.healthreport.uploadEnabled: "false"
 
   developeredition:
@@ -54,7 +54,6 @@ firefox_profiles:
       # - dashlane
       - decentraleyes
       - https-everywhere
-      - lastpass-password-manager
       - neat-url
       - privacy-badger17
       - vue-js-devtools
@@ -66,6 +65,7 @@ firefox_profiles:
       browser.shell.checkDefaultBrowser: "false"
       browser.tabs.warnOnClose: "false"
       browser.tabs.warnOnCloseOtherTabs: "false"
+
       privacy.clearOnShutdown.cache: "true"
       privacy.clearOnShutdown.cookies: "true"
       privacy.clearOnShutdown.downloads: "true"
@@ -89,8 +89,9 @@ firefox_profiles:
       privacy.sanitize.sanitizeOnShutdown: "true"
 
       signon.autofillForms: "false"
-      signon.autofillForms.autocompleteOff: "true"
+      signon.generation.enabled: "false"
+      signon.management.page.bread-alerts.enabled: "false"
       signon.rememberSignons: "false"
-      signon.storeSignons: "false"
       signon.storeWhenAutocompleteOff: "false"
+
       datareporting.healthreport.uploadEnabled: "false"
