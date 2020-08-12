@@ -1,0 +1,8 @@
+---
+- hosts: all
+  roles:
+    - role: hurricanehrndz.rustup
+      vars:
+        rustup_user: jason
+        rustup_config_user_shell: false
+        rustup_cargo_crates: [ ]

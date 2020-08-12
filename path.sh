@@ -12,15 +12,16 @@ pathmunge () {
 }
 
 # add whatever you want to get added to path here
-pathmunge "$HOME"/android-studio/bin
-pathmunge "$HOME"/Android/Sdk/tools
-pathmunge "$HOME"/.local/bin
-pathmunge "$HOME"/.rvm/bin
-pathmunge "$HOME"/mongo/current/bin
+pathmunge "$HOME/android-studio/bin"
+pathmunge "$HOME/Android/Sdk/tools"
+pathmunge "$HOME/.local/bin"
+pathmunge "$HOME/.rvm/bin"
+pathmunge "$HOME/mongo/current/bin"
 pathmunge /usr/local/bin
 pathmunge /usr/local/heroku/bin
-pathmunge "$HOME"/Library/Python/3.7/bin
+pathmunge "$HOME/Library/Python/3.7/bin"
 pathmunge "${KREW_ROOT:-$HOME/.krew}"/bin
+pathmunge "$HOME/.cargo/bin"
 
 # add go binaries to path
 command -v go > /dev/null 2>&1 && pathmunge "$(go env GOPATH)/bin"

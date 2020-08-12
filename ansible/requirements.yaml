@@ -6,6 +6,7 @@ roles:
   - src: basvandenbrink.firefox
   - src: christiangda.awscli_configure
   - src: leonallen22.ansible_role_keybase
+  - src: hurricanehrndz.rustup
 
   - src: https://github.com/ngetchell/vscode
 
