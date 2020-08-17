@@ -97,6 +97,8 @@
       import_role:
         name: vscode
       become: true
+      tags:
+        - vscode
       vars:
         vscode_install: false
         vscode_insiders_install: true
@@ -104,6 +106,8 @@
     - name: Install vscode-insiders extensions
       import_role:
         name: vscode
+      tags:
+        - vscode
       vars:
         vscode_install: false
         vscode_insiders_install: false
@@ -120,6 +124,7 @@
           - ms-python.python
           - octref.vetur
           - redhat.vscode-yaml
+          - rust-lang.rust
           - sdras.vue-vscode-extensionpack
           - sdras.vue-vscode-snippets
           - tombonnike.vscode-status-bar-format-toggle
