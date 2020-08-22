@@ -34,6 +34,13 @@
       import_role:
         name: andrewrothstein.go
 
+    - name: Install Hugo
+      import_role:
+        name: darkwizard242.hugo
+      become: true
+      tags:
+        - hugo
+
     # TODO: install specific version?
     # and/or figure out how to upgrade
     - name: Install kubectl

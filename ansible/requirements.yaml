@@ -5,6 +5,7 @@ roles:
   - src: andrewrothstein.kubectl
   - src: basvandenbrink.firefox
   - src: christiangda.awscli_configure
+  - src: darkwizard242.hugo
   - src: leonallen22.ansible_role_keybase
   - src: hurricanehrndz.rustup
 
