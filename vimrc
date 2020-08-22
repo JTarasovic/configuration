@@ -35,6 +35,7 @@ Plug 'elzr/vim-json',                   { 'for': 'json' }
 Plug 'plasticboy/vim-markdown',         { 'for': 'markdown' }
 Plug 'chrisbra/csv.vim',                { 'for': ['csv','tsv'] }
 Plug 'stephpy/vim-yaml',                { 'for': ['yaml','yml'] }
+Plug 'cespare/vim-toml',                { 'for': 'toml' }
 
 " web stuff
 Plug 'gregsexton/MatchTag',             { 'for': 'html' }
