@@ -39,12 +39,16 @@
     - name: Install kubectl
       import_role:
         name: andrewrothstein.kubectl
+      tags:
+        - k8s
 
     - name: Install krew
       import_role:
         name: install_krew
       environment:
         PATH: "{{ ansible_env.HOME }}/.krew/bin:{{ ansible_env.PATH }}"
+      tags:
+        - k8s
 
     - name: Install krew plugins
       krew:
@@ -64,21 +68,29 @@
           - who-can
       environment:
         PATH: "{{ ansible_env.HOME }}/.krew/bin:{{ ansible_env.PATH }}"
+      tags:
+        - k8s
 
     - name: Install clusterctl
       import_role:
         name: install_clusterctl
       become: true
+      tags:
+        - k8s
 
     - name: Install clusterawsadm
       import_role:
         name: install_clusterawsadm
       become: true
+      tags:
+        - k8s
 
     - name: Install kustomize
       import_role:
         name: install_kustomize
       become: true
+      tags:
+        - k8s
 
     - name: Install font(s)
       include_role:
