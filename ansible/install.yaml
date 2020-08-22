@@ -129,7 +129,7 @@
           - CoenraadS.bracket-pair-colorizer
           - donjayamanne.githistory
           - esbenp.prettier-vscode
-          - formulahendry.terminal
+          - formulahendry.code-runner
           - golang.go
           - haaaad.ansible
           - ms-azuretools.vscode-docker
