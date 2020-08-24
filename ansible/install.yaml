@@ -132,6 +132,7 @@
         vscode_insiders_install: false
         vscode_extension:
           - alefragnani.Bookmarks
+          - budparr.language-hugo-vscode
           - christian-kohler.npm-intellisense
           - CoenraadS.bracket-pair-colorizer
           - donjayamanne.githistory
@@ -146,6 +147,7 @@
           - rust-lang.rust
           - sdras.vue-vscode-extensionpack
           - sdras.vue-vscode-snippets
+          - streetsidesoftware.code-spell-checker
           - tombonnike.vscode-status-bar-format-toggle
           - VisualStudioExptTeam.vscodeintellicode
           - vscodevim.vim
