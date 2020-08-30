@@ -45,6 +45,7 @@ flatpak_remotes:
 flatpak_packages:
   - name: com.calibre_ebook.calibre
   - name: com.github.johnfactotum.Foliate
+  - name: com.jetbrains.IntelliJ-IDEA-Community
   - name: com.slack.Slack
   - name: com.spotify.Client
   - name: org.blender.Blender
