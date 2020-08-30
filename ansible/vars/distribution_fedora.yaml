@@ -52,6 +52,6 @@ flatpak_packages:
   - name: org.freecadweb.FreeCAD
   - name: org.kicad_pcb.KiCad
   - name: org.mozilla.FirefoxDevEdition
+    remote: org.mozilla.FirefoxRepo
   - name: org.wireshark.Wireshark
   - name: us.zoom.Zoom
-    remote: org.mozilla.FirefoxRepo
