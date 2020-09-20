@@ -132,6 +132,7 @@
         vscode_insiders_install: false
         vscode_extension:
           - alefragnani.Bookmarks
+          - apollographql.vscode-apollo
           - budparr.language-hugo-vscode
           - christian-kohler.npm-intellisense
           - CoenraadS.bracket-pair-colorizer
