@@ -6,7 +6,7 @@
 
   tasks:
     - name: Install host specific packages
-      include_tasks: "tasks/install_{{ ansible_facts.distribution | lower }}.yaml"
+      include_tasks: 'tasks/install_{{ ansible_facts.distribution | lower | replace(" ", "_")}}.yaml'
 
     - name: Install pip packages
       pip:

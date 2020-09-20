@@ -1,0 +1,47 @@
+---
+packages:
+  - bat
+  - cloc
+  # - "@development-tools"
+  - flatpak
+  - git
+  - google-cloud-sdk
+  - iotop
+  - jq
+  - lastpass-cli
+  - libvirt-devel
+  - lm_sensors
+  - moby-engine
+  - neovim
+  - nvme-cli
+  - openssl-devel
+  - python3-devel
+  - ShellCheck
+  - smartmontools
+  - speedtest-cli
+  - strace
+  - vagrant
+  # - '@virtualization'
+  - xclip
+  - zsh
+  # - "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm"
+
+flatpak_remotes:
+  - name: flathub
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+  - name: org.mozilla.FirefoxRepo
+    flatpakrepo_url: https://firefox-flatpak.mojefedora.cz/org.mozilla.FirefoxRepo.flatpakrepo
+
+flatpak_packages:
+  - name: com.calibre_ebook.calibre
+  - name: com.github.johnfactotum.Foliate
+  - name: com.jetbrains.IntelliJ-IDEA-Community
+  - name: com.slack.Slack
+  - name: com.spotify.Client
+  - name: org.blender.Blender
+  - name: org.freecadweb.FreeCAD
+  - name: org.kicad_pcb.KiCad
+  - name: org.mozilla.FirefoxDevEdition
+    remote: org.mozilla.FirefoxRepo
+  - name: org.wireshark.Wireshark
+  - name: us.zoom.Zoom
