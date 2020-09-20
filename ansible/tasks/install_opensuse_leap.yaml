@@ -14,11 +14,11 @@
 #       - 'https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg'
 #   become: true
 
-# - name: Install DNF packages
-#   dnf:
-#     name: "{{ packages }}"
-#     state: latest
-#   become: true
+- name: Install packages
+  zypper:
+    name: "{{ packages }}"
+    state: latest
+  become: true
 
 - name: Install flatpak remotes
   flatpak_remote:
@@ -36,11 +36,11 @@
     method: user
   loop: "{{ flatpak_packages }}"
 
-# - name: Upgrade DNF packages
-#   dnf:
-#     name: '*'
-#     state: latest
-#   become: true
+- name: Upgrade packages
+  zypper:
+    name: '*'
+    state: latest
+  become: true
 
 # - name: Configure sensors
 #   template:
