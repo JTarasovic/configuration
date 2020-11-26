@@ -133,6 +133,7 @@
         vscode_extension:
           - alefragnani.Bookmarks
           - apollographql.vscode-apollo
+          - arcticicestudio.nord-visual-studio-code
           - budparr.language-hugo-vscode
           - christian-kohler.npm-intellisense
           - CoenraadS.bracket-pair-colorizer
